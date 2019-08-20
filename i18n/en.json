@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jeblad"
+		]
+	},
+	"expect-desc": "Provides advanced assertions to Lua modules"
+}
