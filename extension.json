@@ -16,7 +16,7 @@
 	},
 	"AutoloadClasses": {
 		"Expect\\Hooks":
-			"includes/Hooks.php",
+			"includes/Hooks.php"
 	},
 	"config_prefix": "wgExpect",
 	"config": {
