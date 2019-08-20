@@ -1,0 +1,26 @@
+{
+  "name": "pickle",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.2",
+    "eslint-config-wikimedia": "^0.3.0",
+    "grunt": "^1.0.4",
+    "grunt-banana-checker": "^0.5.0",
+    "grunt-cli": "1.2.0",
+    "grunt-contrib-csslint": "2.0.0",
+    "grunt-contrib-jshint": "1.1.0",
+    "grunt-contrib-lualint": "^0.3.0",
+    "grunt-eslint": "19.0.0",
+    "grunt-jscs": "3.0.1",
+    "grunt-jsonlint": "1.1.0",
+    "grunt-lintspaces": "^0.8.1",
+    "grunt-markdownlint": "^1.0.24",
+    "grunt-stylelint": "0.7.0",
+    "markdownlint": "^0.3.1",
+    "stylelint-config-wikimedia": "0.4.1"
+  }
+}
