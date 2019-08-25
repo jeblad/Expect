@@ -4,35 +4,35 @@
 -- @classmod Expect
 -- @author John Erling Blad < jeblad@gmail.com >
 
--- @var exported class variable
+-- @table exported class variable
 local Expect = {}
 
--- @var local library variable
+-- @table local library variable
 local libUtil = require 'libraryUtil'
 
--- @var local library variable
+-- @table local library variable
 local expUtil = require '_expect.util'
 
 --- Global assert soft fail.
 -- This toggles soft errors, thus allows easy testing of the compute graph.
 -- If set then a failure will not throw an exception.
--- @var boolean flag to do soft fail
+-- @field softFail
 Expect.softFail = nil
 
--- global bypass eval
+--- Global bypass eval.
 -- This toggle process execution, thus speeds up evaluation of the compute graph.
 -- If set then the compute graph will not be evaluated, and failures will go undetected.
--- @var boolean flag to bypass eval
+-- @field bypassEval
 Expect.bypassEval = nil
 
--- global argument type checks
+--- Global argument type checks.
 -- This toggle type assertions, thus speeds up creation of the compute graph.
 -- If set then type checks will not be done on arguments.
--- @var boolean flag to do type checks
+-- @field typeCheck
 Expect.typeCheck = nil
 
 --- Lookup of missing class members.
--- @raise on wrong argument type, unless turned off by @expect.typecheck.
+-- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
 -- @tparam string key lookup of member
 -- @return any
 function Expect:__index( key ) -- luacheck: no self
@@ -52,7 +52,7 @@ function Expect:__call( ... )
 end
 
 --- Create a new instance.
--- @raise on wrong arguments type, unless turned off by @expect.typecheck.
+-- @raise on wrong arguments type, unless turned off by @{Expect.typeCheck}.
 -- @tparam vararg ... forwarded to `_init()`
 -- @treturn self
 function Expect:create( ... )
@@ -143,7 +143,7 @@ end
 
 --- Add callback for failing compare.
 -- This will taint the instance.
--- @raise on wrong argument type, unless turned off by @expect.typecheck.
+-- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
 -- @tparam function func to call
 -- @treturn self
 function Expect:addFail( func )
@@ -158,7 +158,7 @@ end
 
 --- Add report for fail.
 -- This will not taint the instance.
--- @raise on wrong argument type, unless turned off by @expect.typecheck.
+-- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
 -- @tparam table tbl to call
 -- @tparam string msg to call
 -- @treturn self
@@ -177,7 +177,7 @@ end
 
 --- Add callback for passing compare.
 -- This will taint the instance.
--- @raise on wrong argument type, unless turned off by @expect.typecheck.
+-- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
 -- @tparam function func to call
 -- @treturn self
 function Expect:addPass( func )
@@ -192,7 +192,7 @@ end
 
 --- Add report for pass.
 -- This will not taint the instance.
--- @raise on wrong argument type, unless turned off by @expect.typecheck.
+-- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
 -- @tparam table tbl to call
 -- @tparam string msg to call
 -- @treturn self
@@ -223,7 +223,7 @@ end
 
 --- Import a compute grap.
 -- This is scary, and graph will be tainted.
--- @raise on wrong argument types, unless turned off by @expect.typecheck.
+-- @raise on wrong argument types, unless turned off by @{Expect.typeCheck}.
 -- @tparam table procs for the graph
 -- @treturn self
 function Expect:import( procs )
@@ -238,7 +238,7 @@ function Expect:import( procs )
 end
 
 --- Add a process function
--- @raise on wrong argument type, unless turned off by @expect.typecheck.
+-- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
 -- @tparam function proc to be evaluated
 -- @tparam[hold=nil] nil|boolean hold the previous tainting
 -- @treturn self
@@ -295,7 +295,7 @@ function Expect:eval( ... )
 end
 
 --- Pick entries
--- @raise on wrong argument type, unless turned off by @expect.typecheck.
+-- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
 -- @pick
 -- @tparam varargs ... used as indexes
 -- @treturn self
@@ -319,7 +319,7 @@ function Expect:pick( ... )
 end
 
 --- Filter entries
--- @raise on wrong argument type, unless turned off by @expect.typecheck.
+-- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
 -- @pick
 -- @tparam function func to filter the set
 -- @tparam varargs ... arguments passed to func
@@ -371,7 +371,7 @@ end
 -- It will create an additional delayed function for the provided definition.
 -- @local
 -- @delayed
--- @raise on wrong argument type, unless turned off by @expect.typecheck.
+-- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
 -- @tparam number idx of the extracted item
 -- @treturn function
 local function makePickProcess( idx )
@@ -474,7 +474,7 @@ end
 --- Make a delayed process for the transform functions.
 -- This is a private function that will create a function with a closure.
 -- The delayed function comes from the provided definition.
--- @raise on wrong argument type, unless turned off by @expect.typecheck.
+-- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
 -- @local
 -- @delayed
 -- @tparam function proc to adjust the process
@@ -809,7 +809,7 @@ Expect.ifWithin = Expect.toBeWithin
 -- This is a private function that will create a function with a closure.
 -- The delayed function comes from the provided definition.
 -- Mismatched length will trigger broadcast.
--- @raise on wrong argument type, unless turned off by @expect.typecheck.
+-- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
 -- @local
 -- @delayed
 -- @tparam function proc to adjust the process
