@@ -279,6 +279,7 @@ function Expect:compare( ... )
 end
 
 --- Eval given values
+-- If @{Expect.bypassEval} is set, then the compute graph will not be evaluated.
 -- @tparam varargs ... used as arguments
 -- @treturn boolean,nil|string
 function Expect:eval( ... )
