@@ -1,4 +1,4 @@
---- Utils to support Pickle.
+--- Utils to support Expect.
 -- @module util
 -- @author John Erling Blad < jeblad@gmail.com >
 
