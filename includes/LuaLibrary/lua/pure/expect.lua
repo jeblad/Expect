@@ -2,26 +2,33 @@
 -- This class follows the pattern from
 -- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Expect
+-- @author John Erling Blad < jeblad@gmail.com >
 
--- @var class var for lib.
+-- @var exported class variable
 local Expect = {}
 
+-- @var local library variable
 local libUtil = require 'libraryUtil'
+
+-- @var local library variable
 local expUtil = require '_expect.util'
 
 --- Global assert soft fail.
 -- This toggles soft errors, thus allows easy testing of the compute graph.
--- @ tvar boolean softFail
+-- If set then a failure will not throw an exception.
+-- @var boolean flag to do soft fail
 Expect.softFail = nil
 
 -- global bypass eval
 -- This toggle process execution, thus speeds up evaluation of the compute graph.
--- @ tvar boolean bypassEval
+-- If set then the compute graph will not be evaluated, and failures will go undetected.
+-- @var boolean flag to bypass eval
 Expect.bypassEval = nil
 
 -- global argument type checks
 -- This toggle type assertions, thus speeds up creation of the compute graph.
--- @ tvar boolean typeCheck
+-- If set then type checks will not be done on arguments.
+-- @var boolean flag to do type checks
 Expect.typeCheck = nil
 
 --- Lookup of missing class members.
@@ -61,7 +68,7 @@ end
 
 --- Initialize a new instance.
 -- @raise on wrong arguments
--- @tparam vararg ... set to temporal
+-- @tparam vararg ... interpreted according to type
 -- @treturn self
 function Expect:_init( ... )
 	self._processes = {}
@@ -101,39 +108,48 @@ function Expect:_init( ... )
 	return self
 end
 
---- Test whether instance is tainted
--- @treturn boolean
+--- Test whether instance is tainted.
+-- The instance will be tainted if the compute graph contains callbacks.
+-- @treturn nil|boolean
 function Expect:isTainted()
 	return self._taint
 end
 
 --- Test whether instance has soft fail.
+-- This is a check on whether the soft fail is set, not the actual boolean value.
 -- @treturn boolean
 function Expect:hasSoft()
 	return type( self._softFail ) == 'boolean'
 end
 
---- Test whether instance will soft fail
--- @treturn boolean
+--- Test whether instance will soft fail.
+-- This returns the actual boolean value.
+-- @treturn nil|boolean
 function Expect:isSoft()
 	return self._softFail
 end
 
---- Test whether instance has name.
+--- Test whether instance has a name.
 -- @treturn boolean
 function Expect:hasName()
-	return type( self._name ) == 'string'
+	return not not self._name
 end
 
---- Get instance name.
+--- Get the instance name.
 -- @treturn string
 function Expect:getName()
 	return self._name
 end
 
---- Add callback for fail.
+--- Add callback for failing compare.
+-- This will taint the instance.
+-- @raise on wrong argument type, unless turned off by @expect.typecheck.
 -- @tparam function func to call
+-- @treturn self
 function Expect:addFail( func )
+	if Expect.typeCheck then
+		libUtil.checkType( 'Expect:addFail', 1, func, 'function', false )
+	end
 	self._onFail = self._onFail or {}
 	self._taint = true
 	table.insert( self._onFail, func )
@@ -141,9 +157,16 @@ function Expect:addFail( func )
 end
 
 --- Add report for fail.
+-- This will not taint the instance.
+-- @raise on wrong argument type, unless turned off by @expect.typecheck.
 -- @tparam table tbl to call
 -- @tparam string msg to call
+-- @treturn self
 function Expect:addFailReport( tbl, msg )
+	if Expect.typeCheck then
+		libUtil.checkType( 'Expect:addFailReport', 1, tbl, 'table', false )
+		libUtil.checkType( 'Expect:addFailReport', 2, tbl, 'string', false )
+	end
 	self._onFail = self._onFail or {}
 	local func = function()
 		table.insert( tbl, msg )
@@ -152,9 +175,15 @@ function Expect:addFailReport( tbl, msg )
 	return self
 end
 
---- Add callback for pass.
+--- Add callback for passing compare.
+-- This will taint the instance.
+-- @raise on wrong argument type, unless turned off by @expect.typecheck.
 -- @tparam function func to call
+-- @treturn self
 function Expect:addPass( func )
+	if Expect.typeCheck then
+		libUtil.checkType( 'Expect:addPass', 1, func, 'function', false )
+	end
 	self._onPass = self._onPass or {}
 	self._taint = true
 	table.insert( self._onPass, func )
@@ -162,9 +191,16 @@ function Expect:addPass( func )
 end
 
 --- Add report for pass.
+-- This will not taint the instance.
+-- @raise on wrong argument type, unless turned off by @expect.typecheck.
 -- @tparam table tbl to call
 -- @tparam string msg to call
+-- @treturn self
 function Expect:addPassReport( tbl, msg )
+	if Expect.typeCheck then
+		libUtil.checkType( 'Expect:addFailReport', 1, tbl, 'table', false )
+		libUtil.checkType( 'Expect:addFailReport', 2, tbl, 'string', false )
+	end
 	self._onPass = self._onPass or {}
 	local func = function()
 		table.insert( tbl, msg )
@@ -175,11 +211,12 @@ end
 
 --- Callback on pass.
 -- The callback is evaluated right before @Expect:compare() returns.
+-- Errors in individual callbacks will be silently ignored.
 -- @tparam table cb to call
 function Expect:callbacks( cb )
 	if cb then
 		for _,v in ipairs( cb ) do
-			v( self )
+			pcall( v, self )
 		end
 	end
 end
@@ -203,7 +240,8 @@ end
 --- Add a process function
 -- @raise on wrong argument type, unless turned off by @expect.typecheck.
 -- @tparam function proc to be evaluated
--- @tparam[hold=nil] nil|boolean hold the tainting
+-- @tparam[hold=nil] nil|boolean hold the previous tainting
+-- @treturn self
 function Expect:addProcess( proc, hold )
 	if not hold then
 		self._taint = true
@@ -217,7 +255,7 @@ end
 
 --- Compare given values
 -- @tparam varargs ... any used as arguments
--- @return list of any
+-- @treturn boolean,nil|string
 function Expect:compare( ... )
 	local tmp = { ... }
 	for _,v in ipairs( self._processes ) do
