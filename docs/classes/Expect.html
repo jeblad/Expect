@@ -46,6 +46,10 @@
 <ul class="nowrap">
   <li><a href="../modules/util.html">util</a></li>
 </ul>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/hello-world.lua.html">hello-world.lua</a></li>
+</ul>
 
 </div>
 
@@ -66,6 +70,14 @@
 	<tr>
 	<td class="name nowrap"><a href="#Expect.softFail">Expect.softFail</a></td>
 	<td class="summary">Global assert soft fail.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect.bypassEval">Expect.bypassEval</a></td>
+	<td class="summary">Global bypass eval.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect.typeCheck">Expect.typeCheck</a></td>
+	<td class="summary">Global argument type checks.</td>
 	</tr>
 </table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
@@ -353,6 +365,59 @@
  If set then a failure will not throw an exception.
 
 
+    <ul>
+        <li><span class="parameter">softFail</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect.bypassEval"></a>
+    <strong>Expect.bypassEval</strong>
+    </dt>
+    <dd>
+    Global bypass eval.
+ This toggle process execution, thus speeds up evaluation of the compute graph.
+ If set then the compute graph will not be evaluated, and failures will go undetected.
+
+
+    <ul>
+        <li><span class="parameter">bypassEval</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect.typeCheck"></a>
+    <strong>Expect.typeCheck</strong>
+    </dt>
+    <dd>
+    Global argument type checks.
+ This toggle type assertions, thus speeds up creation of the compute graph.
+ If set then type checks will not be done on arguments.
+
+
+    <ul>
+        <li><span class="parameter">typeCheck</span>
+
+
+
+        </li>
+    </ul>
 
 
 
@@ -384,7 +449,7 @@
         any
 
     <h3>Raises:</h3>
-    on wrong argument type, unless turned off by @expect.typecheck.
+    on wrong argument type, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
@@ -444,7 +509,7 @@
 
 
     <h3>Raises:</h3>
-    on wrong arguments type, unless turned off by @expect.typecheck.
+    on wrong arguments type, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
@@ -606,7 +671,7 @@
 
 
     <h3>Raises:</h3>
-    on wrong argument type, unless turned off by @expect.typecheck.
+    on wrong argument type, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
@@ -640,7 +705,7 @@
 
 
     <h3>Raises:</h3>
-    on wrong argument type, unless turned off by @expect.typecheck.
+    on wrong argument type, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
@@ -670,7 +735,7 @@
 
 
     <h3>Raises:</h3>
-    on wrong argument type, unless turned off by @expect.typecheck.
+    on wrong argument type, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
@@ -704,7 +769,7 @@
 
 
     <h3>Raises:</h3>
-    on wrong argument type, unless turned off by @expect.typecheck.
+    on wrong argument type, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
@@ -757,7 +822,7 @@
 
 
     <h3>Raises:</h3>
-    on wrong argument types, unless turned off by @expect.typecheck.
+    on wrong argument types, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
@@ -790,7 +855,7 @@
 
 
     <h3>Raises:</h3>
-    on wrong argument type, unless turned off by @expect.typecheck.
+    on wrong argument type, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
@@ -873,7 +938,7 @@
 
 
     <h3>Raises:</h3>
-    on wrong argument type, unless turned off by @expect.typecheck.
+    on wrong argument type, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
@@ -906,7 +971,7 @@
 
 
     <h3>Raises:</h3>
-    on wrong argument type, unless turned off by @expect.typecheck.
+    on wrong argument type, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
