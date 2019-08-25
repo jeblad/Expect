@@ -6,7 +6,9 @@
 local util = {}
 
 --- Raw count of all the items in the provided table.
--- Variant of 'local function count(t)' from "Moses"
+-- Variant of
+-- ['local function count(t)'](https://github.com/Yonaba/Moses/blob/master/moses.lua#L308-L322)
+-- from [Yonaba/Moses](https://github.com/Yonaba/Moses).
 -- @tparam table t has its entries counted
 -- @treturn number raw entries
 function util.count( t )
@@ -18,7 +20,9 @@ function util.count( t )
 end
 
 --- Size based on the raw count.
--- Variant of 'function _.size(...)' from "Moses"
+-- Variant of
+-- ['function _.size(...)'](https://github.com/Yonaba/Moses/blob/master/moses.lua#L802-L813)
+-- from [Yonaba/Moses](https://github.com/Yonaba/Moses).
 -- @tparam[opt] table|any count entries if table, count varargs otherwise
 -- @treturn number counted entries
 function util.size( ... )
@@ -118,7 +122,9 @@ function util.deepEqual( a, b, useMt )
 end
 
 --- Checks if a table contains the arg.
--- Variant of 'function _.contains(t, value)' from "Moses"
+-- Variant of
+-- ['function _.contains(t, value)'](https://github.com/Yonaba/Moses/blob/master/moses.lua#L815-L828)
+-- from [Yonaba/Moses](https://github.com/Yonaba/Moses).
 -- @tparam table t searched for the arg
 -- @param arg any item to be searched for
 -- @treturn boolean result of the operation
