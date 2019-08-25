@@ -16,7 +16,8 @@ output = 'mw.expect'
 -- all = true
 
 readme = {
-	-- 'topics/adapt.md',
+	-- 'topics/expect.md',
+	-- 'topics/delayed.md',
 	-- 'topics/databases.md',
 	-- 'topics/hello-world.md',
 	-- 'topics/translatewiki.md',
@@ -44,17 +45,17 @@ custom_display_name_handler = function(item, default_handler)
 	if item.type == 'lfunction' or item.type == 'function' then
 		-- show a label beside functions tagged with @delayed.
 		if item.tags.delayed then
-			tagged = ( tagged or '' ) .. '[<a href="../topics/adapt.md.html#delayed">delayed</a>]'
+			tagged = ( tagged or '' ) .. '[<a href="../topics/graph.md.html#delayed">delayed</a>]'
 		end
 		-- show a label beside functions tagged with @pick.
 		if item.type == 'function' and item.tags.pick then
-			tagged = ( tagged or '' ) .. '[<a href="../topics/adapt.md.html#pick">pick</a>]'
+			tagged = ( tagged or '' ) .. '[<a href="../topics/graph.md.html#pick">pick</a>]'
 		-- show a label beside functions tagged with @transform.
 		elseif item.type == 'function' and item.tags.transform then
-			tagged = ( tagged or '' ) .. '[<a href="../topics/adapt.md.html#transform">transform</a>]'
+			tagged = ( tagged or '' ) .. '[<a href="../topics/graph.md.html#transform">transform</a>]'
 		-- show a label beside functions tagged with @condition.
 		elseif item.type == 'function' and item.tags.condition then
-			tagged = ( tagged or '' ) .. '[<a href="../topics/adapt.md.html#condition">condition</a>]'
+			tagged = ( tagged or '' ) .. '[<a href="../topics/graph.md.html#condition">condition</a>]'
 		end
 		if tagged then
 			return item.name .. ' () ' .. tagged
