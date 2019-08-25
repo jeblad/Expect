@@ -146,16 +146,17 @@
 	<td class="summary">Eval given values</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:pick">Expect:pick (...)</a></td>
+	<td class="name nowrap"><a href="#Expect:pick">Expect:pick () [<a href="../topics/adapt.md.html#pick">pick</a>]</a></td>
 	<td class="summary">Pick entries</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:filter">Expect:filter (func, ...)</a></td>
+	<td class="name nowrap"><a href="#Expect:filter">Expect:filter () [<a href="../topics/adapt.md.html#pick">pick</a>]</a></td>
 	<td class="summary">Filter entries</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:filter">Expect:filter (func, ...)</a></td>
-	<td class="summary">Map over entries</td>
+	<td class="name nowrap"><a href="#Expect:map">Expect:map () [<a href="../topics/adapt.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Map over entries
+ The provided function will be mapped over arguments provided at the step.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Expect:first">Expect:first () [<a href="../topics/adapt.md.html#pick">pick</a>]</a></td>
@@ -806,7 +807,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">varargs</span></span>
-         any used as arguments
+         used as arguments
         </li>
     </ul>
 
@@ -833,13 +834,16 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">varargs</span></span>
-         any used as arguments
+         used as arguments
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
-        list of any
+           <span class="types"><span class="type">boolean,nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
 
 
 
@@ -847,7 +851,7 @@
 </dd>
     <dt>
     <a name = "Expect:pick"></a>
-    <strong>Expect:pick (...)</strong>
+    <strong>Expect:pick () [<a href="../topics/adapt.md.html#pick">pick</a>]</strong>
     </dt>
     <dd>
     Pick entries
@@ -857,21 +861,26 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">varargs</span></span>
-         any used as indexes
+         used as indexes
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
-        list of any
+           <span class="types"><span class="type">self</span></span>
 
+
+
+
+    <h3>Raises:</h3>
+    on wrong argument type, unless turned off by @expect.typecheck.
 
 
 
 </dd>
     <dt>
     <a name = "Expect:filter"></a>
-    <strong>Expect:filter (func, ...)</strong>
+    <strong>Expect:filter () [<a href="../topics/adapt.md.html#pick">pick</a>]</strong>
     </dt>
     <dd>
     Filter entries
@@ -891,18 +900,24 @@
 
     <h3>Returns:</h3>
 
-        list of any
+           <span class="types"><span class="type">self</span></span>
 
+
+
+
+    <h3>Raises:</h3>
+    on wrong argument type, unless turned off by @expect.typecheck.
 
 
 
 </dd>
     <dt>
-    <a name = "Expect:filter"></a>
-    <strong>Expect:filter (func, ...)</strong>
+    <a name = "Expect:map"></a>
+    <strong>Expect:map () [<a href="../topics/adapt.md.html#transform">transform</a>]</strong>
     </dt>
     <dd>
     Map over entries
+ The provided function will be mapped over arguments provided at the step.
 
 
     <h3>Parameters:</h3>
@@ -919,7 +934,10 @@
 
     <h3>Returns:</h3>
 
-        list of any
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
@@ -931,6 +949,12 @@
     </dt>
     <dd>
     Make a pick for first item.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
 
 
 
@@ -948,6 +972,12 @@
 
 
 
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
@@ -959,6 +989,12 @@
     </dt>
     <dd>
     Make a pick for third item.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
 
 
 
@@ -990,6 +1026,12 @@
 
 
 
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
@@ -1001,6 +1043,12 @@
     </dt>
     <dd>
     Make a pick for sixth item.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
 
 
 
@@ -1018,6 +1066,12 @@
 
 
 
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
@@ -1029,6 +1083,12 @@
     </dt>
     <dd>
     Make a pick for eight item.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
 
 
 
@@ -1046,6 +1106,12 @@
 
 
 
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
@@ -1057,6 +1123,12 @@
     </dt>
     <dd>
     Make a pick for tenth item.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
 
 
 
@@ -1074,6 +1146,12 @@
 
 
 
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
@@ -1085,6 +1163,12 @@
     </dt>
     <dd>
     Make a pick for twelfth item.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
 
 
 
@@ -1104,6 +1188,12 @@
     <ul>
          Expect:type
     </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
 
 
 
@@ -1126,6 +1216,12 @@
     </ul "@todo">
 
 
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
@@ -1144,6 +1240,12 @@
          <li>Expect:asLC</li>
          <li>Expect:lc</li>
     </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
 
 
 
@@ -1167,6 +1269,12 @@
     </ul "@todo">
 
 
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
@@ -1188,6 +1296,12 @@
     </ul "@todo">
 
 
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
@@ -1204,6 +1318,12 @@
     <ul>
          Expect:reverse
     </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
 
 
 
@@ -1226,6 +1346,12 @@
     </ul "@todo">
 
 
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
@@ -1244,6 +1370,12 @@
          <li>Expect:asULC</li>
          <li>Expect:ulc</li>
     </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
 
 
 
@@ -1267,6 +1399,12 @@
     </ul "@todo">
 
 
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
@@ -1286,6 +1424,12 @@
          <li>Expect:asULCfirst</li>
          <li>Expect:ulcfirst</li>
     </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
 
 
 
@@ -1308,6 +1452,12 @@
     </ul "@todo">
 
 
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
@@ -1326,6 +1476,12 @@
          <li>Expect:uNFD</li>
          <li>Expect:nfd</li>
     </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
 
 
 
@@ -1348,6 +1504,12 @@
     </ul "@todo">
 
 
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
@@ -1368,6 +1530,12 @@
     </ul "@todo">
 
 
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
@@ -1384,6 +1552,12 @@
     <ul>
          Expect:floor
     </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
 
 
 
@@ -1404,6 +1578,12 @@
     </ul "@todo">
 
 
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
@@ -1420,6 +1600,12 @@
     <ul>
          Expect:round
     </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
 
 
 
@@ -1442,6 +1628,12 @@
     </ul "@todo">
 
 
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
 
 
 
@@ -1460,6 +1652,12 @@
          <li>Expect:asFrac</li>
          <li>Expect:frac</li>
     </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
 
 
 
@@ -1489,13 +1687,13 @@
         </li>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">varargs</span></span>
-         any used as indexes
+         used as values for comparison
         </li>
     </ul>
 
     <h3>Returns:</h3>
 
-        list of any
+        self
 
 
 
@@ -1514,6 +1712,19 @@
          <li>Expect:isEqual</li>
          <li>Expect:ifEqual</li>
     </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
 
 
 
@@ -1535,6 +1746,19 @@
          <li>Expect:ifBooleanEqual</li>
     </ul "@todo">
 
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
 
 
 
@@ -1554,6 +1778,19 @@
          <li>Expect:isStrictEqual</li>
          <li>Expect:ifStrictEqual</li>
     </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
 
 
 
@@ -1575,6 +1812,19 @@
          <li>Expect:ifSame</li>
     </ul "@todo">
 
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
 
 
 
@@ -1594,6 +1844,19 @@
          <li>Expect:isDeepEqual</li>
          <li>Expect:ifDeepEqual</li>
     </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
 
 
 
@@ -1615,6 +1878,19 @@
          <li>Expect:isContained</li>
          <li>Expect:ifContained</li>
     </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
 
 
 
@@ -1641,6 +1917,19 @@
          <li>Expect:ifLt</li>
     </ul "@todo">
 
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
 
 
 
@@ -1666,6 +1955,19 @@
          <li>Expect:ifGt</li>
     </ul "@todo">
 
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
 
 
 
@@ -1689,6 +1991,19 @@
          <li>Expect:ifLesserOrEqual</li>
          <li>Expect:ifLE</li>
     </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
 
 
 
@@ -1714,6 +2029,19 @@
          <li>Expect:ifGE</li>
     </ul "@todo">
 
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
 
 
 
@@ -1734,6 +2062,19 @@
          <li>Expect:ifMatch</li>
     </ul "@todo">
 
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
 
 
 
@@ -1753,6 +2094,19 @@
          <li>Expect:isUMatch</li>
          <li>Expect:ifUMatch</li>
     </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
 
 
 
