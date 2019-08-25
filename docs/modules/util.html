@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Expect documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Expect</h1>
+
+<ul>
+  <li><a href="../mw.expect.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><strong>util</strong></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/Expect.html">Expect</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>util</code></h1>
+<p>Utils to support Pickle.</p>
+<p>
+
+</p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Author</strong>: John Erling Blad &lt; jeblad@gmail.com ></li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name nowrap"><a href="#count">count (t)</a></td>
+	<td class="summary">Raw count of all the items in the provided table.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#size">size ([count])</a></td>
+	<td class="summary">Size based on the raw count.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#deepEqual">deepEqual (a, b[, useMt=false])</a></td>
+	<td class="summary">Deep equal of two objects.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#contains">contains (t, arg)</a></td>
+	<td class="summary">Checks if a table contains the arg.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "count"></a>
+    <strong>count (t)</strong>
+    </dt>
+    <dd>
+    Raw count of all the items in the provided table.
+ Variant of 'local function count(t)' from "Moses"
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">t</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         has its entries counted
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">number</span></span>
+        raw entries
+
+
+
+
+</dd>
+    <dt>
+    <a name = "size"></a>
+    <strong>size ([count])</strong>
+    </dt>
+    <dd>
+    Size based on the raw count.
+ Variant of 'function _.size(...)' from "Moses"
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">count</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a> or <span class="type">any</span></span>
+         entries if table, count varargs otherwise
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">number</span></span>
+        counted entries
+
+
+
+
+</dd>
+    <dt>
+    <a name = "deepEqual"></a>
+    <strong>deepEqual (a, b[, useMt=false])</strong>
+    </dt>
+    <dd>
+    Deep equal of two objects.
+ Variant of
+ <a href="https://github.com/Yonaba/Moses/blob/master/moses.lua#L2775-L2815">'function _.isEqual(objA, objB, useMt)'</a>
+ from <a href="https://github.com/Yonaba/Moses">Yonaba/Moses</a>.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+         any type of object
+        </li>
+        <li><span class="parameter">b</span>
+         any type of object
+        </li>
+        <li><span class="parameter">useMt</span>
+            <span class="types"><span class="type">boolean</span></span>
+         indicator for whether to include the meta table
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result of comparison
+
+
+
+
+</dd>
+    <dt>
+    <a name = "contains"></a>
+    <strong>contains (t, arg)</strong>
+    </dt>
+    <dd>
+    Checks if a table contains the arg.
+ Variant of 'function _.contains(t, value)' from "Moses"
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">t</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         searched for the arg
+        </li>
+        <li><span class="parameter">arg</span>
+         any item to be searched for
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result of the operation
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
+
