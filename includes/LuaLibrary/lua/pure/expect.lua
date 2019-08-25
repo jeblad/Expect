@@ -67,6 +67,7 @@ function Expect:create( ... )
 end
 
 --- Initialize a new instance.
+-- Will inherit the current value of @{Expect.softFail} during initialization.
 -- @raise on wrong arguments
 -- @tparam vararg ... interpreted according to type
 -- @treturn self
