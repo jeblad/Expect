@@ -16,16 +16,15 @@
 	},
 	"AutoloadClasses": {
 		"Expect\\Hooks":
-			"includes/Hooks.php"
+			"includes/Hooks.php",
+		"Expect\\LuaLibExpect":
+			"includes/LuaLibrary/LuaLibExpect.php"
 	},
 	"config_prefix": "wgExpect",
 	"config": {
 	},
 	"callback": "Expect\\Hooks::onExtensionSetup",
 	"Hooks": {
-		"ScribuntoExternalLibraries": [
-			"Expect\\Hooks::onRegisterScribuntoLibraries"
-		],
 		"ScribuntoExternalLibraryPaths": [
 			"Expect\\Hooks::onRegisterScribuntoExternalLibraryPaths"
 		]
