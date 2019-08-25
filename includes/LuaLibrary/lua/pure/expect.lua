@@ -243,18 +243,19 @@ end
 -- @tparam[hold=nil] nil|boolean hold the previous tainting
 -- @treturn self
 function Expect:addProcess( proc, hold )
-	if not hold then
-		self._taint = true
-	end
 	if Expect.typeCheck then
 		libUtil.checkType( 'Expect:addProcess', 1, proc, 'function', false )
+		libUtil.checkType( 'Expect:addProcess', 2, hold, 'boolean', true )
+	end
+	if not hold then
+		self._taint = true
 	end
 	table.insert( self._processes, proc )
 	return self
 end
 
 --- Compare given values
--- @tparam varargs ... any used as arguments
+-- @tparam varargs ... used as arguments
 -- @treturn boolean,nil|string
 function Expect:compare( ... )
 	local tmp = { ... }
@@ -277,8 +278,8 @@ function Expect:compare( ... )
 end
 
 --- Eval given values
--- @tparam varargs ... any used as arguments
--- @return list of any
+-- @tparam varargs ... used as arguments
+-- @treturn boolean,nil|string
 function Expect:eval( ... )
 	if Expect.bypassEval then
 		return true
@@ -294,10 +295,17 @@ function Expect:eval( ... )
 end
 
 --- Pick entries
--- @tparam varargs ... any used as indexes
--- @return list of any
+-- @raise on wrong argument type, unless turned off by @expect.typecheck.
+-- @pick
+-- @tparam varargs ... used as indexes
+-- @treturn self
 function Expect:pick( ... )
 	local idxs = { ... }
+	if Expect.typeCheck then
+		for i,v in ipairs() do
+			libUtil.checkType( 'Expect:filter', i, v, 'number', false )
+		end
+	end
 	local g = function( ... )
 		local args = { ... }
 		local t= {}
@@ -311,12 +319,16 @@ function Expect:pick( ... )
 end
 
 --- Filter entries
+-- @raise on wrong argument type, unless turned off by @expect.typecheck.
+-- @pick
 -- @tparam function func to filter the set
 -- @tparam varargs ... arguments passed to func
--- @function filter
--- @return list of any
+-- @treturn self
 function Expect:filter( func, ... )
 	local keep = { ... }
+	if Expect.typeCheck then
+		libUtil.checkType( 'Expect:filter', 1, func, 'function', false )
+	end
 	local g = function( ... )
 		local args = { ... }
 		local t = {}
@@ -332,12 +344,16 @@ function Expect:filter( func, ... )
 end
 
 --- Map over entries
+-- The provided function will be mapped over arguments provided at the step.
+-- @transform
 -- @tparam function func to map over the set
 -- @tparam varargs ... arguments passed to func
--- @function filter
--- @return list of any
+-- @treturn self
 function Expect:map( func, ... )
 	local keep = { ... }
+	if Expect.typeCheck then
+		libUtil.checkType( 'Expect:filter', 1, func, 'function', false )
+	end
 	local g = function( ... )
 		local args = { ... }
 		local t = {}
@@ -380,16 +396,19 @@ local picks = {
 	--- Make a pick for first item.
 	-- @pick
 	-- @function Expect:first
+	-- @treturn self
 	first = 1,
 
 	--- Make a pick for second item.
 	-- @pick
 	-- @function Expect:second
+	-- @treturn self
 	second = 2,
 
 	--- Make a pick for third item.
 	-- @pick
 	-- @function Expect:third
+	-- @treturn self
 	third = 3,
 
 	--- Make a pick for fourth item.
@@ -400,41 +419,49 @@ local picks = {
 	--- Make a pick for fifth item.
 	-- @pick
 	-- @function Expect:fifth
+	-- @treturn self
 	fifth = 5,
 
 	--- Make a pick for sixth item.
 	-- @pick
 	-- @function Expect:sixth
+	-- @treturn self
 	sixth = 6,
 
 	--- Make a pick for seventh item.
 	-- @pick
 	-- @function Expect:seventh
+	-- @treturn self
 	seventh = 7,
 
 	--- Make a pick for eight item.
 	-- @pick
 	-- @function Expect:eight
+	-- @treturn self
 	eight = 8,
 
 	--- Make a pick for ninth item.
 	-- @pick
 	-- @function Expect:ninth
+	-- @treturn self
 	ninth = 9,
 
 	--- Make a pick for tenth item.
 	-- @pick
 	-- @function Expect:tenth
+	-- @treturn self
 	tenth = 10,
 
 	--- Make a pick for eleventh item.
 	-- @pick
 	-- @function Expect:eleventh
+	-- @treturn self
 	eleventh = 11,
 
 	--- Make a pick for twelfth item.
 	-- @pick
 	-- @function Expect:twelfth
+	-- @treturn self
 	twelfth = 12
 }
 
@@ -470,6 +497,7 @@ local transforms = {
 	--- Make a transform to get the argument type.
 	-- @transform
 	-- @function Expect:asType
+	-- @treturn self
 	-- @nick Expect:type
 	asType = {
 		function( val )
@@ -480,6 +508,7 @@ local transforms = {
 	--- Make a transform to get the string as upper case.
 	-- @transform
 	-- @function Expect:asUpper
+	-- @treturn self
 	-- @nick Expect:upper
 	-- @nick Expect:asUC
 	-- @nick Expect:uc
@@ -492,6 +521,7 @@ local transforms = {
 	--- Make a transform to get the string as lower case.
 	-- @transform
 	-- @function Expect:asLower
+	-- @treturn self
 	-- @nick Expect:lower
 	-- @nick Expect:asLC
 	-- @nick Expect:lc
@@ -504,6 +534,7 @@ local transforms = {
 	--- Make a transform to get the string with first char as upper case.
 	-- @transform
 	-- @function Expect:asUpperFirst
+	-- @treturn self
 	-- @nick Expect:upperfirst
 	-- @nick Expect:asUCFirst
 	-- @nick Expect:asUCfirst
@@ -517,6 +548,7 @@ local transforms = {
 	--- Make a transform to get the string with first char as lower case.
 	-- @transform
 	-- @function Expect:asLowerFirst
+	-- @treturn self
 	-- @nick Expect:lowerfirst
 	-- @nick Expect:asLCFirst
 	-- @nick Expect:asLCfirst
@@ -530,6 +562,7 @@ local transforms = {
 	--- Make a transform to get the string reversed.
 	-- @transform
 	-- @function Expect:asReverse
+	-- @treturn self
 	-- @nick Expect:reverse
 	asReverse = {
 		function( str )
@@ -540,6 +573,7 @@ local transforms = {
 	--- Make a transform to get the ustring as upper case.
 	-- @transform
 	-- @function Expect:asUUpper
+	-- @treturn self
 	-- @nick Expect:uupper
 	-- @nick Expect:asUUC
 	-- @nick Expect:uuc
@@ -552,6 +586,7 @@ local transforms = {
 	--- Make a transform to get the ustring as lower case.
 	-- @transform
 	-- @function Expect:asULower
+	-- @treturn self
 	-- @nick Expect:ulower
 	-- @nick Expect:asULC
 	-- @nick Expect:ulc
@@ -564,6 +599,7 @@ local transforms = {
 	--- Make a transform to get the ustring with first code point as upper case.
 	-- @transform
 	-- @function Expect:asUUpperFirst
+	-- @treturn self
 	-- @nick Expect:uupperfirst
 	-- @nick Expect:asUUCFirst
 	-- @nick Expect:asUUCfirst
@@ -577,6 +613,7 @@ local transforms = {
 	--- Make a transform to get the ustring with first code point as lower case.
 	-- @transform
 	-- @function Expect:asULowerFirst
+	-- @treturn self
 	-- @nick Expect:ulowerfirst
 	-- @nick Expect:asULCFirst
 	-- @nick Expect:asULCfirst
@@ -590,6 +627,7 @@ local transforms = {
 	--- Make a transform to get the ustring as Normalized Form "C".
 	-- @transform
 	-- @function Expect:asUNFC
+	-- @treturn self
 	-- @nick Expect:unfc
 	-- @nick Expect:uNFC
 	-- @nick Expect:nfc
@@ -602,6 +640,7 @@ local transforms = {
 	--- Make a transform to get the ustring as Normalized Form "D".
 	-- @transform
 	-- @function Expect:asUNFD
+	-- @treturn self
 	-- @nick Expect:unfd
 	-- @nick Expect:uNFD
 	-- @nick Expect:nfd
@@ -614,6 +653,7 @@ local transforms = {
 	--- Make a transform to get the string as number.
 	-- @transform
 	-- @function Expect:asNumber
+	-- @treturn self
 	-- @nick Expect:number
 	-- @nick Expect:asNum
 	-- @nick Expect:num
@@ -626,6 +666,7 @@ local transforms = {
 	--- Make a transform to get the number as string.
 	-- @transform
 	-- @function Expect:asString
+	-- @treturn self
 	-- @nick Expect:string
 	-- @nick Expect:asStr
 	-- @nick Expect:str
@@ -638,6 +679,7 @@ local transforms = {
 	--- Make a transform to get the next lower number.
 	-- @transform
 	-- @function Expect:asFloor
+	-- @treturn self
 	-- @nick Expect:floor
 	asFloor = {
 		function( num )
@@ -648,6 +690,7 @@ local transforms = {
 	--- Make a transform to get the next higher number.
 	-- @transform
 	-- @function Expect:asCeil
+	-- @treturn self
 	-- @nick Expect:ceil
 	asCeil = {
 		function( num )
@@ -658,6 +701,7 @@ local transforms = {
 	--- Make a transform to get the rounded number.
 	-- @transform
 	-- @function Expect:asRound
+	-- @treturn self
 	-- @nick Expect:round
 	asRound = {
 		function( num )
@@ -668,6 +712,7 @@ local transforms = {
 	--- Make a transform to get the integer part of the number.
 	-- @transform
 	-- @function Expect:asInteger
+	-- @treturn self
 	-- @nick Expect:integer
 	-- @nick Expect:asInt
 	-- @nick Expect:int
@@ -680,6 +725,7 @@ local transforms = {
 	--- Make a transform to get the fraction part of the number.
 	-- @transform
 	-- @function Expect:asFraction
+	-- @treturn self
 	-- @nick Expect:fraction
 	-- @nick Expect:asFrac
 	-- @nick Expect:frac
@@ -737,9 +783,9 @@ end
 
 --- Make a comparison to check if first is within limits of second.
 -- @tparam any limit the values must be within
--- @tparam varargs ... any used as indexes
+-- @tparam varargs ... used as values for comparison
 -- @function toBeWithin
--- @return list of any
+-- @return self
 -- @nick Expect:within
 -- @nick Expect:isWithin
 -- @nick Expect:ifWithin
@@ -791,6 +837,8 @@ local conditions = {
 	--- Make a comparison to check equality.
 	-- @condition
 	-- @function toBeEqual
+	-- @tparam varargs ... used as values for comparison
+	-- @treturn self
 	-- @nick Expect:equal
 	-- @nick Expect:isEqual
 	-- @nick Expect:ifEqual
@@ -803,6 +851,8 @@ local conditions = {
 	--- Make a comparison to check boolean equality.
 	-- @condition
 	-- @function toBeBooleanEqual
+	-- @tparam varargs ... used as values for comparison
+	-- @treturn self
 	-- @nick Expect:booleanequal
 	-- @nick Expect:isBooleanEqual
 	-- @nick Expect:ifBooleanEqual
@@ -815,6 +865,8 @@ local conditions = {
 	--- Make a comparison to check strict equality.
 	-- @condition
 	-- @function toBeStrictEqual
+	-- @tparam varargs ... used as values for comparison
+	-- @treturn self
 	-- @nick Expect:strictequal
 	-- @nick Expect:isStrictEqual
 	-- @nick Expect:ifStrictEqual
@@ -827,6 +879,8 @@ local conditions = {
 	--- Make a comparison to check similarity.
 	-- @condition
 	-- @function toBeSame
+	-- @tparam varargs ... used as values for comparison
+	-- @treturn self
 	-- @nick Expect:same
 	-- @nick Expect:isSame
 	-- @nick Expect:ifSame
@@ -847,6 +901,8 @@ local conditions = {
 	--- Make a comparison to check deep equality.
 	-- @condition
 	-- @function toBeDeepEqual
+	-- @tparam varargs ... used as values for comparison
+	-- @treturn self
 	-- @nick Expect:deepequal
 	-- @nick Expect:isDeepEqual
 	-- @nick Expect:ifDeepEqual
@@ -860,6 +916,8 @@ local conditions = {
 	-- Note that it must be contained at the surface level.
 	-- @condition
 	-- @function toBeContained
+	-- @tparam varargs ... used as values for comparison
+	-- @treturn self
 	-- @nick Expect:contained
 	-- @nick Expect:isContained
 	-- @nick Expect:ifContained
@@ -872,6 +930,8 @@ local conditions = {
 	--- Make a comparison to check if first is strict lesser than second.
 	-- @condition
 	-- @function toBeLesserThan
+	-- @tparam varargs ... used as values for comparison
+	-- @treturn self
 	-- @nick Expect:lesser
 	-- @nick Expect:lt
 	-- @nick Expect:toBeLesser
@@ -894,6 +954,8 @@ local conditions = {
 	--- Make a comparison to check if first is strict greater than second.
 	-- @condition
 	-- @function toBeGreaterThan
+	-- @tparam varargs ... used as values for comparison
+	-- @treturn self
 	-- @nick Expect:greater
 	-- @nick Expect:gt
 	-- @nick Expect:toBeGreater
@@ -916,6 +978,8 @@ local conditions = {
 	--- Make a comparison to check if first is lesser or equal than second.
 	-- @condition
 	-- @function toBeLesserOrEqual
+	-- @tparam varargs ... used as values for comparison
+	-- @treturn self
 	-- @nick Expect:lesserOrEqual
 	-- @nick Expect:le
 	-- @nick Expect:toBeLE
@@ -937,6 +1001,8 @@ local conditions = {
 	--- Make a comparison to check if first is strict greater or equal than second.
 	-- @condition
 	-- @function toBeGreaterOrEqual
+	-- @tparam varargs ... used as values for comparison
+	-- @treturn self
 	-- @nick Expect:greaterOrEqual
 	-- @nick Expect:ge
 	-- @nick Expect:toBeGE
@@ -958,6 +1024,8 @@ local conditions = {
 	--- Make a comparison to check if first is a match in second.
 	-- @condition
 	-- @function toBeMatch
+	-- @tparam varargs ... used as values for comparison
+	-- @treturn self
 	-- @nick Expect:match
 	-- @nick Expect:isMatch
 	-- @nick Expect:ifMatch
@@ -970,6 +1038,8 @@ local conditions = {
 	--- Make a comparison to check if first is an Unicode match in second.
 	-- @condition
 	-- @function toBeUMatch
+	-- @tparam varargs ... used as values for comparison
+	-- @treturn self
 	-- @nick Expect:umatch
 	-- @nick Expect:isUMatch
 	-- @nick Expect:ifUMatch
