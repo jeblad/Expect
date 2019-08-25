@@ -7,7 +7,7 @@ local util = {}
 
 --- Raw count of all the items in the provided table.
 -- Variant of
--- ['local function count(t)'](https://github.com/Yonaba/Moses/blob/master/moses.lua#L308-L322)
+-- ['count()'](https://github.com/Yonaba/Moses/blob/master/moses.lua#L308-L322)
 -- from [Yonaba/Moses](https://github.com/Yonaba/Moses).
 -- @tparam table t has its entries counted
 -- @treturn number raw entries
@@ -21,7 +21,7 @@ end
 
 --- Size based on the raw count.
 -- Variant of
--- ['function _.size(...)'](https://github.com/Yonaba/Moses/blob/master/moses.lua#L802-L813)
+-- ['size()'](https://github.com/Yonaba/Moses/blob/master/moses.lua#L802-L813)
 -- from [Yonaba/Moses](https://github.com/Yonaba/Moses).
 -- @tparam[opt] table|any count entries if table, count varargs otherwise
 -- @treturn number counted entries
@@ -81,7 +81,7 @@ end
 
 --- Deep equal of two objects.
 -- Variant of
--- ['function _.isEqual(objA, objB, useMt)'](https://github.com/Yonaba/Moses/blob/master/moses.lua#L2775-L2815)
+-- ['isEqual()'](https://github.com/Yonaba/Moses/blob/master/moses.lua#L2775-L2815)
 -- from [Yonaba/Moses](https://github.com/Yonaba/Moses).
 -- @param a any type of object
 -- @param b any type of object
@@ -123,7 +123,7 @@ end
 
 --- Checks if a table contains the arg.
 -- Variant of
--- ['function _.contains(t, value)'](https://github.com/Yonaba/Moses/blob/master/moses.lua#L815-L828)
+-- ['includes()'](https://github.com/Yonaba/Moses/blob/master/moses.lua#L526-L541)
 -- from [Yonaba/Moses](https://github.com/Yonaba/Moses).
 -- @tparam table t searched for the arg
 -- @param arg any item to be searched for
