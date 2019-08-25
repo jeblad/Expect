@@ -55,6 +55,10 @@
 <p>Class for Expect.</p>
 <p> This class follows the pattern from
  <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Author</strong>: John Erling Blad &lt; jeblad@gmail.com ></li>
+    </ul>
 
 
 <h2><a href="#Fields">Fields</a></h2>
@@ -87,7 +91,7 @@
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Expect:isTainted">Expect:isTainted ()</a></td>
-	<td class="summary">Test whether instance is tainted</td>
+	<td class="summary">Test whether instance is tainted.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Expect:hasSoft">Expect:hasSoft ()</a></td>
@@ -95,19 +99,19 @@
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Expect:isSoft">Expect:isSoft ()</a></td>
-	<td class="summary">Test whether instance will soft fail</td>
+	<td class="summary">Test whether instance will soft fail.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Expect:hasName">Expect:hasName ()</a></td>
-	<td class="summary">Test whether instance has name.</td>
+	<td class="summary">Test whether instance has a name.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Expect:getName">Expect:getName ()</a></td>
-	<td class="summary">Get instance name.</td>
+	<td class="summary">Get the instance name.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Expect:addFail">Expect:addFail (func)</a></td>
-	<td class="summary">Add callback for fail.</td>
+	<td class="summary">Add callback for failing compare.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Expect:addFailReport">Expect:addFailReport (tbl, msg)</a></td>
@@ -115,7 +119,7 @@
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Expect:addPass">Expect:addPass (func)</a></td>
-	<td class="summary">Add callback for pass.</td>
+	<td class="summary">Add callback for passing compare.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Expect:addPassReport">Expect:addPassReport (tbl, msg)</a></td>
@@ -345,7 +349,7 @@
     <dd>
     Global assert soft fail.
  This toggles soft errors, thus allows easy testing of the compute graph.
- @ tvar boolean softFail
+ If set then a failure will not throw an exception.
 
 
 
@@ -456,7 +460,7 @@
     <ul>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">vararg</span></span>
-         set to temporal
+         interpreted according to type
         </li>
     </ul>
 
@@ -478,13 +482,14 @@
     <strong>Expect:isTainted ()</strong>
     </dt>
     <dd>
-    Test whether instance is tainted
+    Test whether instance is tainted.
+ The instance will be tainted if the compute graph contains callbacks.
 
 
 
     <h3>Returns:</h3>
 
-           <span class="types"><span class="type">boolean</span></span>
+           <span class="types"><span class="type">nil</span> or <span class="type">boolean</span></span>
 
 
 
@@ -499,6 +504,7 @@
     </dt>
     <dd>
     Test whether instance has soft fail.
+ This is a check on whether the soft fail is set, not the actual boolean value.
 
 
 
@@ -518,13 +524,14 @@
     <strong>Expect:isSoft ()</strong>
     </dt>
     <dd>
-    Test whether instance will soft fail
+    Test whether instance will soft fail.
+ This returns the actual boolean value.
 
 
 
     <h3>Returns:</h3>
 
-           <span class="types"><span class="type">boolean</span></span>
+           <span class="types"><span class="type">nil</span> or <span class="type">boolean</span></span>
 
 
 
@@ -538,7 +545,7 @@
     <strong>Expect:hasName ()</strong>
     </dt>
     <dd>
-    Test whether instance has name.
+    Test whether instance has a name.
 
 
 
@@ -558,7 +565,7 @@
     <strong>Expect:getName ()</strong>
     </dt>
     <dd>
-    Get instance name.
+    Get the instance name.
 
 
 
@@ -578,7 +585,8 @@
     <strong>Expect:addFail (func)</strong>
     </dt>
     <dd>
-    Add callback for fail.
+    Add callback for failing compare.
+ This will taint the instance.
 
 
     <h3>Parameters:</h3>
@@ -589,7 +597,15 @@
         </li>
     </ul>
 
+    <h3>Returns:</h3>
 
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong argument type, unless turned off by @expect.typecheck.
 
 
 
@@ -600,6 +616,7 @@
     </dt>
     <dd>
     Add report for fail.
+ This will not taint the instance.
 
 
     <h3>Parameters:</h3>
@@ -614,7 +631,15 @@
         </li>
     </ul>
 
+    <h3>Returns:</h3>
 
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong argument type, unless turned off by @expect.typecheck.
 
 
 
@@ -624,7 +649,8 @@
     <strong>Expect:addPass (func)</strong>
     </dt>
     <dd>
-    Add callback for pass.
+    Add callback for passing compare.
+ This will taint the instance.
 
 
     <h3>Parameters:</h3>
@@ -635,7 +661,15 @@
         </li>
     </ul>
 
+    <h3>Returns:</h3>
 
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong argument type, unless turned off by @expect.typecheck.
 
 
 
@@ -646,6 +680,7 @@
     </dt>
     <dd>
     Add report for pass.
+ This will not taint the instance.
 
 
     <h3>Parameters:</h3>
@@ -660,7 +695,15 @@
         </li>
     </ul>
 
+    <h3>Returns:</h3>
 
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong argument type, unless turned off by @expect.typecheck.
 
 
 
@@ -672,6 +715,7 @@
     <dd>
     Callback on pass.
  The callback is evaluated right before @Expect:compare() returns.
+ Errors in individual callbacks will be silently ignored.
 
 
     <h3>Parameters:</h3>
@@ -733,9 +777,15 @@
         </li>
         <li><span class="parameter">hold</span>
             <span class="types"><span class="type">nil</span> or <span class="type">boolean</span></span>
-         the tainting
+         the previous tainting
         </li>
     </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
 
 
     <h3>Raises:</h3>
@@ -762,7 +812,10 @@
 
     <h3>Returns:</h3>
 
-        list of any
+           <span class="types"><span class="type">boolean,nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
 
 
 
