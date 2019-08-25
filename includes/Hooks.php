@@ -42,27 +42,4 @@ class Hooks {
 
 		return true;
 	}
-
-	/**
-	 * Extra Lua libraries for Scribunto
-	 *
-	 * @param any $engine to be used for the call
-	 * @param array &$extraLibraries additional libs
-	 * @return bool
-	 */
-	public static function onRegisterScribuntoLibraries(
-		$engine,
-		array &$extraLibraries
-	) {
-		if ( $engine !== 'lua' ) {
-			return true;
-		}
-
-		$extraLibraries['expect'] = [
-			'class' => '\Expect\LuaLibExpect',
-			'deferLoad' => false
-		];
-
-		return true;
-	}
 }

@@ -3,17 +3,35 @@
 -- [Lua classes](../topics/lua-classes.md.html).
 -- @classmod Expect
 
--- @var class var for lib
+-- @var class var for lib.
 local Expect = {}
 
 local libUtil = require 'libraryUtil'
+local expUtil = require '_expect.util'
+
+--- Global assert soft fail.
+-- This toggles soft errors, thus allows easy testing of the compute graph.
+-- @tvar boolean softFail
+Expect.softFail = nil
+
+-- global bypass eval
+-- This toggle process execution, thus speeds up evaluation of the compute graph.
+-- @tvar boolean bypassEval
+Expect.bypassEval = nil
+
+-- global argument type checks
+-- This toggle type assertions, thus speeds up creation of the compute graph.
+-- @tvar boolean typeCheck
+Expect.typeCheck = nil
 
 --- Lookup of missing class members.
--- @raise on wrong arguments
+-- @raise on wrong argument type, unless turned off by @expect.typecheck.
 -- @tparam string key lookup of member
 -- @return any
 function Expect:__index( key ) -- luacheck: no self
-	libUtil.checkType( 'Expect:__index', 1, key, 'string', false )
+	if Expect.typeCheck then
+		libUtil.checkType( 'Expect:__index', 1, key, 'string', false )
+	end
 	return Expect[key]
 end
 
@@ -23,64 +41,174 @@ end
 -- @treturn self
 function Expect:__call( ... )
 	local instance = rawget( self, 'create' ) and self:create() or self
-	local result = { instance:compare( ... ) } -- this should dispach values, not create the compute graph
-	if not result[1] then
-		if self._soft then
-			return unpack( result )
-		end
-		error( result[1], 2 )
-	end
-	return unpack( result )
+	return instance:eval( ... )
 end
 
 --- Create a new instance.
+-- @raise on wrong arguments type, unless turned off by @expect.typecheck.
 -- @tparam vararg ... forwarded to `_init()`
 -- @treturn self
 function Expect:create( ... )
-	for i,v in ipairs( { ... } ) do
-		libUtil.checkTypeMulti( 'Expect:_init', i, v, { 'string', 'boolean', 'table' } )
+	if Expect.typeCheck then
+		for i,v in ipairs( { ... } ) do
+			libUtil.checkTypeMulti( 'Expect:create', i, v, { 'string', 'boolean', 'table', 'function' } )
+		end
 	end
 	local meta = rawget( self, 'create' ) and self or getmetatable( self )
 	local new = setmetatable( {}, meta )
-	return new:_init( ... ) -- this should create the compute graph, not dispach values
+	return new:_init( ... )
 end
 
 --- Initialize a new instance.
+-- @raise on wrong arguments
 -- @tparam vararg ... set to temporal
 -- @treturn self
 function Expect:_init( ... )
 	self._processes = {}
-	self._soft = false
-	self._name = nil
-	for i,v in ipairs( { ... } ) do
+	self._softFail = Expect.softFail
+	for _,v in ipairs( { ... } ) do
 		local t = type( v )
 		if t == 'string' then
-			self._name = v
+			if not self._name then
+				self._name = v
+			else
+				error( mw.ustring.format( 'Expect:create "%s" called with multiple strings "%s"',
+				self._name or 'anonymous', v ) )
+			end
 		elseif t == 'boolean' then
-			self._soft = v
+			if not self._softFail then
+				self._softFail = v
+			else
+				error( mw.ustring.format( 'Expect:create "%s" called with multiple booleans "%s"',
+				self._name or 'anonymous', ( v and 'true' or 'false' ) ) )
+			end
 		elseif t == 'table' then
 			self:import( v )
+		elseif t == 'function' then
+			if not self._onPass then
+				self._onPass = { v }
+			elseif not self._onFail then
+				self._onFail = { v }
+			else
+				error( mw.ustring.format( 'Expect:create "%s" called with multiple functions',
+				self._name or 'anonymous' ) )
+			end
+		else
+			error( mw.ustring.format( 'Expect:create "%s" called with unsupported type "%s"',
+				self._name or 'anonymous', type( v ) ) )
 		end
 	end
 	return self
 end
 
+--- Test whether instance is tainted
+-- @treturn boolean
+function Expect:isTainted()
+	return self._taint
+end
+
+--- Test whether instance has soft fail.
+-- @treturn boolean
+function Expect:hasSoft()
+	return type( self._softFail ) == 'boolean'
+end
+
+--- Test whether instance will soft fail
+-- @treturn boolean
+function Expect:isSoft()
+	return self._softFail
+end
+
+--- Test whether instance has name.
+-- @treturn boolean
+function Expect:hasName()
+	return type( self._name ) == 'string'
+end
+
+--- Get instance name.
+-- @treturn string
+function Expect:getName()
+	return self._name
+end
+
+--- Add callback for fail.
+-- @tparam function func to call
+function Expect:addFail( func )
+	self._onFail = self._onFail or {}
+	self._taint = true
+	table.insert( self._onFail, func )
+	return self
+end
+
+--- Add report for fail.
+-- @tparam table tbl to call
+function Expect:addFailReport( t, msg )
+	self._onFail = self._onFail or {}
+	local func = function()
+		table.insert( t, msg )
+	end
+	table.insert( self._onFail, func )
+	return self
+end
+
+--- Add callback for pass.
+-- @tparam function func to call
+function Expect:addPass( func )
+	self._onPass = self._onPass or {}
+	self._taint = true
+	table.insert( self._onPass, func )
+	return self
+end
+
+--- Add report for pass.
+-- @tparam table tbl to call
+function Expect:addPassReport( t, msg )
+	self._onPass = self._onPass or {}
+	local func = function()
+		table.insert( t, msg )
+	end
+	table.insert( self._onPass, func )
+	return self
+end
+
+--- Callback on pass.
+-- The callback is evaluated right before @Expect:compare() returns.
+-- @tparam table cb to call
+function Expect:callbacks( cb )
+	if cb then
+		for _,v in ipairs( cb ) do
+			v( self )
+		end
+	end
+end
+
 --- Import a compute grap.
+-- This is scary, and graph will be tainted.
+-- @raise on wrong argument types, unless turned off by @expect.typecheck.
 -- @tparam table procs for the graph
 -- @treturn self
 function Expect:import( procs )
-	for i,v in ipairs( procs ) do
-		libUtil.checkType( 'Expect:__index', 1, v, 'function', false )
-		table.insert( self.processes, v )
+	self._taint = true
+	for _,v in ipairs( procs ) do
+		if Expect.typeCheck then
+			libUtil.checkType( 'Expect:import', 1, v, 'function', false )
+		end
+		table.insert( self._processes, v )
 	end
 	return self
 end
 
 --- Add a process function
--- @raise on wrong arguments
+-- @raise on wrong argument type, unless turned off by @expect.typecheck.
 -- @tparam function proc to be evaluated
-function Expect:addProcess( proc )
-	libUtil.checkType( 'Expect:addProcess', 1, proc, 'function', false )
+-- @tparam[hold=nil] nil|boolean hold the tainting
+function Expect:addProcess( proc, hold )
+	if not hold then
+		self._taint = true
+	end
+	if Expect.typeCheck then
+		libUtil.checkType( 'Expect:addProcess', 1, proc, 'function', false )
+	end
 	table.insert( self._processes, proc )
 	return self
 end
@@ -93,15 +221,18 @@ function Expect:compare( ... )
 	for _,v in ipairs( self._processes ) do
 		tmp = { pcall( v, unpack( tmp ) ) }
 		if not tmp[1] then
+			self:callbacks( self._onFail )
 			return false, self._name
 		end
 		table.remove( tmp, 1 )
 	end
 	for _,v in ipairs( tmp ) do
 		if not v then
+			self:callbacks( self._onFail )
 			return false, self._name
 		end
 	end
+	self:callbacks( self._onPass )
 	return true, self._name
 end
 
@@ -109,9 +240,12 @@ end
 -- @tparam varargs ... any used as arguments
 -- @return list of any
 function Expect:eval( ... )
+	if Expect.bypassEval then
+		return true
+	end
 	local result = { self:compare( ... ) }
 	if not result[1] then
-		if self._soft then
+		if self._softFail then
 			return unpack( result )
 		end
 		error( result[1], 2 )
@@ -120,6 +254,8 @@ function Expect:eval( ... )
 end
 
 --- Pick entries
+-- @tparam varargs ... any used as indexes
+-- @return list of any
 function Expect:pick( ... )
 	local idxs = { ... }
 	local g = function( ... )
@@ -130,27 +266,69 @@ function Expect:pick( ... )
 		end
 		return unpack(t)
 	end
-	self:addProcess( g )
+	self:addProcess( g, true )
 	return self
 end
 
---- Make a delayed process for the pick functions.
+--- Filter entries
+-- @tparam function func to filter the set
+-- @tparam varargs ... arguments passed to func
+-- @function filter
+-- @return list of any
+function Expect:filter( func, ... )
+	local keep = { ... }
+	local g = function( ... )
+		local args = { ... }
+		local t = {}
+		for i,v in ipairs( args ) do
+			if func( i, v, unpack( keep ) ) then
+				table.insert( t, v )
+			end
+		end
+		return unpack( t )
+	end
+	self:addProcess( g, false )
+	return self
+end
+
+--- Map over entries
+-- @tparam function func to map over the set
+-- @tparam varargs ... arguments passed to func
+-- @function filter
+-- @return list of any
+function Expect:map( func, ... )
+	local keep = { ... }
+	local g = function( ... )
+		local args = { ... }
+		local t = {}
+		for i,v in ipairs( args ) do
+			table.insert( t, func( i, v, unpack( keep ) ) )
+		end
+		return unpack( t )
+	end
+	self:addProcess( g, false )
+	return self
+end
+
+--- Make a delayed process for specific pick functions.
 -- This is a private function that will create a function with a closure.
 -- It will create an additional delayed function for the provided definition.
 -- @local
 -- @delayed
--- @raise on wrong arguments
+-- @raise on wrong argument type, unless turned off by @expect.typecheck.
 -- @tparam number idx of the extracted item
 -- @treturn function
-local function _makePickProcess( idx )
-	-- not public interface, but will verify if the defs are reasonable
-	libUtil.checkType( '_makePickProcess', 1, idx, 'number', false )
+local function makePickProcess( idx )
+	if Expect.typeCheck then
+		-- not public interface, but will verify if the defs are reasonable
+		libUtil.checkType( 'makePickProcess', 1, idx, 'number', false )
+	end
 	local g = function( ... )
 		local t = { ... }
 		return t[idx]
 	end
 	local f = function( self )
-		self:addProcess( g )
+		self:addProcess( g, true )
 		return self
 	end
 	return f
@@ -223,22 +401,24 @@ local picks = {
 -- loop over the list of picks and create the functions
 for name,val in pairs( picks ) do
 	assert( not Expect[name], name )
-	Expect[name] = _makePickProcess( val )
+	Expect[name] = makePickProcess( val )
 end
 
 --- Make a delayed process for the transform functions.
 -- This is a private function that will create a function with a closure.
 -- The delayed function comes from the provided definition.
--- @raise on wrong arguments
+-- @raise on wrong argument type, unless turned off by @expect.typecheck.
 -- @local
 -- @delayed
 -- @tparam function proc to adjust the process
 -- @treturn function
-local function _makeTransformProcess( proc )
-	-- not public interface, but will verify if the defs are reasonable
-	libUtil.checkType( '_makeTransformProcess', 1, proc, 'function', false )
+local function makeTransformProcess( proc )
+	if Expect.typeCheck then
+		-- not public interface, but will verify if the defs are reasonable
+		libUtil.checkType( 'makeTransformProcess', 1, proc, 'function', false )
+	end
 	local f = function( self )
-		self:addProcess( proc )
+		self:addProcess( proc, true )
 		return self
 	end
 	return f
@@ -453,7 +633,7 @@ local transforms = {
 	-- @nick Expect:int
 	asInteger = {
 		function( num )
-			return num < 0 and math.ceil( num ) or math.floor( num )
+			return ( num < 0 ) and math.ceil( num ) or math.floor( num )
 		end,
 		{ 'integer', 'asInt', 'int' } },
 
@@ -465,7 +645,8 @@ local transforms = {
 	-- @nick Expect:frac
 	asFraction = {
 		function( num )
-			return num - ( num < 0 and math.ceil( num ) or math.floor( num ) )
+			local val = num - ( ( num < 0 ) and math.ceil( num ) or math.floor( num ) )
+			return val
 		end,
 		{ 'fraction', 'asFrac', 'frac' } },
 }
@@ -474,41 +655,91 @@ local transforms = {
 for name,lst in pairs( transforms ) do
 	assert( not Expect[name], name )
 	local proc = lst[1]
-	Expect[name] = _makeTransformProcess( proc )
+	Expect[name] = makeTransformProcess( proc )
 	for _,alias in ipairs( lst[2] ) do
 		assert( not Expect[alias], alias )
 		Expect[alias] = Expect[name]
 	end
 end
 
+---Broadcast over arguments
+-- @local
+-- @tparam table a list of arguments
+-- @tparam table b list of arguments
+-- @tparam function cmp comparator
+-- @treturn boolean
+local function broadcast( a, b, cmp )
+	local lenA = #a
+	local lenB = #b
+	if lenB == 0 or lenA == 0 then
+		return false
+	elseif lenB == lenA then
+		for i,v in ipairs( a ) do
+			if not cmp( v, b[i] ) then
+				return false
+			end
+		end
+	elseif lenB < lenA then
+		for i,v in ipairs( a ) do
+			if not cmp( v, b[((i-1)%lenB)+1] ) then
+				return false
+			end
+		end
+	else
+		for i,v in ipairs( b ) do
+			if not cmp( a[((i-1)%lenA)+1], v ) then
+				return false
+			end
+		end
+	end
+	return true
+end
+
+--- Make a comparison to check if first is within limits of second.
+-- @tparam any limit the values must be within
+-- @tparam varargs ... any used as indexes
+-- @function toBeWithin
+-- @return list of any
+-- @nick Expect:within
+-- @nick Expect:isWithin
+-- @nick Expect:ifWithin
+function Expect:toBeWithin( limit, ... )
+	local function cmp( a, b )
+		return math.abs( a -b ) <= limit
+	end
+	local keep = { ... }
+	local g = function( ... )
+		local args = { ... }
+		return broadcast( keep, args, cmp )
+	end
+	self:addProcess( g, true )
+	return self
+end
+Expect.within = Expect.toBeWithin
+Expect.isWithin = Expect.toBeWithin
+Expect.ifWithin = Expect.toBeWithin
+
 --- Make a delayed process for the condition functions.
 -- This is a private function that will create a function with a closure.
 -- The delayed function comes from the provided definition.
--- @raise on wrong arguments
+-- Mismatched length will trigger broadcast.
+-- @raise on wrong argument type, unless turned off by @expect.typecheck.
 -- @local
 -- @delayed
 -- @tparam function proc to adjust the process
--- @tparam any ... values to compare
 -- @treturn function
-local function _makeConditionProcess( proc, ... )
-	-- not public interface, but will verify if the defs are reasonable
-	libUtil.checkType( '_makeConditionProcess', 1, proc, 'function', false )
+local function makeConditionProcess( proc )
+	if Expect.typeCheck then
+		-- not public interface, but will verify if the defs are reasonable
+		libUtil.checkType( 'makeConditionProcess', 1, proc, 'function', false )
+	end
 	local f = function( self, ... )
 		local keep = { ... }
 		local g = function( ... )
-			local a = keep
-			local b = { ... }
-			if #a ~= #b then
-				return false
-			end
-			for i=1,#a do
-				if not proc( a[i], b[i] ) then
-					return false
-				end
-			end
-			return true
+			local args = { ... }
+			return broadcast( keep, args, proc )
 		end
-		self:addProcess( g )
+		self:addProcess( g, true )
 		return self
 	end
 	return f
@@ -581,11 +812,12 @@ local conditions = {
 	-- @nick Expect:ifDeepEqual
 	toBeDeepEqual = {
 		function ( a, b )
-			return util.deepEqual( b, a )
+			return expUtil.deepEqual( a, b )
 		end,
 		{ 'deepequal', 'isDeepEqual', 'ifDeepEqual' } },
 
 	--- Make a comparison to check if first is contained in second.
+	-- Note that it must be contained at the surface level.
 	-- @condition
 	-- @function toBeContained
 	-- @nick Expect:contained
@@ -593,7 +825,7 @@ local conditions = {
 	-- @nick Expect:ifContained
 	toBeContained = {
 		function ( a, b )
-			return util.contains( b, a )
+			return expUtil.contains( a, b )
 		end,
 		{ 'contained', 'isContained', 'ifContained' } },
 
@@ -703,6 +935,8 @@ local conditions = {
 	-- @nick Expect:ifUMatch
 	toBeUMatch = {
 		function ( a, b )
+			mw.log(mw.ustring.format('a: %s', a))
+			mw.log(mw.ustring.format('b: %s', b))
 			return mw.ustring.match( b, a ) or false
 		end,
 		{ 'umatch', 'isUMatch', 'ifUMatch' } },
@@ -712,7 +946,7 @@ local conditions = {
 for name,lst in pairs( conditions ) do
 	assert( not Expect[name], name )
 	local proc = lst[1]
-	Expect[name] = _makeConditionProcess( proc )
+	Expect[name] = makeConditionProcess( proc )
 	for _,alias in ipairs( lst[2] ) do
 		assert( not Expect[alias], alias )
 		Expect[alias] = Expect[name]
