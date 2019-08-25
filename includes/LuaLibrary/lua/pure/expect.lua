@@ -11,17 +11,17 @@ local expUtil = require '_expect.util'
 
 --- Global assert soft fail.
 -- This toggles soft errors, thus allows easy testing of the compute graph.
--- @tvar boolean softFail
+-- @ tvar boolean softFail
 Expect.softFail = nil
 
 -- global bypass eval
 -- This toggle process execution, thus speeds up evaluation of the compute graph.
--- @tvar boolean bypassEval
+-- @ tvar boolean bypassEval
 Expect.bypassEval = nil
 
 -- global argument type checks
 -- This toggle type assertions, thus speeds up creation of the compute graph.
--- @tvar boolean typeCheck
+-- @ tvar boolean typeCheck
 Expect.typeCheck = nil
 
 --- Lookup of missing class members.
@@ -142,10 +142,11 @@ end
 
 --- Add report for fail.
 -- @tparam table tbl to call
-function Expect:addFailReport( t, msg )
+-- @tparam string msg to call
+function Expect:addFailReport( tbl, msg )
 	self._onFail = self._onFail or {}
 	local func = function()
-		table.insert( t, msg )
+		table.insert( tbl, msg )
 	end
 	table.insert( self._onFail, func )
 	return self
@@ -162,10 +163,11 @@ end
 
 --- Add report for pass.
 -- @tparam table tbl to call
-function Expect:addPassReport( t, msg )
+-- @tparam string msg to call
+function Expect:addPassReport( tbl, msg )
 	self._onPass = self._onPass or {}
 	local func = function()
-		table.insert( t, msg )
+		table.insert( tbl, msg )
 	end
 	table.insert( self._onPass, func )
 	return self
