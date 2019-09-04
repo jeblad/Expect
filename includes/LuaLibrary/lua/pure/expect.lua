@@ -14,7 +14,7 @@ local libUtil = require 'libraryUtil'
 local expUtil = require '_expect.util'
 
 --- Global assert soft fail.
--- This toggles soft errors, thus allows easy testing of the compute graph.
+-- This toggles soft errors on eval, thus allows easy testing of the compute graph.
 -- If set then a failure will not throw an exception.
 -- @field softFail
 Expect.softFail = nil
@@ -30,6 +30,11 @@ Expect.bypassEval = nil
 -- If set then type checks will not be done on arguments.
 -- @field typeCheck
 Expect.typeCheck = nil
+
+--- Global strict checking of tainting.
+-- This toggle hard fails if an expect is tainted.
+-- @field strictTaint
+Expect.strictTaint = nil
 
 --- Lookup of missing class members.
 -- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
@@ -109,6 +114,17 @@ function Expect:_init( ... )
 	return self
 end
 
+--- Set taint status.
+-- @raise on call, if @{Expect.strictTaint} is set.
+-- @treturn nil|boolean
+function Expect:taint()
+	self._taint = true
+	if Expect.strictTaint then
+		error( 'Expect:taint called when strict is set' )
+	end
+	return self._taint
+end
+
 --- Test whether instance is tainted.
 -- The instance will be tainted if the compute graph contains callbacks.
 -- @treturn nil|boolean
@@ -145,6 +161,7 @@ end
 --- Add callback for failing compare.
 -- This will taint the instance.
 -- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
+-- @raise on call, if @{Expect.strictTaint} is set.
 -- @tparam function func to call
 -- @treturn self
 function Expect:addFail( func )
@@ -152,7 +169,7 @@ function Expect:addFail( func )
 		libUtil.checkType( 'Expect:addFail', 1, func, 'function', false )
 	end
 	self._onFail = self._onFail or {}
-	self._taint = true
+	self:taint()
 	table.insert( self._onFail, func )
 	return self
 end
@@ -179,6 +196,7 @@ end
 --- Add callback for passing compare.
 -- This will taint the instance.
 -- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
+-- @raise on call, if @{Expect.strictTaint} is set.
 -- @tparam function func to call
 -- @treturn self
 function Expect:addPass( func )
@@ -186,7 +204,7 @@ function Expect:addPass( func )
 		libUtil.checkType( 'Expect:addPass', 1, func, 'function', false )
 	end
 	self._onPass = self._onPass or {}
-	self._taint = true
+	self:taint()
 	table.insert( self._onPass, func )
 	return self
 end
@@ -225,10 +243,11 @@ end
 --- Import a compute grap.
 -- This is scary, and graph will be tainted.
 -- @raise on wrong argument types, unless turned off by @{Expect.typeCheck}.
+-- @raise on call, if @{Expect.strictTaint} is set.
 -- @tparam table procs for the graph
 -- @treturn self
 function Expect:import( procs )
-	self._taint = true
+	self:taint()
 	for _,v in ipairs( procs ) do
 		if Expect.typeCheck then
 			libUtil.checkType( 'Expect:import', 1, v, 'function', false )
@@ -240,6 +259,7 @@ end
 
 --- Add a process function
 -- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
+-- @raise on call, if @{Expect.strictTaint} is set and hold unset.
 -- @tparam function proc to be evaluated
 -- @tparam[hold=nil] nil|boolean hold the previous tainting
 -- @treturn self
@@ -249,7 +269,7 @@ function Expect:addProcess( proc, hold )
 		libUtil.checkType( 'Expect:addProcess', 2, hold, 'boolean', true )
 	end
 	if not hold then
-		self._taint = true
+		self:taint()
 	end
 	table.insert( self._processes, proc )
 	return self
