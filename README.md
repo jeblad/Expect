@@ -3,4 +3,4 @@ This extension for Mediawiki adds extended expectations to Lua modules. An integ
 
 ## See also
 
-_ [Mediawiki: Extension:Expect](https://www.mediawiki.org/wiki/Extension:Expect)
+- [Mediawiki: Extension:Expect](https://www.mediawiki.org/wiki/Extension:Expect)
