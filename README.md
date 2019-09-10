@@ -4,5 +4,5 @@ This extension for Mediawiki adds extended expectations to Lua modules. An integ
 
 ## See also
 
-- [Assertion framework for Lua embedded within Mediawiki](https://jeblad.github.io/Expect/mw.expect.html)
+- [Expect: Assertion framework for Lua embedded within Mediawiki](https://jeblad.github.io/Expect/mw.expect.html)
 - [Mediawiki: Extension:Expect](https://www.mediawiki.org/wiki/Extension:Expect)
