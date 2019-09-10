@@ -1,8 +1,8 @@
 <?php
 
-namespace Expect;
+declare( strict_types = 1 );
 
-use MediaWiki\Logger\LoggerFactory;
+namespace Expect;
 
 /**
  * Hook handlers for the Expect extension
@@ -30,9 +30,9 @@ class Hooks {
 	 * @return bool
 	 */
 	public static function onRegisterScribuntoExternalLibraryPaths(
-		$engine,
+		string $engine,
 		array &$extraLibraryPaths
-	) {
+	): bool {
 		if ( $engine !== 'lua' ) {
 			return true;
 		}

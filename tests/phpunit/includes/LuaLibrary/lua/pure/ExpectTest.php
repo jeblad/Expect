@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace Expect\Test;
 
 use Scribunto_LuaEngineTestBase;
@@ -19,7 +21,7 @@ class ExpectTest extends Scribunto_LuaEngineTestBase {
 	 * @slowThreshold 1000
 	 * @see Scribunto_LuaEngineTestBase::getTestModules()
 	 */
-	protected function getTestModules() {
+	protected function getTestModules(): array {
 		return parent::getTestModules() + [
 			'ExpectTest' => __DIR__ . '/ExpectTest.lua'
 		];
