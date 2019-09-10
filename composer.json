@@ -30,12 +30,15 @@
 		"optimize-autoloader": true
 	},
 	"require-dev": {
-		"jakub-onderka/php-parallel-lint": ">=0.9.2",
-		"mediawiki/mediawiki-codesniffer": ">=0.7.2",
+		"jakub-onderka/php-parallel-lint": "1.0.0",
+		"mediawiki/mediawiki-codesniffer": "26.0.0",
 		"phpunit/phpunit": "4.8.*",
+		"phpmd/phpmd" : "@stable",
+		"squizlabs/php_codesniffer": "3.*",
 		"phpspec/prophecy": "~1.0",
 		"liuggio/fastest": "~1.4",
-		"jakub-onderka/php-console-highlighter": "0.3.2"
+		"jakub-onderka/php-console-highlighter": "@stable",
+		"mediawiki/mediawiki-phan-config": "0.6.1"
 	},
 	"scripts": {
 		"fix": [
