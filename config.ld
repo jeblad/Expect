@@ -8,7 +8,10 @@ available in [Lua-scripts](https://en.wikipedia.org/wiki/Lua_programming_languag
 [Wikipedia](https://en.wikipedia.org/wiki/Wikipedia) and other sites. Within Wikipedia Lua is used
 to implement advanced templates with [Lua modules](https://en.wikipedia.org/wiki/Help:Lua), and the
 same solution is used on a lot of other websites and projects.
-Expect assertions is a kind of assertion definition language, where a compute graph is defined and later executed with specific values. When the compute graph evaluates to false, the code has failed the premises, and execution has reached an error condition. It will then throw an error and stop further execution.]]
+Expect assertions is a kind of assertion definition language, where a compute graph is defined and
+later executed with specific values. When the compute graph evaluates to false, the code has failed
+the premises, and execution has reached an error condition. It will then throw an error and stop
+further execution.]]
 use_markdown_titles = true
 format = 'markdown'
 dir = 'docs'
