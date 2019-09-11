@@ -293,7 +293,7 @@ function Expect:compare( ... )
 	return true, self._name
 end
 
---- Eval given values
+--- Eval given values.
 -- If @{Expect.bypassEval} is set, then the compute graph will not be evaluated.
 -- Level does not work properly in the console, and the site report is simplified.
 -- @tparam nil|num level to report
@@ -362,7 +362,7 @@ function Expect:filter( func, ... )
 	return self
 end
 
---- Map over entries
+--- Map over entries.
 -- The provided function will be mapped over arguments provided at the step.
 -- @transform
 -- @tparam function func to map over the set
@@ -869,17 +869,17 @@ local conditions = {
 
 	--- Make a comparison to check boolean equality.
 	-- @condition
-	-- @function toBeBooleanEqual
+	-- @function toBeBoolEqual
 	-- @tparam varargs ... used as values for comparison
 	-- @treturn self
-	-- @nick Expect:booleanequal
-	-- @nick Expect:isBooleanEqual
-	-- @nick Expect:ifBooleanEqual
-	toBeBooleanEqual = {
+	-- @nick Expect:boolequal
+	-- @nick Expect:isBoolEqual
+	-- @nick Expect:ifBoolEqual
+	toBeBoolEqual = {
 		function ( a, b )
 			return ( not not a ) == ( not not b )
 		end,
-		{ 'booleanequal', 'isBooleanEqual', 'ifBooleanEqual' } },
+		{ 'boolequal', 'isBoolEqual', 'ifBoolEqual' } },
 
 	--- Make a comparison to check strict equality.
 	-- @condition
@@ -948,96 +948,96 @@ local conditions = {
 
 	--- Make a comparison to check if first is strict lesser than second.
 	-- @condition
-	-- @function toBeLesserThan
+	-- @function toBeLessThan
 	-- @tparam varargs ... used as values for comparison
 	-- @treturn self
-	-- @nick Expect:lesser
+	-- @nick Expect:less
 	-- @nick Expect:lt
-	-- @nick Expect:toBeLesser
+	-- @nick Expect:toBeLess
 	-- @nick Expect:toBeLT
-	-- @nick Expect:isLesser
+	-- @nick Expect:isLess
 	-- @nick Expect:isLT
-	-- @nick Expect:ifLesser
+	-- @nick Expect:ifLess
 	-- @nick Expect:ifLt
-	toBeLesserThan = {
+	toBeLessThan = {
 		function ( a, b )
 			return a < b
 		end,
 		{
-			'lesser', 'lt',
-			'toBeLesser', 'toBeLT',
-			'isLesser', 'isLT',
-			'ifLesser', 'ifLT' }
+			'less', 'lt',
+			'toBeLess', 'toBeLT',
+			'isLess', 'isLT',
+			'ifLess', 'ifLT' }
 		},
 
 	--- Make a comparison to check if first is strict greater than second.
 	-- @condition
-	-- @function toBeGreaterThan
+	-- @function toBeGreatThan
 	-- @tparam varargs ... used as values for comparison
 	-- @treturn self
-	-- @nick Expect:greater
+	-- @nick Expect:great
 	-- @nick Expect:gt
-	-- @nick Expect:toBeGreater
+	-- @nick Expect:toBeGreat
 	-- @nick Expect:toBeGT
-	-- @nick Expect:isGreater
+	-- @nick Expect:isGreat
 	-- @nick Expect:isGT
-	-- @nick Expect:ifGreater
+	-- @nick Expect:ifGreat
 	-- @nick Expect:ifGt
-	toBeGreaterThan = {
+	toBeGreatThan = {
 		function ( a, b )
 			return a > b
 		end,
 		{
-			'greater', 'gt',
-			'toBeGreater', 'toBeGT',
-			'isGreater', 'isGT',
-			'ifGreater', 'ifGT' }
+			'great', 'gt',
+			'toBeGreat', 'toBeGT',
+			'isGreat', 'isGT',
+			'ifGreat', 'ifGT' }
 		},
 
 	--- Make a comparison to check if first is lesser or equal than second.
 	-- @condition
-	-- @function toBeLesserOrEqual
+	-- @function toBeLessOrEqual
 	-- @tparam varargs ... used as values for comparison
 	-- @treturn self
-	-- @nick Expect:lesserOrEqual
+	-- @nick Expect:lessOrEqual
 	-- @nick Expect:le
 	-- @nick Expect:toBeLE
-	-- @nick Expect:isLesserOrEqual
+	-- @nick Expect:isLessOrEqual
 	-- @nick Expect:isLE
 	-- @nick Expect:ifLesserOrEqual
 	-- @nick Expect:ifLE
-	toBeLesserOrEqual = {
+	toBeLessOrEqual = {
 		function ( a, b )
 			return a <= b
 		end,
 		{
-			'lesserOrEqual', 'le',
+			'lessOrEqual', 'le',
 			'toBeLE',
-			'isLesserOrEqual', 'isLE',
-			'ifLesserOrEqual', 'ifLE' }
+			'isLessOrEqual', 'isLE',
+			'ifLessOrEqual', 'ifLE' }
 		},
 
 	--- Make a comparison to check if first is strict greater or equal than second.
 	-- @condition
-	-- @function toBeGreaterOrEqual
+	-- @function toBeGreatOrEqual
 	-- @tparam varargs ... used as values for comparison
 	-- @treturn self
-	-- @nick Expect:greaterOrEqual
+	-- @nick Expect:greatOrEqual
 	-- @nick Expect:ge
 	-- @nick Expect:toBeGE
-	-- @nick Expect:isGreaterOrEqual
+	-- @nick Expect:isGreatOrEqual
 	-- @nick Expect:isGE
-	-- @nick Expect:ifGreaterOrEqual
+	-- @nick Expect:ifGreatOrEqual
 	-- @nick Expect:ifGE
-	toBeGreaterOrEqual = {
+	toBeGreatOrEqual = {
 		function ( a, b )
 			return a >= b
 		end,
 		{
-			'greaterOrEqual', 'ge',
+			'greatOrEqual', 'ge',
 			'toBeGE',
-			'isGreaterOrEqual', 'isGE',
-			'ifGreaterOrEqual', 'ifGE' }
+			'isGreatOrEqual', 'isGE',
+			'ifGreatOrEqual', 'ifGE' }
 		},
 
 	--- Make a comparison to check if first is a match in second.

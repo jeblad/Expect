@@ -468,10 +468,10 @@ local tests = {
 	makeTestConditions( 'toBeEqual', 42, 42, true ),
 	makeTestConditions( 'toBeEqual', 'foo', 'foo', true ),
 	-- 94
-	makeTestConditions( 'toBeBooleanEqual', false, true, false ),
-	makeTestConditions( 'toBeBooleanEqual', true, true, true ),
-	makeTestConditions( 'toBeBooleanEqual', 42, true, true ),
-	makeTestConditions( 'toBeBooleanEqual', 'true', true, true ),
+	makeTestConditions( 'toBeBoolEqual', false, true, false ),
+	makeTestConditions( 'toBeBoolEqual', true, true, true ),
+	makeTestConditions( 'toBeBoolEqual', 42, true, true ),
+	makeTestConditions( 'toBeBoolEqual', 'true', true, true ),
 	-- 98
 	makeTestConditions( 'toBeStrictEqual', 41, 42.0, false ),
 	makeTestConditions( 'toBeStrictEqual', 42, 42.0, true ), -- this is a subtype in newer versions
@@ -492,21 +492,21 @@ local tests = {
 	makeTestConditions( 'toBeContained', { { { 'a' } } }, { { 'a' }, { { { 'a' } } } }, true ),
 	makeTestConditions( 'toBeContained', { { { 'a' } } }, { { 'a' }, { { { { 'a' } } } } }, false ),
 	-- 113
-	makeTestConditions( 'toBeLesserThan', 42, 43, false ),
-	makeTestConditions( 'toBeLesserThan', 42, 42, false ),
-	makeTestConditions( 'toBeLesserThan', 42, 41, true ),
+	makeTestConditions( 'toBeLessThan', 42, 43, false ),
+	makeTestConditions( 'toBeLessThan', 42, 42, false ),
+	makeTestConditions( 'toBeLessThan', 42, 41, true ),
 	-- 116
-	makeTestConditions( 'toBeGreaterThan', 42, 43, true ),
-	makeTestConditions( 'toBeGreaterThan', 42, 42, false ),
-	makeTestConditions( 'toBeGreaterThan', 42, 41, false ),
+	makeTestConditions( 'toBeGreatThan', 42, 43, true ),
+	makeTestConditions( 'toBeGreatThan', 42, 42, false ),
+	makeTestConditions( 'toBeGreatThan', 42, 41, false ),
 	-- 119
-	makeTestConditions( 'toBeLesserOrEqual', 42, 43, false ),
-	makeTestConditions( 'toBeLesserOrEqual', 42, 42, true ),
-	makeTestConditions( 'toBeLesserOrEqual', 42, 41, true ),
+	makeTestConditions( 'toBeLessOrEqual', 42, 43, false ),
+	makeTestConditions( 'toBeLessOrEqual', 42, 42, true ),
+	makeTestConditions( 'toBeLessOrEqual', 42, 41, true ),
 	-- 122
-	makeTestConditions( 'toBeGreaterOrEqual', 42, 43, true ),
-	makeTestConditions( 'toBeGreaterOrEqual', 42, 42, true ),
-	makeTestConditions( 'toBeGreaterOrEqual', 42, 41, false ),
+	makeTestConditions( 'toBeGreatOrEqual', 42, 43, true ),
+	makeTestConditions( 'toBeGreatOrEqual', 42, 42, true ),
+	makeTestConditions( 'toBeGreatOrEqual', 42, 41, false ),
 	-- 125
 	makeTestConditions( 'toBeMatch', 'foo', 'bar', false ), -- pattern gives wrong result
 	makeTestConditions( 'toBeMatch', 'foo', 'foo', true ), -- pattern gives wrong result
