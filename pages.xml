@@ -1,0 +1,113 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.10/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.10/ http://www.mediawiki.org/xml/export-0.10.xsd" version="0.10" xml:lang="en">
+  <siteinfo>
+    <sitename>devwiki</sitename>
+    <dbname>wiki</dbname>
+    <base>http://dev.wiki.local.wmftest.net:8080/wiki/Main_Page</base>
+    <generator>MediaWiki 1.34.0-alpha</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Wiki</namespace>
+      <namespace key="5" case="first-letter">Wiki talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+      <namespace key="828" case="first-letter">Module</namespace>
+      <namespace key="829" case="first-letter">Module talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Module:Export-expect</title>
+    <ns>828</ns>
+    <id>3</id>
+    <revision>
+      <id>4</id>
+      <timestamp>2019-09-11T15:53:04Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with "-- Load the lib local expect = require 'expect'  -- Return the lib 'as-is' return expect"</comment>
+      <model>Scribunto</model>
+      <format>text/plain</format>
+      <text xml:space="preserve" bytes="88">-- Load the lib
+local expect = require 'expect'
+
+-- Return the lib 'as-is'
+return expect</text>
+      <sha1>73iqqxc65yjzg90ios2qgslowqwm0rj</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Module:Hello-world</title>
+    <ns>828</ns>
+    <id>4</id>
+    <revision>
+      <id>6</id>
+      <parentid>5</parentid>
+      <timestamp>2019-09-11T18:56:48Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <model>Scribunto</model>
+      <format>text/plain</format>
+      <text xml:space="preserve" bytes="608">-- Load the lib
+local expect = require 'expect'
+
+-- Create a few compute graphs
+local expectString = expect:create():asType():toBeEqual( 'string' )
+local expectNoColon = expect:create():toBeUMatch( '^[^:]*$' )
+
+-- Create the exported hash
+local p = {}
+
+-- Add a semi-private function
+function p._hello( name )
+	-- Call the compute graphs
+	expectString( name )
+	expectNoColon( name )
+
+	-- Should be safe to do whatever now
+	return mw.ustring.format( 'Hi there %s!', name )
+end
+
+-- Add a public function
+function p.hello( frame )
+	return p._hello( frame.args['name'] )
+end
+
+-- Return the exported hash
+return p</text>
+      <sha1>5y55dpjgxm2st4dwbu9pjlr8uen8pub</sha1>
+    </revision>
+  </page>
+  <page>
+    <title>Hello-world</title>
+    <ns>0</ns>
+    <id>5</id>
+    <revision>
+      <id>7</id>
+      <timestamp>2019-09-11T18:58:52Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <comment>Created page with "* {{#invoke:hello-world|hello|name=Foo}} * {{#invoke:hello-world|hello|name=User:Foo}}"</comment>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="86">* {{#invoke:hello-world|hello|name=Foo}}
+* {{#invoke:hello-world|hello|name=User:Foo}}</text>
+      <sha1>dkihbyj4sg08afd6utcbs4pc1bsbloj</sha1>
+    </revision>
+  </page>
+</mediawiki>
