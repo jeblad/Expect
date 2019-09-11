@@ -46,10 +46,6 @@
 <ul class="nowrap">
   <li><a href="../modules/util.html">util</a></li>
 </ul>
-<h2>Topics</h2>
-<ul class="">
-  <li><a href="../topics/expect.md.html">Expect assertions</a></li>
-</ul>
 <h2>Examples</h2>
 <ul class="nowrap">
   <li><a href="../examples/hello-world.lua.html">hello-world.lua</a></li>
@@ -83,6 +79,10 @@
 	<td class="name nowrap"><a href="#Expect.typeCheck">Expect.typeCheck</a></td>
 	<td class="summary">Global argument type checks.</td>
 	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect.strictTaint">Expect.strictTaint</a></td>
+	<td class="summary">Global strict checking of tainting.</td>
+	</tr>
 </table>
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
@@ -104,6 +104,10 @@
 	<tr>
 	<td class="name nowrap"><a href="#Expect:_init">Expect:_init (...)</a></td>
 	<td class="summary">Initialize a new instance.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:taint">Expect:taint ()</a></td>
+	<td class="summary">Set taint status.</td>
 	</tr>
 	<tr>
 	<td class="name nowrap"><a href="#Expect:isTainted">Expect:isTainted ()</a></td>
@@ -366,7 +370,7 @@
     </dt>
     <dd>
     Global assert soft fail.
- This toggles soft errors, thus allows easy testing of the compute graph.
+ This toggles soft errors on eval, thus allows easy testing of the compute graph.
  If set then a failure will not throw an exception.
 
 
@@ -418,6 +422,28 @@
 
     <ul>
         <li><span class="parameter">typeCheck</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect.strictTaint"></a>
+    <strong>Expect.strictTaint</strong>
+    </dt>
+    <dd>
+    Global strict checking of tainting.
+ This toggle hard fails if an expect is tainted.
+
+
+    <ul>
+        <li><span class="parameter">strictTaint</span>
 
 
 
@@ -550,6 +576,28 @@
 
 </dd>
     <dt>
+    <a name = "Expect:taint"></a>
+    <strong>Expect:taint ()</strong>
+    </dt>
+    <dd>
+    Set taint status.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">boolean</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on call, if <a href="../classes/Expect.html#Expect.strictTaint">Expect.strictTaint</a> is set.
+
+
+
+</dd>
+    <dt>
     <a name = "Expect:isTainted"></a>
     <strong>Expect:isTainted ()</strong>
     </dt>
@@ -677,7 +725,7 @@
 
 
     <h3>Raises:</h3>
-    on wrong argument type, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+    on <a href="../classes/Expect.html#Expect.strictTaint">Expect.strictTaint</a> is set or wrong argument type, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
@@ -728,8 +776,9 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">func</span>
-            <span class="types"><span class="type">function</span></span>
-         to call
+
+
+
         </li>
     </ul>
 
@@ -741,7 +790,7 @@
 
 
     <h3>Raises:</h3>
-    on wrong argument type, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+    on <a href="../classes/Expect.html#Expect.strictTaint">Expect.strictTaint</a> is set or wrong argument type, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
@@ -828,7 +877,7 @@
 
 
     <h3>Raises:</h3>
-    on wrong argument types, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+    on <a href="../classes/Expect.html#Expect.strictTaint">Expect.strictTaint</a> is set, or wrong argument type, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
@@ -861,7 +910,7 @@
 
 
     <h3>Raises:</h3>
-    on wrong argument type, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+    on <a href="../classes/Expect.html#Expect.strictTaint">Expect.strictTaint</a> is set and hold unset, or wrong argument type, unless turned off by <a href="../classes/Expect.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
