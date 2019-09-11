@@ -17,7 +17,7 @@ output = 'mw.expect'
 
 readme = {
 	'topics/expect-assertions.md',
-	'topics/databases.md',
+	'topics/database-usage.md',
 	-- 'topics/vagrant.md',
 	-- 'topics/delayed.md',
 	-- 'topics/hello-world.md',
