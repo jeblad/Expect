@@ -5,11 +5,11 @@ local expect = require 'expect'
 local expectString = expect:create():asType():toBeEqual( 'string' )
 local expectNoColon = expect:create():toBeUMatch( '^[^:]*$' )
 
--- Create an exported hash
+-- Create the exported hash
 local p = {}
 
--- Add a function
-function p.helloWorld( name )
+-- Add a semi-private function
+function p._hello( name )
 	-- Call the compute graphs
 	expectString( name )
 	expectNoColon( name )
@@ -18,5 +18,10 @@ function p.helloWorld( name )
 	return mw.ustring.format( 'Hi there %s!', name )
 end
 
--- Retrurn the exported hash
+-- Add a public function
+function p.hello( frame )
+	return p._hello( frame.args['name'] )
+end
+
+-- Return the exported hash
 return p
