@@ -5,7 +5,7 @@ full_description = [[The [Expect extension](https://mediawiki.org/wiki/Extension
 project to make extended [assertions](https://en.wikipedia.org/wiki/Assertion_(software_development))
 available in [Lua-scripts](https://en.wikipedia.org/wiki/Lua_programming_language) for the
 [Scribunto extension](https://mediawiki.org/wiki/Extension:Scribunto), which is used by
-[Wikipedia](https://en.wikipedia.org/wiki/Wikipedia). Within Wikipedia Lua is used
+[Wikipedia](https://en.wikipedia.org/wiki/Wikipedia) and other sites. Within Wikipedia Lua is used
 to implement advanced templates with [Lua modules](https://en.wikipedia.org/wiki/Help:Lua), and the
 same solution is used on a lot of other websites and projects.
 Expect assertions is a kind of assertion definition language, where a compute graph is defined and later executed with specific values. When the compute graph evaluates to false, the code has failed the premises, and execution has reached an error condition. It will then throw an error and stop further execution.]]
