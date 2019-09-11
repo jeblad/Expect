@@ -11,7 +11,7 @@ local Expect = {}
 local libUtil = require 'libraryUtil'
 
 -- @table local library variable
-local expUtil = require '_table.util'
+local expUtil = mw.table or require '_table.util'
 
 --- Global assert soft fail.
 -- This toggles soft errors on eval, thus allows easy testing of the compute graph.
