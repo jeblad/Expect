@@ -55,6 +55,7 @@
 </ul>
 <h2>Examples</h2>
 <ul class="nowrap">
+  <li><a href="../examples/export-expect.lua.html">export-expect.lua</a></li>
   <li><a href="../examples/hello-world.lua.html">hello-world.lua</a></li>
 </ul>
 
@@ -169,7 +170,7 @@
 	<td class="summary">Compare given values</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:eval">Expect:eval (...)</a></td>
+	<td class="name nowrap"><a href="#Expect:eval">Expect:eval (level, ...)</a></td>
 	<td class="summary">Eval given values
  If <a href="../classes/Expect.html#Expect.bypassEval">Expect.bypassEval</a> is set, then the compute graph will not be evaluated.</td>
 	</tr>
@@ -951,15 +952,20 @@
 </dd>
     <dt>
     <a name = "Expect:eval"></a>
-    <strong>Expect:eval (...)</strong>
+    <strong>Expect:eval (level, ...)</strong>
     </dt>
     <dd>
     Eval given values
  If <a href="../classes/Expect.html#Expect.bypassEval">Expect.bypassEval</a> is set, then the compute graph will not be evaluated.
+ Level does not work properly in the console, and the site report is simplified.
 
 
     <h3>Parameters:</h3>
     <ul>
+        <li><span class="parameter">level</span>
+            <span class="types"><span class="type">nil</span> or <span class="type">num</span></span>
+         to report
+        </li>
         <li><span class="parameter">...</span>
             <span class="types"><span class="type">varargs</span></span>
          used as arguments

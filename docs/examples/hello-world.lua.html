@@ -34,6 +34,7 @@
 
 <h2>Examples</h2>
 <ul class="nowrap">
+  <li><a href="../examples/export-expect.lua.html">export-expect.lua</a></li>
   <li><strong>hello-world.lua</strong></li>
 </ul>
 <h2>Modules</h2>
@@ -65,11 +66,11 @@
 </span><span class="keyword">local</span> expectString = expect:create():asType():toBeEqual( <span class="string">'string'</span> )
 <span class="keyword">local</span> expectNoColon = expect:create():toBeUMatch( <span class="string">'^[^:]*$'</span> )
 
-<span class="comment">-- Create an exported hash
+<span class="comment">-- Create the exported hash
 </span><span class="keyword">local</span> p = {}
 
-<span class="comment">-- Add a function
-</span><span class="keyword">function</span> p.helloWorld( name )
+<span class="comment">-- Add a semi-private function
+</span><span class="keyword">function</span> p._hello( name )
 	<span class="comment">-- Call the compute graphs
 </span>	expectString( name )
 	expectNoColon( name )
@@ -78,7 +79,12 @@
 </span>	<span class="keyword">return</span> mw.ustring.format( <span class="string">'Hi there %s!'</span>, name )
 <span class="keyword">end</span>
 
-<span class="comment">-- Retrurn the exported hash
+<span class="comment">-- Add a public function
+</span><span class="keyword">function</span> p.hello( frame )
+	<span class="keyword">return</span> p._hello( frame.args[<span class="string">'name'</span>] )
+<span class="keyword">end</span>
+
+<span class="comment">-- Return the exported hash
 </span><span class="keyword">return</span> p</pre>
 
 
