@@ -27,15 +27,17 @@
 <h1>Expect</h1>
 
 
-
-
-<h2>Modules</h2>
-<ul class="nowrap">
-  <li><a href="modules/util.html">util</a></li>
+<h2>Contents</h2>
+<ul>
+<li><a href="#Fields">Fields</a></li>
+<li><a href="#Metamethods">Metamethods</a></li>
+<li><a href="#Methods">Methods</a></li>
 </ul>
+
+
 <h2>Classes</h2>
 <ul class="nowrap">
-  <li><a href="classes/Expect.html">Expect</a></li>
+  <li><strong>Expect</strong></li>
 </ul>
 <h2>Topics</h2>
 <ul class="">
@@ -55,65 +57,2193 @@
 
 <div id="content">
 
+<h1>Class <code>Expect</code></h1>
+<p>Class for Expect.</p>
+<p> This class follows the pattern from
+ <a href="../topics/lua-classes.md.html">Lua classes</a>.</p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>Author</strong>: John Erling Blad &lt; jeblad@gmail.com ></li>
+    </ul>
 
-  <h2>Assertion framework for Lua embedded within Mediawiki.</h2>
-  <p>The <a href="https://mediawiki.org/wiki/Extension:Expect">Expect extension</a> is a
-project to make extended <a href="https://en.wikipedia.org/wiki/Assertion_(software_development">assertions</a>
-available in <a href="https://en.wikipedia.org/wiki/Lua_programming_language">Lua-scripts</a> for the
-<a href="https://mediawiki.org/wiki/Extension:Scribunto">Scribunto extension</a>, which is used by
-<a href="https://en.wikipedia.org/wiki/Wikipedia">Wikipedia</a> and other sites. Within Wikipedia Lua is used
-to implement advanced templates with <a href="https://en.wikipedia.org/wiki/Help:Lua">Lua modules</a>, and the
-same solution is used on a lot of other websites and projects.
-Expect assertions is a kind of assertion definition language, where a compute graph is defined and later executed with specific values. When the compute graph evaluates to false, the code has failed the premises, and execution has reached an error condition. It will then throw an error and stop further execution.</p>
 
-<h2>Modules</h2>
-<table class="module_list">
+<h2><a href="#Fields">Fields</a></h2>
+<table class="function_list">
 	<tr>
-		<td class="name nowrap"><a href="modules/util.html">util</a></td>
-		<td class="summary">Utils to support Expect.</td>
+	<td class="name nowrap"><a href="#Expect.softFail">Expect.softFail</a></td>
+	<td class="summary">Global assert soft fail.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect.bypassEval">Expect.bypassEval</a></td>
+	<td class="summary">Global bypass eval.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect.typeCheck">Expect.typeCheck</a></td>
+	<td class="summary">Global argument type checks.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect.strictTaint">Expect.strictTaint</a></td>
+	<td class="summary">Global strict checking of tainting.</td>
 	</tr>
 </table>
-<h2>Classes</h2>
-<table class="module_list">
+<h2><a href="#Metamethods">Metamethods</a></h2>
+<table class="function_list">
 	<tr>
-		<td class="name nowrap"><a href="classes/Expect.html">Expect</a></td>
-		<td class="summary">Class for Expect.</td>
+	<td class="name nowrap"><a href="#Expect:__index">Expect:__index (key)</a></td>
+	<td class="summary">Lookup of missing class members.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:__call">Expect:__call (...)</a></td>
+	<td class="summary">Get a clone or create a new instance.</td>
 	</tr>
 </table>
-<h2>Topics</h2>
-<table class="module_list">
+<h2><a href="#Methods">Methods</a></h2>
+<table class="function_list">
 	<tr>
-		<td class="name nowrap"><a href="topics/expect-assertions.md.html">expect-assertions.md</a></td>
-		<td class="summary"></td>
+	<td class="name nowrap"><a href="#Expect:create">Expect:create (...)</a></td>
+	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-		<td class="name nowrap"><a href="topics/database-usage.md.html">database-usage.md</a></td>
-		<td class="summary"></td>
+	<td class="name nowrap"><a href="#Expect:_init">Expect:_init (...)</a></td>
+	<td class="summary">Initialize a new instance.</td>
 	</tr>
 	<tr>
-		<td class="name nowrap"><a href="topics/expect-vagrant.md.html">expect-vagrant.md</a></td>
-		<td class="summary"></td>
+	<td class="name nowrap"><a href="#Expect:taint">Expect:taint ()</a></td>
+	<td class="summary">Set taint status.</td>
 	</tr>
 	<tr>
-		<td class="name nowrap"><a href="topics/vscode-extensions.md.html">vscode-extensions.md</a></td>
-		<td class="summary"></td>
+	<td class="name nowrap"><a href="#Expect:isTainted">Expect:isTainted ()</a></td>
+	<td class="summary">Test whether instance is tainted.</td>
 	</tr>
 	<tr>
-		<td class="name nowrap"><a href="topics/vscode-snippets.md.html">vscode-snippets.md</a></td>
-		<td class="summary"></td>
+	<td class="name nowrap"><a href="#Expect:hasSoft">Expect:hasSoft ()</a></td>
+	<td class="summary">Test whether instance has soft fail.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:isSoft">Expect:isSoft ()</a></td>
+	<td class="summary">Test whether instance will soft fail.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:hasName">Expect:hasName ()</a></td>
+	<td class="summary">Test whether instance has a name.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:getName">Expect:getName ()</a></td>
+	<td class="summary">Get the instance name.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:addFail">Expect:addFail (func)</a></td>
+	<td class="summary">Add callback for failing compare.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:addFailReport">Expect:addFailReport (tbl, msg)</a></td>
+	<td class="summary">Add report for fail.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:addPass">Expect:addPass (func)</a></td>
+	<td class="summary">Add callback for passing compare.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:addPassReport">Expect:addPassReport (tbl, msg)</a></td>
+	<td class="summary">Add report for pass.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:callbacks">Expect:callbacks (cb)</a></td>
+	<td class="summary">Callback on pass.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:import">Expect:import (procs)</a></td>
+	<td class="summary">Import a compute grap.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:addProcess">Expect:addProcess (proc, hold)</a></td>
+	<td class="summary">Add a process function</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:compare">Expect:compare (...)</a></td>
+	<td class="summary">Compare given values</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:eval">Expect:eval (level, ...)</a></td>
+	<td class="summary">Eval given values
+ If <a href="mw.expect.html#Expect.bypassEval">Expect.bypassEval</a> is set, then the compute graph will not be evaluated.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:pick">Expect:pick () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="summary">Pick entries</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:filter">Expect:filter () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="summary">Filter entries</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:map">Expect:map () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Map over entries
+ The provided function will be mapped over arguments provided at the step.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:first">Expect:first () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="summary">Make a pick for first item.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:second">Expect:second () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="summary">Make a pick for second item.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:third">Expect:third () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="summary">Make a pick for third item.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:fourth">Expect:fourth () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="summary">Make a pick for fourth item.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:fifth">Expect:fifth () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="summary">Make a pick for fifth item.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:sixth">Expect:sixth () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="summary">Make a pick for sixth item.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:seventh">Expect:seventh () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="summary">Make a pick for seventh item.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:eight">Expect:eight () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="summary">Make a pick for eight item.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:ninth">Expect:ninth () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="summary">Make a pick for ninth item.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:tenth">Expect:tenth () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="summary">Make a pick for tenth item.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:eleventh">Expect:eleventh () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="summary">Make a pick for eleventh item.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:twelfth">Expect:twelfth () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="summary">Make a pick for twelfth item.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asType">Expect:asType () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the argument type.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asUpper">Expect:asUpper () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the string as upper case.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asLower">Expect:asLower () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the string as lower case.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asUpperFirst">Expect:asUpperFirst () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the string with first char as upper case.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asLowerFirst">Expect:asLowerFirst () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the string with first char as lower case.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asReverse">Expect:asReverse () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the string reversed.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asUUpper">Expect:asUUpper () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the ustring as upper case.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asULower">Expect:asULower () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the ustring as lower case.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asUUpperFirst">Expect:asUUpperFirst () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the ustring with first code point as upper case.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asULowerFirst">Expect:asULowerFirst () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the ustring with first code point as lower case.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asUNFC">Expect:asUNFC () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the ustring as Normalized Form "C".</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asUNFD">Expect:asUNFD () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the ustring as Normalized Form "D".</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asNumber">Expect:asNumber () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the string as number.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asString">Expect:asString () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the number as string.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asFloor">Expect:asFloor () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the next lower number.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asCeil">Expect:asCeil () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the next higher number.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asRound">Expect:asRound () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the rounded number.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asInteger">Expect:asInteger () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the integer part of the number.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:asFraction">Expect:asFraction () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="summary">Make a transform to get the fraction part of the number.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:toBeWithin">Expect:toBeWithin (limit, ...)</a></td>
+	<td class="summary">Make a comparison to check if first is within limits of second.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:toBeEqual">Expect:toBeEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="summary">Make a comparison to check equality.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:toBeBooleanEqual">Expect:toBeBooleanEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="summary">Make a comparison to check boolean equality.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:toBeStrictEqual">Expect:toBeStrictEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="summary">Make a comparison to check strict equality.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:toBeSame">Expect:toBeSame () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="summary">Make a comparison to check similarity.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:toBeDeepEqual">Expect:toBeDeepEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="summary">Make a comparison to check deep equality.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:toBeContained">Expect:toBeContained () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="summary">Make a comparison to check if first is contained in second.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:toBeLesserThan">Expect:toBeLesserThan () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="summary">Make a comparison to check if first is strict lesser than second.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:toBeGreaterThan">Expect:toBeGreaterThan () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="summary">Make a comparison to check if first is strict greater than second.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:toBeLesserOrEqual">Expect:toBeLesserOrEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="summary">Make a comparison to check if first is lesser or equal than second.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:toBeGreaterOrEqual">Expect:toBeGreaterOrEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="summary">Make a comparison to check if first is strict greater or equal than second.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:toBeMatch">Expect:toBeMatch () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="summary">Make a comparison to check if first is a match in second.</td>
+	</tr>
+	<tr>
+	<td class="name nowrap"><a href="#Expect:toBeUMatch">Expect:toBeUMatch () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="summary">Make a comparison to check if first is an Unicode match in second.</td>
 	</tr>
 </table>
-<h2>Examples</h2>
-<table class="module_list">
-	<tr>
-		<td class="name nowrap"><a href="examples/export-expect.lua.html">export-expect.lua</a></td>
-		<td class="summary"></td>
-	</tr>
-	<tr>
-		<td class="name nowrap"><a href="examples/hello-world.lua.html">hello-world.lua</a></td>
-		<td class="summary"></td>
-	</tr>
-</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Fields"></a>Fields</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Expect.softFail"></a>
+    <strong>Expect.softFail</strong>
+    </dt>
+    <dd>
+    Global assert soft fail.
+ This toggles soft errors on eval, thus allows easy testing of the compute graph.
+ If set then a failure will not throw an exception.
+
+
+    <ul>
+        <li><span class="parameter">softFail</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect.bypassEval"></a>
+    <strong>Expect.bypassEval</strong>
+    </dt>
+    <dd>
+    Global bypass eval.
+ This toggle process execution, thus speeds up evaluation of the compute graph.
+ If set then the compute graph will not be evaluated, and failures will go undetected.
+
+
+    <ul>
+        <li><span class="parameter">bypassEval</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect.typeCheck"></a>
+    <strong>Expect.typeCheck</strong>
+    </dt>
+    <dd>
+    Global argument type checks.
+ This toggle type assertions, thus speeds up creation of the compute graph.
+ If set then type checks will not be done on arguments.
+
+
+    <ul>
+        <li><span class="parameter">typeCheck</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect.strictTaint"></a>
+    <strong>Expect.strictTaint</strong>
+    </dt>
+    <dd>
+    Global strict checking of tainting.
+ This toggle hard fails if an expect is tainted.
+
+
+    <ul>
+        <li><span class="parameter">strictTaint</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Metamethods"></a>Metamethods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Expect:__index"></a>
+    <strong>Expect:__index (key)</strong>
+    </dt>
+    <dd>
+    Lookup of missing class members.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         lookup of member
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        any
+
+    <h3>Raises:</h3>
+    on wrong argument type, unless turned off by <a href="mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:__call"></a>
+    <strong>Expect:__call (...)</strong>
+    </dt>
+    <dd>
+    Get a clone or create a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         conditionally passed to create
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Methods"></a>Methods</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Expect:create"></a>
+    <strong>Expect:create (...)</strong>
+    </dt>
+    <dd>
+    Create a new instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         forwarded to <code>_init()</code>
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong arguments type, unless turned off by <a href="mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:_init"></a>
+    <strong>Expect:_init (...)</strong>
+    </dt>
+    <dd>
+    Initialize a new instance.
+ Will inherit the current value of <a href="mw.expect.html#Expect.softFail">Expect.softFail</a> during initialization.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">vararg</span></span>
+         interpreted according to type
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong arguments
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:taint"></a>
+    <strong>Expect:taint ()</strong>
+    </dt>
+    <dd>
+    Set taint status.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">boolean</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on call, if <a href="mw.expect.html#Expect.strictTaint">Expect.strictTaint</a> is set.
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:isTainted"></a>
+    <strong>Expect:isTainted ()</strong>
+    </dt>
+    <dd>
+    Test whether instance is tainted.
+ The instance will be tainted if the compute graph contains callbacks.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">boolean</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:hasSoft"></a>
+    <strong>Expect:hasSoft ()</strong>
+    </dt>
+    <dd>
+    Test whether instance has soft fail.
+ This is a check on whether the soft fail is set, not the actual boolean value.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">boolean</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:isSoft"></a>
+    <strong>Expect:isSoft ()</strong>
+    </dt>
+    <dd>
+    Test whether instance will soft fail.
+ This returns the actual boolean value.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">boolean</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:hasName"></a>
+    <strong>Expect:hasName ()</strong>
+    </dt>
+    <dd>
+    Test whether instance has a name.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">boolean</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:getName"></a>
+    <strong>Expect:getName ()</strong>
+    </dt>
+    <dd>
+    Get the instance name.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:addFail"></a>
+    <strong>Expect:addFail (func)</strong>
+    </dt>
+    <dd>
+    Add callback for failing compare.
+ This will taint the instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">func</span>
+            <span class="types"><span class="type">function</span></span>
+         to call
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on <a href="mw.expect.html#Expect.strictTaint">Expect.strictTaint</a> is set or wrong argument type, unless turned off by <a href="mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:addFailReport"></a>
+    <strong>Expect:addFailReport (tbl, msg)</strong>
+    </dt>
+    <dd>
+    Add report for fail.
+ This will not taint the instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tbl</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         to call
+        </li>
+        <li><span class="parameter">msg</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         to call
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong argument type, unless turned off by <a href="mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:addPass"></a>
+    <strong>Expect:addPass (func)</strong>
+    </dt>
+    <dd>
+    Add callback for passing compare.
+ This will taint the instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">func</span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on <a href="mw.expect.html#Expect.strictTaint">Expect.strictTaint</a> is set or wrong argument type, unless turned off by <a href="mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:addPassReport"></a>
+    <strong>Expect:addPassReport (tbl, msg)</strong>
+    </dt>
+    <dd>
+    Add report for pass.
+ This will not taint the instance.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tbl</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         to call
+        </li>
+        <li><span class="parameter">msg</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         to call
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong argument type, unless turned off by <a href="mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:callbacks"></a>
+    <strong>Expect:callbacks (cb)</strong>
+    </dt>
+    <dd>
+    Callback on pass.
+ The callback is evaluated right before @Expect:compare() returns.
+ Errors in individual callbacks will be silently ignored.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cb</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         to call
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:import"></a>
+    <strong>Expect:import (procs)</strong>
+    </dt>
+    <dd>
+    Import a compute grap.
+ This is scary, and graph will be tainted.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">procs</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         for the graph
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on <a href="mw.expect.html#Expect.strictTaint">Expect.strictTaint</a> is set, or wrong argument type, unless turned off by <a href="mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:addProcess"></a>
+    <strong>Expect:addProcess (proc, hold)</strong>
+    </dt>
+    <dd>
+    Add a process function
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">proc</span>
+            <span class="types"><span class="type">function</span></span>
+         to be evaluated
+        </li>
+        <li><span class="parameter">hold</span>
+            <span class="types"><span class="type">nil</span> or <span class="type">boolean</span></span>
+         the previous tainting
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on <a href="mw.expect.html#Expect.strictTaint">Expect.strictTaint</a> is set and hold unset, or wrong argument type, unless turned off by <a href="mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:compare"></a>
+    <strong>Expect:compare (...)</strong>
+    </dt>
+    <dd>
+    Compare given values
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as arguments
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">boolean,nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:eval"></a>
+    <strong>Expect:eval (level, ...)</strong>
+    </dt>
+    <dd>
+    Eval given values
+ If <a href="mw.expect.html#Expect.bypassEval">Expect.bypassEval</a> is set, then the compute graph will not be evaluated.
+ Level does not work properly in the console, and the site report is simplified.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">level</span>
+            <span class="types"><span class="type">nil</span> or <span class="type">num</span></span>
+         to report
+        </li>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as arguments
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">boolean,nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:pick"></a>
+    <strong>Expect:pick () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    </dt>
+    <dd>
+    Pick entries
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as indexes
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong argument type, unless turned off by <a href="mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:filter"></a>
+    <strong>Expect:filter () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    </dt>
+    <dd>
+    Filter entries
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">func</span>
+            <span class="types"><span class="type">function</span></span>
+         to filter the set
+        </li>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         arguments passed to func
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+    <h3>Raises:</h3>
+    on wrong argument type, unless turned off by <a href="mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:map"></a>
+    <strong>Expect:map () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Map over entries
+ The provided function will be mapped over arguments provided at the step.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">func</span>
+            <span class="types"><span class="type">function</span></span>
+         to map over the set
+        </li>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         arguments passed to func
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:first"></a>
+    <strong>Expect:first () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    </dt>
+    <dd>
+    Make a pick for first item.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:second"></a>
+    <strong>Expect:second () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    </dt>
+    <dd>
+    Make a pick for second item.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:third"></a>
+    <strong>Expect:third () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    </dt>
+    <dd>
+    Make a pick for third item.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:fourth"></a>
+    <strong>Expect:fourth () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    </dt>
+    <dd>
+    Make a pick for fourth item.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:fifth"></a>
+    <strong>Expect:fifth () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    </dt>
+    <dd>
+    Make a pick for fifth item.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:sixth"></a>
+    <strong>Expect:sixth () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    </dt>
+    <dd>
+    Make a pick for sixth item.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:seventh"></a>
+    <strong>Expect:seventh () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    </dt>
+    <dd>
+    Make a pick for seventh item.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:eight"></a>
+    <strong>Expect:eight () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    </dt>
+    <dd>
+    Make a pick for eight item.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:ninth"></a>
+    <strong>Expect:ninth () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    </dt>
+    <dd>
+    Make a pick for ninth item.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:tenth"></a>
+    <strong>Expect:tenth () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    </dt>
+    <dd>
+    Make a pick for tenth item.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:eleventh"></a>
+    <strong>Expect:eleventh () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    </dt>
+    <dd>
+    Make a pick for eleventh item.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:twelfth"></a>
+    <strong>Expect:twelfth () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    </dt>
+    <dd>
+    Make a pick for twelfth item.
+
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asType"></a>
+    <strong>Expect:asType () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the argument type.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         Expect:type
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asUpper"></a>
+    <strong>Expect:asUpper () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the string as upper case.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:upper</li>
+         <li>Expect:asUC</li>
+         <li>Expect:uc</li>
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asLower"></a>
+    <strong>Expect:asLower () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the string as lower case.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:lower</li>
+         <li>Expect:asLC</li>
+         <li>Expect:lc</li>
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asUpperFirst"></a>
+    <strong>Expect:asUpperFirst () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the string with first char as upper case.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:upperfirst</li>
+         <li>Expect:asUCFirst</li>
+         <li>Expect:asUCfirst</li>
+         <li>Expect:ucfirst</li>
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asLowerFirst"></a>
+    <strong>Expect:asLowerFirst () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the string with first char as lower case.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:lowerfirst</li>
+         <li>Expect:asLCFirst</li>
+         <li>Expect:asLCfirst</li>
+         <li>Expect:lcfirst</li>
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asReverse"></a>
+    <strong>Expect:asReverse () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the string reversed.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         Expect:reverse
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asUUpper"></a>
+    <strong>Expect:asUUpper () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the ustring as upper case.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:uupper</li>
+         <li>Expect:asUUC</li>
+         <li>Expect:uuc</li>
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asULower"></a>
+    <strong>Expect:asULower () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the ustring as lower case.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:ulower</li>
+         <li>Expect:asULC</li>
+         <li>Expect:ulc</li>
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asUUpperFirst"></a>
+    <strong>Expect:asUUpperFirst () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the ustring with first code point as upper case.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:uupperfirst</li>
+         <li>Expect:asUUCFirst</li>
+         <li>Expect:asUUCfirst</li>
+         <li>Expect:uucfirst</li>
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asULowerFirst"></a>
+    <strong>Expect:asULowerFirst () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the ustring with first code point as lower case.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:ulowerfirst</li>
+         <li>Expect:asULCFirst</li>
+         <li>Expect:asULCfirst</li>
+         <li>Expect:ulcfirst</li>
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asUNFC"></a>
+    <strong>Expect:asUNFC () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the ustring as Normalized Form "C".
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:unfc</li>
+         <li>Expect:uNFC</li>
+         <li>Expect:nfc</li>
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asUNFD"></a>
+    <strong>Expect:asUNFD () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the ustring as Normalized Form "D".
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:unfd</li>
+         <li>Expect:uNFD</li>
+         <li>Expect:nfd</li>
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asNumber"></a>
+    <strong>Expect:asNumber () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the string as number.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:number</li>
+         <li>Expect:asNum</li>
+         <li>Expect:num</li>
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asString"></a>
+    <strong>Expect:asString () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the number as string.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:string</li>
+         <li>Expect:asStr</li>
+         <li>Expect:str</li>
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asFloor"></a>
+    <strong>Expect:asFloor () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the next lower number.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         Expect:floor
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asCeil"></a>
+    <strong>Expect:asCeil () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the next higher number.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         Expect:ceil
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asRound"></a>
+    <strong>Expect:asRound () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the rounded number.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         Expect:round
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asInteger"></a>
+    <strong>Expect:asInteger () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the integer part of the number.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:integer</li>
+         <li>Expect:asInt</li>
+         <li>Expect:int</li>
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:asFraction"></a>
+    <strong>Expect:asFraction () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    </dt>
+    <dd>
+    Make a transform to get the fraction part of the number.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:fraction</li>
+         <li>Expect:asFrac</li>
+         <li>Expect:frac</li>
+    </ul "@todo">
+
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:toBeWithin"></a>
+    <strong>Expect:toBeWithin (limit, ...)</strong>
+    </dt>
+    <dd>
+    Make a comparison to check if first is within limits of second.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:within</li>
+         <li>Expect:isWithin</li>
+         <li>Expect:ifWithin</li>
+    </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">limit</span>
+            <span class="types"><span class="type">any</span></span>
+         the values must be within
+        </li>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+        self
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:toBeEqual"></a>
+    <strong>Expect:toBeEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    </dt>
+    <dd>
+    Make a comparison to check equality.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:equal</li>
+         <li>Expect:isEqual</li>
+         <li>Expect:ifEqual</li>
+    </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:toBeBooleanEqual"></a>
+    <strong>Expect:toBeBooleanEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    </dt>
+    <dd>
+    Make a comparison to check boolean equality.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:booleanequal</li>
+         <li>Expect:isBooleanEqual</li>
+         <li>Expect:ifBooleanEqual</li>
+    </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:toBeStrictEqual"></a>
+    <strong>Expect:toBeStrictEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    </dt>
+    <dd>
+    Make a comparison to check strict equality.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:strictequal</li>
+         <li>Expect:isStrictEqual</li>
+         <li>Expect:ifStrictEqual</li>
+    </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:toBeSame"></a>
+    <strong>Expect:toBeSame () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    </dt>
+    <dd>
+    Make a comparison to check similarity.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:same</li>
+         <li>Expect:isSame</li>
+         <li>Expect:ifSame</li>
+    </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:toBeDeepEqual"></a>
+    <strong>Expect:toBeDeepEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    </dt>
+    <dd>
+    Make a comparison to check deep equality.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:deepequal</li>
+         <li>Expect:isDeepEqual</li>
+         <li>Expect:ifDeepEqual</li>
+    </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:toBeContained"></a>
+    <strong>Expect:toBeContained () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    </dt>
+    <dd>
+    Make a comparison to check if first is contained in second.
+ Note that it must be contained at the surface level.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:contained</li>
+         <li>Expect:isContained</li>
+         <li>Expect:ifContained</li>
+    </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:toBeLesserThan"></a>
+    <strong>Expect:toBeLesserThan () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    </dt>
+    <dd>
+    Make a comparison to check if first is strict lesser than second.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:lesser</li>
+         <li>Expect:lt</li>
+         <li>Expect:toBeLesser</li>
+         <li>Expect:toBeLT</li>
+         <li>Expect:isLesser</li>
+         <li>Expect:isLT</li>
+         <li>Expect:ifLesser</li>
+         <li>Expect:ifLt</li>
+    </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:toBeGreaterThan"></a>
+    <strong>Expect:toBeGreaterThan () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    </dt>
+    <dd>
+    Make a comparison to check if first is strict greater than second.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:greater</li>
+         <li>Expect:gt</li>
+         <li>Expect:toBeGreater</li>
+         <li>Expect:toBeGT</li>
+         <li>Expect:isGreater</li>
+         <li>Expect:isGT</li>
+         <li>Expect:ifGreater</li>
+         <li>Expect:ifGt</li>
+    </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:toBeLesserOrEqual"></a>
+    <strong>Expect:toBeLesserOrEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    </dt>
+    <dd>
+    Make a comparison to check if first is lesser or equal than second.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:lesserOrEqual</li>
+         <li>Expect:le</li>
+         <li>Expect:toBeLE</li>
+         <li>Expect:isLesserOrEqual</li>
+         <li>Expect:isLE</li>
+         <li>Expect:ifLesserOrEqual</li>
+         <li>Expect:ifLE</li>
+    </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:toBeGreaterOrEqual"></a>
+    <strong>Expect:toBeGreaterOrEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    </dt>
+    <dd>
+    Make a comparison to check if first is strict greater or equal than second.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:greaterOrEqual</li>
+         <li>Expect:ge</li>
+         <li>Expect:toBeGE</li>
+         <li>Expect:isGreaterOrEqual</li>
+         <li>Expect:isGE</li>
+         <li>Expect:ifGreaterOrEqual</li>
+         <li>Expect:ifGE</li>
+    </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:toBeMatch"></a>
+    <strong>Expect:toBeMatch () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    </dt>
+    <dd>
+    Make a comparison to check if first is a match in second.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:match</li>
+         <li>Expect:isMatch</li>
+         <li>Expect:ifMatch</li>
+    </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Expect:toBeUMatch"></a>
+    <strong>Expect:toBeUMatch () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    </dt>
+    <dd>
+    Make a comparison to check if first is an Unicode match in second.
+
+    <h3>Nicknames:</h3>
+    <ul>
+         <li>Expect:umatch</li>
+         <li>Expect:isUMatch</li>
+         <li>Expect:ifUMatch</li>
+    </ul "@todo">
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+            <span class="types"><span class="type">varargs</span></span>
+         used as values for comparison
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+
+           <span class="types"><span class="type">self</span></span>
+
+
+
+
+
+
+
+</dd>
+</dl>
+
 
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
