@@ -15,13 +15,13 @@ further execution.]]
 use_markdown_titles = true
 format = 'markdown'
 dir = 'docs'
-output = 'mw.expect'
+--output = 'mw.expect'
 -- all = true
 
 readme = {
 	'topics/expect-assertions.md',
-	'topics/database-usage.md',
 	'topics/expect-vagrant.md',
+	'topics/database-usage.md',
 	-- 'topics/delayed.md',
 	-- 'topics/hello-world.md',
 	-- 'topics/translatewiki.md',
@@ -36,33 +36,16 @@ examples = {
 -- new_type( 'macro', 'Macros' )
 custom_tags = {
 	{ 'nick', title='Nicknames', hidden = false, format=nil },
-	{ 'delayed', hidden = true },
-	{ 'pick', hidden = true },
-	{ 'transform', hidden = true },
-	{ 'condition', hidden = true }
+	{ 'delayed', title='Process', hidden = false, format=function() return '<a href="topics/expect-assertions.md.html#delayed">delayed</a>' end },
+	{ 'pick', title='Process', hidden = false, format=function() return '<a href="topics/expect-assertions.md.html#pick">pick</a>' end },
+	{ 'transform', title='Process', hidden = false, format=function() return '<a href="topics/expect-assertions.md.html#transform">transform</a>' end },
+	{ 'condition', title='Process', hidden = false, format=function() return '<a href="topics/expect-assertions.md.html#condition">condition</a>' end }
 }
 
 custom_display_name_handler = function(item, default_handler)
 	-- show a label beside functions tagged with @delayed.
-	local tagged = nil
 	if item.type == 'lfunction' or item.type == 'function' then
-		-- show a label beside functions tagged with @delayed.
-		if item.tags.delayed then
-			tagged = ( tagged or '' ) .. '[<a href="../topics/graph.md.html#delayed">delayed</a>]'
-		end
-		-- show a label beside functions tagged with @pick.
-		if item.type == 'function' and item.tags.pick then
-			tagged = ( tagged or '' ) .. '[<a href="../topics/graph.md.html#pick">pick</a>]'
-		-- show a label beside functions tagged with @transform.
-		elseif item.type == 'function' and item.tags.transform then
-			tagged = ( tagged or '' ) .. '[<a href="../topics/graph.md.html#transform">transform</a>]'
-		-- show a label beside functions tagged with @condition.
-		elseif item.type == 'function' and item.tags.condition then
-			tagged = ( tagged or '' ) .. '[<a href="../topics/graph.md.html#condition">condition</a>]'
-		end
-		if tagged then
-			return item.name .. ' () ' .. tagged
-		end
+		return item.name .. ' ()'
 	end
 	return default_handler(item)
 end
