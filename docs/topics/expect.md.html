@@ -81,7 +81,7 @@
 
 <h3><a id="condition">Condition</a></h3>
 
-<p>This is delayed actions to compare the values. The delayed action will compare one or more stored values with the provided values, and then return a boolean value. If the length of the stored values and the provided values does not match, then the shorter is broadcast over the longer. The broadcast algorithm compares two elements $\left ( a<em>i, b</em>i \right ) = y$</p>
+<p>This is delayed actions to compare the values. The delayed action will compare one or more stored values with the provided values, and then return a boolean value. If the length of the stored values and the provided values does not match, then the shorter is broadcast over the longer. The broadcast algorithm compares two elements, using the true index into the longer one, and using a modulus index for the shorter one. As an optimization it will return false immediately if either length is zero, but if the lengths are equal and non-zero the modulus operation will be skipped.</p>
 
 
 </div> <!-- id="content" -->
