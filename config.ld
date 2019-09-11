@@ -16,14 +16,14 @@ output = 'mw.expect'
 -- all = true
 
 readme = {
-	'topics/expect.md',
+	'topics/expect-assertions.md',
+	'topics/databases.md',
+	-- 'topics/vagrant.md',
 	-- 'topics/delayed.md',
-	-- 'topics/databases.md',
 	-- 'topics/hello-world.md',
 	-- 'topics/translatewiki.md',
-	-- 'topics/vagrant.md',
-	-- 'topics/vscode-extensions.md',
-	-- 'topics/vscode-snippets.md'
+	'topics/vscode-extensions.md',
+	'topics/vscode-snippets.md'
 }
 
 examples = {
