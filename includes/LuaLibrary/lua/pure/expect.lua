@@ -53,7 +53,7 @@ end
 -- @treturn self
 function Expect:__call( ... )
 	local instance = rawget( self, 'create' ) and self:create() or self
-	return instance:eval( ... )
+	return instance:eval( 3, ... )
 end
 
 --- Create a new instance.
@@ -295,9 +295,11 @@ end
 
 --- Eval given values
 -- If @{Expect.bypassEval} is set, then the compute graph will not be evaluated.
+-- Level does not work properly in the console, and the site report is simplified.
+-- @tparam nil|num level to report
 -- @tparam varargs ... used as arguments
 -- @treturn boolean,nil|string
-function Expect:eval( ... )
+function Expect:eval( level, ... )
 	if Expect.bypassEval then
 		return true
 	end
@@ -306,7 +308,7 @@ function Expect:eval( ... )
 		if self._softFail then
 			return unpack( result )
 		end
-		error( result[1], 2 )
+		error( self.name or 'Failed expectation', level or 2 )
 	end
 	return unpack( result )
 end

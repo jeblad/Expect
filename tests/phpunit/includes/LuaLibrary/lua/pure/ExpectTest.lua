@@ -50,7 +50,7 @@ local function testEval( name, bool, ... )
 		function( ... )
 			return makeExpect( name, bool )
 				:addProcess(function( ... ) return ... end)
-				:eval( ... )
+				:eval( nil, ... )
 		end,
 		... )
 end
@@ -264,7 +264,7 @@ local tests = {
 		name = 'Calling method "eval" with name, without soft handling, and single boolean false argument',
 		func = testEval,
 		args = { 'test', false, false },
-		expect = { false, false }
+		expect = { false, 'Failed expectation' }
 	},
 	{ -- 18
 		name = 'Calling method "eval" with name, without soft handling, and single boolean true argument',
