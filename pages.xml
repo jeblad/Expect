@@ -110,4 +110,21 @@ return p</text>
       <sha1>dkihbyj4sg08afd6utcbs4pc1bsbloj</sha1>
     </revision>
   </page>
+  <page>
+    <title>VagrantRole/expect</title>
+    <ns>0</ns>
+    <id>6</id>
+    <revision>
+      <id>9</id>
+      <parentid>8</parentid>
+      <timestamp>2019-09-11T19:20:09Z</timestamp>
+      <contributor>
+        <ip>10.0.2.2</ip>
+      </contributor>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+      <text xml:space="preserve" bytes="408">The '''expect''' role adds the [https://mediawiki.org/wiki/Extension:Expect Expect extension] ([https://github.com/jeblad/Expect/blob/master/README.md README], [https://jeblad.github.io/Expect/mw.expect.html ldoc]), which provides extended expectations (a kind of assertions) to Lua modules. An integral part is to report failures clearly and visible to facilitate interactive and collaborative fault fixing.</text>
+      <sha1>12tiqyj6yc94ecm6198pkqcbe3hl7vg</sha1>
+    </revision>
+  </page>
 </mediawiki>
