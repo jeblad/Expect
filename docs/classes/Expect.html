@@ -42,8 +42,8 @@
 <h2>Topics</h2>
 <ul class="">
   <li><a href="../topics/expect-assertions.md.html">Expect assertions</a></li>
-  <li><a href="../topics/database-usage.md.html">Database usage</a></li>
   <li><a href="../topics/expect-vagrant.md.html">Expect Vagrant</a></li>
+  <li><a href="../topics/database-usage.md.html">Database usage</a></li>
   <li><a href="../topics/vscode-extensions.md.html">VScode extension</a></li>
   <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
 </ul>
@@ -89,22 +89,22 @@
 <h2><a href="#Metamethods">Metamethods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#Expect:__index">Expect:__index (key)</a></td>
+	<td class="name nowrap"><a href="#Expect:__index">Expect:__index ()</a></td>
 	<td class="summary">Lookup of missing class members.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:__call">Expect:__call (...)</a></td>
+	<td class="name nowrap"><a href="#Expect:__call">Expect:__call ()</a></td>
 	<td class="summary">Get a clone or create a new instance.</td>
 	</tr>
 </table>
 <h2><a href="#Methods">Methods</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name nowrap"><a href="#Expect:create">Expect:create (...)</a></td>
+	<td class="name nowrap"><a href="#Expect:create">Expect:create ()</a></td>
 	<td class="summary">Create a new instance.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:_init">Expect:_init (...)</a></td>
+	<td class="name nowrap"><a href="#Expect:_init">Expect:_init ()</a></td>
 	<td class="summary">Initialize a new instance.</td>
 	</tr>
 	<tr>
@@ -132,229 +132,227 @@
 	<td class="summary">Get the instance name.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:addFail">Expect:addFail (func)</a></td>
+	<td class="name nowrap"><a href="#Expect:addFail">Expect:addFail ()</a></td>
 	<td class="summary">Add callback for failing compare.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:addFailReport">Expect:addFailReport (tbl, msg)</a></td>
+	<td class="name nowrap"><a href="#Expect:addFailReport">Expect:addFailReport ()</a></td>
 	<td class="summary">Add report for fail.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:addPass">Expect:addPass (func)</a></td>
+	<td class="name nowrap"><a href="#Expect:addPass">Expect:addPass ()</a></td>
 	<td class="summary">Add callback for passing compare.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:addPassReport">Expect:addPassReport (tbl, msg)</a></td>
+	<td class="name nowrap"><a href="#Expect:addPassReport">Expect:addPassReport ()</a></td>
 	<td class="summary">Add report for pass.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:callbacks">Expect:callbacks (cb)</a></td>
+	<td class="name nowrap"><a href="#Expect:callbacks">Expect:callbacks ()</a></td>
 	<td class="summary">Callback on pass.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:import">Expect:import (procs)</a></td>
+	<td class="name nowrap"><a href="#Expect:import">Expect:import ()</a></td>
 	<td class="summary">Import a compute grap.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:addProcess">Expect:addProcess (proc, hold)</a></td>
+	<td class="name nowrap"><a href="#Expect:addProcess">Expect:addProcess ()</a></td>
 	<td class="summary">Add a process function</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:compare">Expect:compare (...)</a></td>
+	<td class="name nowrap"><a href="#Expect:compare">Expect:compare ()</a></td>
 	<td class="summary">Compare given values</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:eval">Expect:eval (level, ...)</a></td>
-	<td class="summary">Eval given values
- If <a href="../mw.expect.html#Expect.bypassEval">Expect.bypassEval</a> is set, then the compute graph will not be evaluated.</td>
+	<td class="name nowrap"><a href="#Expect:eval">Expect:eval ()</a></td>
+	<td class="summary">Eval given values.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:pick">Expect:pick () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:pick">Expect:pick ()</a></td>
 	<td class="summary">Pick entries</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:filter">Expect:filter () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:filter">Expect:filter ()</a></td>
 	<td class="summary">Filter entries</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:map">Expect:map () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
-	<td class="summary">Map over entries
- The provided function will be mapped over arguments provided at the step.</td>
+	<td class="name nowrap"><a href="#Expect:map">Expect:map ()</a></td>
+	<td class="summary">Map over entries.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:first">Expect:first () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:first">Expect:first ()</a></td>
 	<td class="summary">Make a pick for first item.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:second">Expect:second () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:second">Expect:second ()</a></td>
 	<td class="summary">Make a pick for second item.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:third">Expect:third () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:third">Expect:third ()</a></td>
 	<td class="summary">Make a pick for third item.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:fourth">Expect:fourth () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:fourth">Expect:fourth ()</a></td>
 	<td class="summary">Make a pick for fourth item.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:fifth">Expect:fifth () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:fifth">Expect:fifth ()</a></td>
 	<td class="summary">Make a pick for fifth item.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:sixth">Expect:sixth () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:sixth">Expect:sixth ()</a></td>
 	<td class="summary">Make a pick for sixth item.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:seventh">Expect:seventh () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:seventh">Expect:seventh ()</a></td>
 	<td class="summary">Make a pick for seventh item.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:eight">Expect:eight () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:eight">Expect:eight ()</a></td>
 	<td class="summary">Make a pick for eight item.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:ninth">Expect:ninth () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:ninth">Expect:ninth ()</a></td>
 	<td class="summary">Make a pick for ninth item.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:tenth">Expect:tenth () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:tenth">Expect:tenth ()</a></td>
 	<td class="summary">Make a pick for tenth item.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:eleventh">Expect:eleventh () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:eleventh">Expect:eleventh ()</a></td>
 	<td class="summary">Make a pick for eleventh item.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:twelfth">Expect:twelfth () [<a href="../topics/graph.md.html#pick">pick</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:twelfth">Expect:twelfth ()</a></td>
 	<td class="summary">Make a pick for twelfth item.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asType">Expect:asType () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asType">Expect:asType ()</a></td>
 	<td class="summary">Make a transform to get the argument type.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asUpper">Expect:asUpper () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asUpper">Expect:asUpper ()</a></td>
 	<td class="summary">Make a transform to get the string as upper case.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asLower">Expect:asLower () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asLower">Expect:asLower ()</a></td>
 	<td class="summary">Make a transform to get the string as lower case.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asUpperFirst">Expect:asUpperFirst () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asUpperFirst">Expect:asUpperFirst ()</a></td>
 	<td class="summary">Make a transform to get the string with first char as upper case.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asLowerFirst">Expect:asLowerFirst () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asLowerFirst">Expect:asLowerFirst ()</a></td>
 	<td class="summary">Make a transform to get the string with first char as lower case.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asReverse">Expect:asReverse () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asReverse">Expect:asReverse ()</a></td>
 	<td class="summary">Make a transform to get the string reversed.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asUUpper">Expect:asUUpper () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asUUpper">Expect:asUUpper ()</a></td>
 	<td class="summary">Make a transform to get the ustring as upper case.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asULower">Expect:asULower () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asULower">Expect:asULower ()</a></td>
 	<td class="summary">Make a transform to get the ustring as lower case.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asUUpperFirst">Expect:asUUpperFirst () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asUUpperFirst">Expect:asUUpperFirst ()</a></td>
 	<td class="summary">Make a transform to get the ustring with first code point as upper case.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asULowerFirst">Expect:asULowerFirst () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asULowerFirst">Expect:asULowerFirst ()</a></td>
 	<td class="summary">Make a transform to get the ustring with first code point as lower case.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asUNFC">Expect:asUNFC () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asUNFC">Expect:asUNFC ()</a></td>
 	<td class="summary">Make a transform to get the ustring as Normalized Form "C".</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asUNFD">Expect:asUNFD () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asUNFD">Expect:asUNFD ()</a></td>
 	<td class="summary">Make a transform to get the ustring as Normalized Form "D".</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asNumber">Expect:asNumber () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asNumber">Expect:asNumber ()</a></td>
 	<td class="summary">Make a transform to get the string as number.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asString">Expect:asString () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asString">Expect:asString ()</a></td>
 	<td class="summary">Make a transform to get the number as string.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asFloor">Expect:asFloor () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asFloor">Expect:asFloor ()</a></td>
 	<td class="summary">Make a transform to get the next lower number.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asCeil">Expect:asCeil () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asCeil">Expect:asCeil ()</a></td>
 	<td class="summary">Make a transform to get the next higher number.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asRound">Expect:asRound () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asRound">Expect:asRound ()</a></td>
 	<td class="summary">Make a transform to get the rounded number.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asInteger">Expect:asInteger () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asInteger">Expect:asInteger ()</a></td>
 	<td class="summary">Make a transform to get the integer part of the number.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:asFraction">Expect:asFraction () [<a href="../topics/graph.md.html#transform">transform</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:asFraction">Expect:asFraction ()</a></td>
 	<td class="summary">Make a transform to get the fraction part of the number.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:toBeWithin">Expect:toBeWithin (limit, ...)</a></td>
+	<td class="name nowrap"><a href="#Expect:toBeWithin">Expect:toBeWithin ()</a></td>
 	<td class="summary">Make a comparison to check if first is within limits of second.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:toBeEqual">Expect:toBeEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:toBeEqual">Expect:toBeEqual ()</a></td>
 	<td class="summary">Make a comparison to check equality.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:toBeBooleanEqual">Expect:toBeBooleanEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:toBeBoolEqual">Expect:toBeBoolEqual ()</a></td>
 	<td class="summary">Make a comparison to check boolean equality.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:toBeStrictEqual">Expect:toBeStrictEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:toBeStrictEqual">Expect:toBeStrictEqual ()</a></td>
 	<td class="summary">Make a comparison to check strict equality.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:toBeSame">Expect:toBeSame () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:toBeSame">Expect:toBeSame ()</a></td>
 	<td class="summary">Make a comparison to check similarity.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:toBeDeepEqual">Expect:toBeDeepEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:toBeDeepEqual">Expect:toBeDeepEqual ()</a></td>
 	<td class="summary">Make a comparison to check deep equality.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:toBeContained">Expect:toBeContained () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:toBeContained">Expect:toBeContained ()</a></td>
 	<td class="summary">Make a comparison to check if first is contained in second.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:toBeLesserThan">Expect:toBeLesserThan () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:toBeLessThan">Expect:toBeLessThan ()</a></td>
 	<td class="summary">Make a comparison to check if first is strict lesser than second.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:toBeGreaterThan">Expect:toBeGreaterThan () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:toBeGreatThan">Expect:toBeGreatThan ()</a></td>
 	<td class="summary">Make a comparison to check if first is strict greater than second.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:toBeLesserOrEqual">Expect:toBeLesserOrEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:toBeLessOrEqual">Expect:toBeLessOrEqual ()</a></td>
 	<td class="summary">Make a comparison to check if first is lesser or equal than second.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:toBeGreaterOrEqual">Expect:toBeGreaterOrEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:toBeGreatOrEqual">Expect:toBeGreatOrEqual ()</a></td>
 	<td class="summary">Make a comparison to check if first is strict greater or equal than second.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:toBeMatch">Expect:toBeMatch () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:toBeMatch">Expect:toBeMatch ()</a></td>
 	<td class="summary">Make a comparison to check if first is a match in second.</td>
 	</tr>
 	<tr>
-	<td class="name nowrap"><a href="#Expect:toBeUMatch">Expect:toBeUMatch () [<a href="../topics/graph.md.html#condition">condition</a>]</a></td>
+	<td class="name nowrap"><a href="#Expect:toBeUMatch">Expect:toBeUMatch ()</a></td>
 	<td class="summary">Make a comparison to check if first is an Unicode match in second.</td>
 	</tr>
 </table>
@@ -463,7 +461,7 @@
     <dl class="function">
     <dt>
     <a name = "Expect:__index"></a>
-    <strong>Expect:__index (key)</strong>
+    <strong>Expect:__index ()</strong>
     </dt>
     <dd>
     Lookup of missing class members.
@@ -482,14 +480,14 @@
         any
 
     <h3>Raises:</h3>
-    on wrong argument type, unless turned off by <a href="../mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+    on wrong argument type, unless turned off by <a href="../index.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
 </dd>
     <dt>
     <a name = "Expect:__call"></a>
-    <strong>Expect:__call (...)</strong>
+    <strong>Expect:__call ()</strong>
     </dt>
     <dd>
     Get a clone or create a new instance.
@@ -520,7 +518,7 @@
     <dl class="function">
     <dt>
     <a name = "Expect:create"></a>
-    <strong>Expect:create (...)</strong>
+    <strong>Expect:create ()</strong>
     </dt>
     <dd>
     Create a new instance.
@@ -542,18 +540,18 @@
 
 
     <h3>Raises:</h3>
-    on wrong arguments type, unless turned off by <a href="../mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+    on wrong arguments type, unless turned off by <a href="../index.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
 </dd>
     <dt>
     <a name = "Expect:_init"></a>
-    <strong>Expect:_init (...)</strong>
+    <strong>Expect:_init ()</strong>
     </dt>
     <dd>
     Initialize a new instance.
- Will inherit the current value of <a href="../mw.expect.html#Expect.softFail">Expect.softFail</a> during initialization.
+ Will inherit the current value of <a href="../index.html#Expect.softFail">Expect.softFail</a> during initialization.
 
 
     <h3>Parameters:</h3>
@@ -594,7 +592,7 @@
 
 
     <h3>Raises:</h3>
-    on call, if <a href="../mw.expect.html#Expect.strictTaint">Expect.strictTaint</a> is set.
+    on call, if <a href="../index.html#Expect.strictTaint">Expect.strictTaint</a> is set.
 
 
 
@@ -704,7 +702,7 @@
 </dd>
     <dt>
     <a name = "Expect:addFail"></a>
-    <strong>Expect:addFail (func)</strong>
+    <strong>Expect:addFail ()</strong>
     </dt>
     <dd>
     Add callback for failing compare.
@@ -727,14 +725,14 @@
 
 
     <h3>Raises:</h3>
-    on <a href="../mw.expect.html#Expect.strictTaint">Expect.strictTaint</a> is set or wrong argument type, unless turned off by <a href="../mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+    on <a href="../index.html#Expect.strictTaint">Expect.strictTaint</a> is set or wrong argument type, unless turned off by <a href="../index.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
 </dd>
     <dt>
     <a name = "Expect:addFailReport"></a>
-    <strong>Expect:addFailReport (tbl, msg)</strong>
+    <strong>Expect:addFailReport ()</strong>
     </dt>
     <dd>
     Add report for fail.
@@ -761,14 +759,14 @@
 
 
     <h3>Raises:</h3>
-    on wrong argument type, unless turned off by <a href="../mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+    on wrong argument type, unless turned off by <a href="../index.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
 </dd>
     <dt>
     <a name = "Expect:addPass"></a>
-    <strong>Expect:addPass (func)</strong>
+    <strong>Expect:addPass ()</strong>
     </dt>
     <dd>
     Add callback for passing compare.
@@ -792,14 +790,14 @@
 
 
     <h3>Raises:</h3>
-    on <a href="../mw.expect.html#Expect.strictTaint">Expect.strictTaint</a> is set or wrong argument type, unless turned off by <a href="../mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+    on <a href="../index.html#Expect.strictTaint">Expect.strictTaint</a> is set or wrong argument type, unless turned off by <a href="../index.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
 </dd>
     <dt>
     <a name = "Expect:addPassReport"></a>
-    <strong>Expect:addPassReport (tbl, msg)</strong>
+    <strong>Expect:addPassReport ()</strong>
     </dt>
     <dd>
     Add report for pass.
@@ -826,14 +824,14 @@
 
 
     <h3>Raises:</h3>
-    on wrong argument type, unless turned off by <a href="../mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+    on wrong argument type, unless turned off by <a href="../index.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
 </dd>
     <dt>
     <a name = "Expect:callbacks"></a>
-    <strong>Expect:callbacks (cb)</strong>
+    <strong>Expect:callbacks ()</strong>
     </dt>
     <dd>
     Callback on pass.
@@ -856,7 +854,7 @@
 </dd>
     <dt>
     <a name = "Expect:import"></a>
-    <strong>Expect:import (procs)</strong>
+    <strong>Expect:import ()</strong>
     </dt>
     <dd>
     Import a compute grap.
@@ -879,14 +877,14 @@
 
 
     <h3>Raises:</h3>
-    on <a href="../mw.expect.html#Expect.strictTaint">Expect.strictTaint</a> is set, or wrong argument type, unless turned off by <a href="../mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+    on <a href="../index.html#Expect.strictTaint">Expect.strictTaint</a> is set, or wrong argument type, unless turned off by <a href="../index.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
 </dd>
     <dt>
     <a name = "Expect:addProcess"></a>
-    <strong>Expect:addProcess (proc, hold)</strong>
+    <strong>Expect:addProcess ()</strong>
     </dt>
     <dd>
     Add a process function
@@ -912,14 +910,14 @@
 
 
     <h3>Raises:</h3>
-    on <a href="../mw.expect.html#Expect.strictTaint">Expect.strictTaint</a> is set and hold unset, or wrong argument type, unless turned off by <a href="../mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+    on <a href="../index.html#Expect.strictTaint">Expect.strictTaint</a> is set and hold unset, or wrong argument type, unless turned off by <a href="../index.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
 </dd>
     <dt>
     <a name = "Expect:compare"></a>
-    <strong>Expect:compare (...)</strong>
+    <strong>Expect:compare ()</strong>
     </dt>
     <dd>
     Compare given values
@@ -946,11 +944,11 @@
 </dd>
     <dt>
     <a name = "Expect:eval"></a>
-    <strong>Expect:eval (level, ...)</strong>
+    <strong>Expect:eval ()</strong>
     </dt>
     <dd>
-    Eval given values
- If <a href="../mw.expect.html#Expect.bypassEval">Expect.bypassEval</a> is set, then the compute graph will not be evaluated.
+    Eval given values.
+ If <a href="../index.html#Expect.bypassEval">Expect.bypassEval</a> is set, then the compute graph will not be evaluated.
  Level does not work properly in the console, and the site report is simplified.
 
 
@@ -979,11 +977,15 @@
 </dd>
     <dt>
     <a name = "Expect:pick"></a>
-    <strong>Expect:pick () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    <strong>Expect:pick ()</strong>
     </dt>
     <dd>
     Pick entries
 
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#pick">pick</a>
+    </ul "@todo">
 
     <h3>Parameters:</h3>
     <ul>
@@ -1001,18 +1003,22 @@
 
 
     <h3>Raises:</h3>
-    on wrong argument type, unless turned off by <a href="../mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+    on wrong argument type, unless turned off by <a href="../index.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
 </dd>
     <dt>
     <a name = "Expect:filter"></a>
-    <strong>Expect:filter () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    <strong>Expect:filter ()</strong>
     </dt>
     <dd>
     Filter entries
 
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#pick">pick</a>
+    </ul "@todo">
 
     <h3>Parameters:</h3>
     <ul>
@@ -1034,19 +1040,23 @@
 
 
     <h3>Raises:</h3>
-    on wrong argument type, unless turned off by <a href="../mw.expect.html#Expect.typeCheck">Expect.typeCheck</a>.
+    on wrong argument type, unless turned off by <a href="../index.html#Expect.typeCheck">Expect.typeCheck</a>.
 
 
 
 </dd>
     <dt>
     <a name = "Expect:map"></a>
-    <strong>Expect:map () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:map ()</strong>
     </dt>
     <dd>
-    Map over entries
+    Map over entries.
  The provided function will be mapped over arguments provided at the step.
 
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
+    </ul "@todo">
 
     <h3>Parameters:</h3>
     <ul>
@@ -1073,11 +1083,15 @@
 </dd>
     <dt>
     <a name = "Expect:first"></a>
-    <strong>Expect:first () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    <strong>Expect:first ()</strong>
     </dt>
     <dd>
     Make a pick for first item.
 
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#pick">pick</a>
+    </ul "@todo">
 
 
     <h3>Returns:</h3>
@@ -1093,11 +1107,15 @@
 </dd>
     <dt>
     <a name = "Expect:second"></a>
-    <strong>Expect:second () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    <strong>Expect:second ()</strong>
     </dt>
     <dd>
     Make a pick for second item.
 
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#pick">pick</a>
+    </ul "@todo">
 
 
     <h3>Returns:</h3>
@@ -1113,11 +1131,15 @@
 </dd>
     <dt>
     <a name = "Expect:third"></a>
-    <strong>Expect:third () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    <strong>Expect:third ()</strong>
     </dt>
     <dd>
     Make a pick for third item.
 
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#pick">pick</a>
+    </ul "@todo">
 
 
     <h3>Returns:</h3>
@@ -1133,11 +1155,15 @@
 </dd>
     <dt>
     <a name = "Expect:fourth"></a>
-    <strong>Expect:fourth () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    <strong>Expect:fourth ()</strong>
     </dt>
     <dd>
     Make a pick for fourth item.
 
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#pick">pick</a>
+    </ul "@todo">
 
 
 
@@ -1147,11 +1173,15 @@
 </dd>
     <dt>
     <a name = "Expect:fifth"></a>
-    <strong>Expect:fifth () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    <strong>Expect:fifth ()</strong>
     </dt>
     <dd>
     Make a pick for fifth item.
 
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#pick">pick</a>
+    </ul "@todo">
 
 
     <h3>Returns:</h3>
@@ -1167,11 +1197,15 @@
 </dd>
     <dt>
     <a name = "Expect:sixth"></a>
-    <strong>Expect:sixth () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    <strong>Expect:sixth ()</strong>
     </dt>
     <dd>
     Make a pick for sixth item.
 
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#pick">pick</a>
+    </ul "@todo">
 
 
     <h3>Returns:</h3>
@@ -1187,11 +1221,15 @@
 </dd>
     <dt>
     <a name = "Expect:seventh"></a>
-    <strong>Expect:seventh () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    <strong>Expect:seventh ()</strong>
     </dt>
     <dd>
     Make a pick for seventh item.
 
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#pick">pick</a>
+    </ul "@todo">
 
 
     <h3>Returns:</h3>
@@ -1207,11 +1245,15 @@
 </dd>
     <dt>
     <a name = "Expect:eight"></a>
-    <strong>Expect:eight () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    <strong>Expect:eight ()</strong>
     </dt>
     <dd>
     Make a pick for eight item.
 
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#pick">pick</a>
+    </ul "@todo">
 
 
     <h3>Returns:</h3>
@@ -1227,11 +1269,15 @@
 </dd>
     <dt>
     <a name = "Expect:ninth"></a>
-    <strong>Expect:ninth () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    <strong>Expect:ninth ()</strong>
     </dt>
     <dd>
     Make a pick for ninth item.
 
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#pick">pick</a>
+    </ul "@todo">
 
 
     <h3>Returns:</h3>
@@ -1247,11 +1293,15 @@
 </dd>
     <dt>
     <a name = "Expect:tenth"></a>
-    <strong>Expect:tenth () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    <strong>Expect:tenth ()</strong>
     </dt>
     <dd>
     Make a pick for tenth item.
 
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#pick">pick</a>
+    </ul "@todo">
 
 
     <h3>Returns:</h3>
@@ -1267,11 +1317,15 @@
 </dd>
     <dt>
     <a name = "Expect:eleventh"></a>
-    <strong>Expect:eleventh () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    <strong>Expect:eleventh ()</strong>
     </dt>
     <dd>
     Make a pick for eleventh item.
 
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#pick">pick</a>
+    </ul "@todo">
 
 
     <h3>Returns:</h3>
@@ -1287,11 +1341,15 @@
 </dd>
     <dt>
     <a name = "Expect:twelfth"></a>
-    <strong>Expect:twelfth () [<a href="../topics/graph.md.html#pick">pick</a>]</strong>
+    <strong>Expect:twelfth ()</strong>
     </dt>
     <dd>
     Make a pick for twelfth item.
 
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#pick">pick</a>
+    </ul "@todo">
 
 
     <h3>Returns:</h3>
@@ -1307,7 +1365,7 @@
 </dd>
     <dt>
     <a name = "Expect:asType"></a>
-    <strong>Expect:asType () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asType ()</strong>
     </dt>
     <dd>
     Make a transform to get the argument type.
@@ -1315,6 +1373,10 @@
     <h3>Nicknames:</h3>
     <ul>
          Expect:type
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1331,7 +1393,7 @@
 </dd>
     <dt>
     <a name = "Expect:asUpper"></a>
-    <strong>Expect:asUpper () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asUpper ()</strong>
     </dt>
     <dd>
     Make a transform to get the string as upper case.
@@ -1341,6 +1403,10 @@
          <li>Expect:upper</li>
          <li>Expect:asUC</li>
          <li>Expect:uc</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1357,7 +1423,7 @@
 </dd>
     <dt>
     <a name = "Expect:asLower"></a>
-    <strong>Expect:asLower () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asLower ()</strong>
     </dt>
     <dd>
     Make a transform to get the string as lower case.
@@ -1367,6 +1433,10 @@
          <li>Expect:lower</li>
          <li>Expect:asLC</li>
          <li>Expect:lc</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1383,7 +1453,7 @@
 </dd>
     <dt>
     <a name = "Expect:asUpperFirst"></a>
-    <strong>Expect:asUpperFirst () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asUpperFirst ()</strong>
     </dt>
     <dd>
     Make a transform to get the string with first char as upper case.
@@ -1394,6 +1464,10 @@
          <li>Expect:asUCFirst</li>
          <li>Expect:asUCfirst</li>
          <li>Expect:ucfirst</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1410,7 +1484,7 @@
 </dd>
     <dt>
     <a name = "Expect:asLowerFirst"></a>
-    <strong>Expect:asLowerFirst () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asLowerFirst ()</strong>
     </dt>
     <dd>
     Make a transform to get the string with first char as lower case.
@@ -1421,6 +1495,10 @@
          <li>Expect:asLCFirst</li>
          <li>Expect:asLCfirst</li>
          <li>Expect:lcfirst</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1437,7 +1515,7 @@
 </dd>
     <dt>
     <a name = "Expect:asReverse"></a>
-    <strong>Expect:asReverse () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asReverse ()</strong>
     </dt>
     <dd>
     Make a transform to get the string reversed.
@@ -1445,6 +1523,10 @@
     <h3>Nicknames:</h3>
     <ul>
          Expect:reverse
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1461,7 +1543,7 @@
 </dd>
     <dt>
     <a name = "Expect:asUUpper"></a>
-    <strong>Expect:asUUpper () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asUUpper ()</strong>
     </dt>
     <dd>
     Make a transform to get the ustring as upper case.
@@ -1471,6 +1553,10 @@
          <li>Expect:uupper</li>
          <li>Expect:asUUC</li>
          <li>Expect:uuc</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1487,7 +1573,7 @@
 </dd>
     <dt>
     <a name = "Expect:asULower"></a>
-    <strong>Expect:asULower () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asULower ()</strong>
     </dt>
     <dd>
     Make a transform to get the ustring as lower case.
@@ -1497,6 +1583,10 @@
          <li>Expect:ulower</li>
          <li>Expect:asULC</li>
          <li>Expect:ulc</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1513,7 +1603,7 @@
 </dd>
     <dt>
     <a name = "Expect:asUUpperFirst"></a>
-    <strong>Expect:asUUpperFirst () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asUUpperFirst ()</strong>
     </dt>
     <dd>
     Make a transform to get the ustring with first code point as upper case.
@@ -1524,6 +1614,10 @@
          <li>Expect:asUUCFirst</li>
          <li>Expect:asUUCfirst</li>
          <li>Expect:uucfirst</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1540,7 +1634,7 @@
 </dd>
     <dt>
     <a name = "Expect:asULowerFirst"></a>
-    <strong>Expect:asULowerFirst () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asULowerFirst ()</strong>
     </dt>
     <dd>
     Make a transform to get the ustring with first code point as lower case.
@@ -1551,6 +1645,10 @@
          <li>Expect:asULCFirst</li>
          <li>Expect:asULCfirst</li>
          <li>Expect:ulcfirst</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1567,7 +1665,7 @@
 </dd>
     <dt>
     <a name = "Expect:asUNFC"></a>
-    <strong>Expect:asUNFC () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asUNFC ()</strong>
     </dt>
     <dd>
     Make a transform to get the ustring as Normalized Form "C".
@@ -1577,6 +1675,10 @@
          <li>Expect:unfc</li>
          <li>Expect:uNFC</li>
          <li>Expect:nfc</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1593,7 +1695,7 @@
 </dd>
     <dt>
     <a name = "Expect:asUNFD"></a>
-    <strong>Expect:asUNFD () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asUNFD ()</strong>
     </dt>
     <dd>
     Make a transform to get the ustring as Normalized Form "D".
@@ -1603,6 +1705,10 @@
          <li>Expect:unfd</li>
          <li>Expect:uNFD</li>
          <li>Expect:nfd</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1619,7 +1725,7 @@
 </dd>
     <dt>
     <a name = "Expect:asNumber"></a>
-    <strong>Expect:asNumber () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asNumber ()</strong>
     </dt>
     <dd>
     Make a transform to get the string as number.
@@ -1629,6 +1735,10 @@
          <li>Expect:number</li>
          <li>Expect:asNum</li>
          <li>Expect:num</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1645,7 +1755,7 @@
 </dd>
     <dt>
     <a name = "Expect:asString"></a>
-    <strong>Expect:asString () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asString ()</strong>
     </dt>
     <dd>
     Make a transform to get the number as string.
@@ -1655,6 +1765,10 @@
          <li>Expect:string</li>
          <li>Expect:asStr</li>
          <li>Expect:str</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1671,7 +1785,7 @@
 </dd>
     <dt>
     <a name = "Expect:asFloor"></a>
-    <strong>Expect:asFloor () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asFloor ()</strong>
     </dt>
     <dd>
     Make a transform to get the next lower number.
@@ -1679,6 +1793,10 @@
     <h3>Nicknames:</h3>
     <ul>
          Expect:floor
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1695,7 +1813,7 @@
 </dd>
     <dt>
     <a name = "Expect:asCeil"></a>
-    <strong>Expect:asCeil () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asCeil ()</strong>
     </dt>
     <dd>
     Make a transform to get the next higher number.
@@ -1703,6 +1821,10 @@
     <h3>Nicknames:</h3>
     <ul>
          Expect:ceil
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1719,7 +1841,7 @@
 </dd>
     <dt>
     <a name = "Expect:asRound"></a>
-    <strong>Expect:asRound () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asRound ()</strong>
     </dt>
     <dd>
     Make a transform to get the rounded number.
@@ -1727,6 +1849,10 @@
     <h3>Nicknames:</h3>
     <ul>
          Expect:round
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1743,7 +1869,7 @@
 </dd>
     <dt>
     <a name = "Expect:asInteger"></a>
-    <strong>Expect:asInteger () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asInteger ()</strong>
     </dt>
     <dd>
     Make a transform to get the integer part of the number.
@@ -1753,6 +1879,10 @@
          <li>Expect:integer</li>
          <li>Expect:asInt</li>
          <li>Expect:int</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1769,7 +1899,7 @@
 </dd>
     <dt>
     <a name = "Expect:asFraction"></a>
-    <strong>Expect:asFraction () [<a href="../topics/graph.md.html#transform">transform</a>]</strong>
+    <strong>Expect:asFraction ()</strong>
     </dt>
     <dd>
     Make a transform to get the fraction part of the number.
@@ -1779,6 +1909,10 @@
          <li>Expect:fraction</li>
          <li>Expect:asFrac</li>
          <li>Expect:frac</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#transform">transform</a>
     </ul "@todo">
 
 
@@ -1795,7 +1929,7 @@
 </dd>
     <dt>
     <a name = "Expect:toBeWithin"></a>
-    <strong>Expect:toBeWithin (limit, ...)</strong>
+    <strong>Expect:toBeWithin ()</strong>
     </dt>
     <dd>
     Make a comparison to check if first is within limits of second.
@@ -1829,7 +1963,7 @@
 </dd>
     <dt>
     <a name = "Expect:toBeEqual"></a>
-    <strong>Expect:toBeEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    <strong>Expect:toBeEqual ()</strong>
     </dt>
     <dd>
     Make a comparison to check equality.
@@ -1839,6 +1973,10 @@
          <li>Expect:equal</li>
          <li>Expect:isEqual</li>
          <li>Expect:ifEqual</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#condition">condition</a>
     </ul "@todo">
 
     <h3>Parameters:</h3>
@@ -1861,17 +1999,21 @@
 
 </dd>
     <dt>
-    <a name = "Expect:toBeBooleanEqual"></a>
-    <strong>Expect:toBeBooleanEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    <a name = "Expect:toBeBoolEqual"></a>
+    <strong>Expect:toBeBoolEqual ()</strong>
     </dt>
     <dd>
     Make a comparison to check boolean equality.
 
     <h3>Nicknames:</h3>
     <ul>
-         <li>Expect:booleanequal</li>
-         <li>Expect:isBooleanEqual</li>
-         <li>Expect:ifBooleanEqual</li>
+         <li>Expect:boolequal</li>
+         <li>Expect:isBoolEqual</li>
+         <li>Expect:ifBoolEqual</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#condition">condition</a>
     </ul "@todo">
 
     <h3>Parameters:</h3>
@@ -1895,7 +2037,7 @@
 </dd>
     <dt>
     <a name = "Expect:toBeStrictEqual"></a>
-    <strong>Expect:toBeStrictEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    <strong>Expect:toBeStrictEqual ()</strong>
     </dt>
     <dd>
     Make a comparison to check strict equality.
@@ -1905,6 +2047,10 @@
          <li>Expect:strictequal</li>
          <li>Expect:isStrictEqual</li>
          <li>Expect:ifStrictEqual</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#condition">condition</a>
     </ul "@todo">
 
     <h3>Parameters:</h3>
@@ -1928,7 +2074,7 @@
 </dd>
     <dt>
     <a name = "Expect:toBeSame"></a>
-    <strong>Expect:toBeSame () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    <strong>Expect:toBeSame ()</strong>
     </dt>
     <dd>
     Make a comparison to check similarity.
@@ -1938,6 +2084,10 @@
          <li>Expect:same</li>
          <li>Expect:isSame</li>
          <li>Expect:ifSame</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#condition">condition</a>
     </ul "@todo">
 
     <h3>Parameters:</h3>
@@ -1961,7 +2111,7 @@
 </dd>
     <dt>
     <a name = "Expect:toBeDeepEqual"></a>
-    <strong>Expect:toBeDeepEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    <strong>Expect:toBeDeepEqual ()</strong>
     </dt>
     <dd>
     Make a comparison to check deep equality.
@@ -1971,6 +2121,10 @@
          <li>Expect:deepequal</li>
          <li>Expect:isDeepEqual</li>
          <li>Expect:ifDeepEqual</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#condition">condition</a>
     </ul "@todo">
 
     <h3>Parameters:</h3>
@@ -1994,7 +2148,7 @@
 </dd>
     <dt>
     <a name = "Expect:toBeContained"></a>
-    <strong>Expect:toBeContained () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    <strong>Expect:toBeContained ()</strong>
     </dt>
     <dd>
     Make a comparison to check if first is contained in second.
@@ -2006,6 +2160,10 @@
          <li>Expect:isContained</li>
          <li>Expect:ifContained</li>
     </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#condition">condition</a>
+    </ul "@todo">
 
     <h3>Parameters:</h3>
     <ul>
@@ -2027,22 +2185,26 @@
 
 </dd>
     <dt>
-    <a name = "Expect:toBeLesserThan"></a>
-    <strong>Expect:toBeLesserThan () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    <a name = "Expect:toBeLessThan"></a>
+    <strong>Expect:toBeLessThan ()</strong>
     </dt>
     <dd>
     Make a comparison to check if first is strict lesser than second.
 
     <h3>Nicknames:</h3>
     <ul>
-         <li>Expect:lesser</li>
+         <li>Expect:less</li>
          <li>Expect:lt</li>
-         <li>Expect:toBeLesser</li>
+         <li>Expect:toBeLess</li>
          <li>Expect:toBeLT</li>
-         <li>Expect:isLesser</li>
+         <li>Expect:isLess</li>
          <li>Expect:isLT</li>
-         <li>Expect:ifLesser</li>
+         <li>Expect:ifLess</li>
          <li>Expect:ifLt</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#condition">condition</a>
     </ul "@todo">
 
     <h3>Parameters:</h3>
@@ -2065,22 +2227,26 @@
 
 </dd>
     <dt>
-    <a name = "Expect:toBeGreaterThan"></a>
-    <strong>Expect:toBeGreaterThan () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    <a name = "Expect:toBeGreatThan"></a>
+    <strong>Expect:toBeGreatThan ()</strong>
     </dt>
     <dd>
     Make a comparison to check if first is strict greater than second.
 
     <h3>Nicknames:</h3>
     <ul>
-         <li>Expect:greater</li>
+         <li>Expect:great</li>
          <li>Expect:gt</li>
-         <li>Expect:toBeGreater</li>
+         <li>Expect:toBeGreat</li>
          <li>Expect:toBeGT</li>
-         <li>Expect:isGreater</li>
+         <li>Expect:isGreat</li>
          <li>Expect:isGT</li>
-         <li>Expect:ifGreater</li>
+         <li>Expect:ifGreat</li>
          <li>Expect:ifGt</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#condition">condition</a>
     </ul "@todo">
 
     <h3>Parameters:</h3>
@@ -2103,21 +2269,25 @@
 
 </dd>
     <dt>
-    <a name = "Expect:toBeLesserOrEqual"></a>
-    <strong>Expect:toBeLesserOrEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    <a name = "Expect:toBeLessOrEqual"></a>
+    <strong>Expect:toBeLessOrEqual ()</strong>
     </dt>
     <dd>
     Make a comparison to check if first is lesser or equal than second.
 
     <h3>Nicknames:</h3>
     <ul>
-         <li>Expect:lesserOrEqual</li>
+         <li>Expect:lessOrEqual</li>
          <li>Expect:le</li>
          <li>Expect:toBeLE</li>
-         <li>Expect:isLesserOrEqual</li>
+         <li>Expect:isLessOrEqual</li>
          <li>Expect:isLE</li>
          <li>Expect:ifLesserOrEqual</li>
          <li>Expect:ifLE</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#condition">condition</a>
     </ul "@todo">
 
     <h3>Parameters:</h3>
@@ -2140,21 +2310,25 @@
 
 </dd>
     <dt>
-    <a name = "Expect:toBeGreaterOrEqual"></a>
-    <strong>Expect:toBeGreaterOrEqual () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    <a name = "Expect:toBeGreatOrEqual"></a>
+    <strong>Expect:toBeGreatOrEqual ()</strong>
     </dt>
     <dd>
     Make a comparison to check if first is strict greater or equal than second.
 
     <h3>Nicknames:</h3>
     <ul>
-         <li>Expect:greaterOrEqual</li>
+         <li>Expect:greatOrEqual</li>
          <li>Expect:ge</li>
          <li>Expect:toBeGE</li>
-         <li>Expect:isGreaterOrEqual</li>
+         <li>Expect:isGreatOrEqual</li>
          <li>Expect:isGE</li>
-         <li>Expect:ifGreaterOrEqual</li>
+         <li>Expect:ifGreatOrEqual</li>
          <li>Expect:ifGE</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#condition">condition</a>
     </ul "@todo">
 
     <h3>Parameters:</h3>
@@ -2178,7 +2352,7 @@
 </dd>
     <dt>
     <a name = "Expect:toBeMatch"></a>
-    <strong>Expect:toBeMatch () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    <strong>Expect:toBeMatch ()</strong>
     </dt>
     <dd>
     Make a comparison to check if first is a match in second.
@@ -2188,6 +2362,10 @@
          <li>Expect:match</li>
          <li>Expect:isMatch</li>
          <li>Expect:ifMatch</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#condition">condition</a>
     </ul "@todo">
 
     <h3>Parameters:</h3>
@@ -2211,7 +2389,7 @@
 </dd>
     <dt>
     <a name = "Expect:toBeUMatch"></a>
-    <strong>Expect:toBeUMatch () [<a href="../topics/graph.md.html#condition">condition</a>]</strong>
+    <strong>Expect:toBeUMatch ()</strong>
     </dt>
     <dd>
     Make a comparison to check if first is an Unicode match in second.
@@ -2221,6 +2399,10 @@
          <li>Expect:umatch</li>
          <li>Expect:isUMatch</li>
          <li>Expect:ifUMatch</li>
+    </ul "@todo">
+    <h3>Process:</h3>
+    <ul>
+         <a href="topics/expect-assertions.md.html#condition">condition</a>
     </ul "@todo">
 
     <h3>Parameters:</h3>
@@ -2248,7 +2430,7 @@
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
-<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc TESTING</a></i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
