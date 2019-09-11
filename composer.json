@@ -46,7 +46,7 @@
 			"phpcbf"
 		],
 		"ldoc": [
-			"ldoc includes/LuaLibrary/lua -l ./ -c ./config.ld"
+			"ldoc includes/LuaLibrary/lua/pure/expect.lua -l ./ -c ./config.ld"
 		],
 		"minify": [
 			"find modules/images -type d -path minified -prune -o -type d -execdir svgo --pretty --indent=2 -i . -o ./minified \\;"
