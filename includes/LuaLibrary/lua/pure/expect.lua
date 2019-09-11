@@ -160,8 +160,7 @@ end
 
 --- Add callback for failing compare.
 -- This will taint the instance.
--- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
--- @raise on call, if @{Expect.strictTaint} is set.
+-- @raise on @{Expect.strictTaint} is set or wrong argument type, unless turned off by @{Expect.typeCheck}.
 -- @tparam function func to call
 -- @treturn self
 function Expect:addFail( func )
@@ -195,9 +194,7 @@ end
 
 --- Add callback for passing compare.
 -- This will taint the instance.
--- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
--- @raise on call, if @{Expect.strictTaint} is set.
--- @tparam function func to call
+-- @raise on @{Expect.strictTaint} is set or wrong argument type, unless turned off by @{Expect.typeCheck}.
 -- @treturn self
 function Expect:addPass( func )
 	if Expect.typeCheck then
@@ -242,8 +239,7 @@ end
 
 --- Import a compute grap.
 -- This is scary, and graph will be tainted.
--- @raise on wrong argument types, unless turned off by @{Expect.typeCheck}.
--- @raise on call, if @{Expect.strictTaint} is set.
+-- @raise on @{Expect.strictTaint} is set, or wrong argument type, unless turned off by @{Expect.typeCheck}.
 -- @tparam table procs for the graph
 -- @treturn self
 function Expect:import( procs )
@@ -258,8 +254,7 @@ function Expect:import( procs )
 end
 
 --- Add a process function
--- @raise on wrong argument type, unless turned off by @{Expect.typeCheck}.
--- @raise on call, if @{Expect.strictTaint} is set and hold unset.
+-- @raise on @{Expect.strictTaint} is set and hold unset, or wrong argument type, unless turned off by @{Expect.typeCheck}.
 -- @tparam function proc to be evaluated
 -- @tparam[hold=nil] nil|boolean hold the previous tainting
 -- @treturn self
