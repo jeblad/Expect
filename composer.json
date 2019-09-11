@@ -39,11 +39,13 @@
 		"phpspec/prophecy": "~1.0",
 		"liuggio/fastest": "~1.4",
 		"jakub-onderka/php-console-highlighter": "@stable",
+		"mediawiki/minus-x": "0.3.1",
 		"mediawiki/mediawiki-phan-config": "0.6.1"
 	},
 	"scripts": {
 		"fix": [
-			"phpcbf"
+			"phpcbf",
+			"minus-x fix ."
 		],
 		"ldoc": [
 			"ldoc includes/LuaLibrary/lua/pure/expect.lua --testing --unqualified --template ./ --config ./config.ld"
@@ -64,7 +66,8 @@
 		],
 		"test": [
 			"parallel-lint . --exclude vendor --exclude node_modules",
-			"phpcs -p -s"
+			"phpcs -p -s",
+			"minus-x check ."
 		],
 		"export": [
 			"php ../../maintenance/dumpBackup.php --current --pagelist=PAGELIST --output=file:pages.xml"
@@ -84,5 +87,8 @@
 		"ext-apc": "Local data and opcode cache",
 		"ext-tidy": "*",
 		"ext-xdebug": "*"
+	},
+	"extra": {
+		"phan-taint-check-plugin": "2.0.1"
 	}
 }
