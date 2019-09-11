@@ -16,7 +16,7 @@ output = 'mw.expect'
 -- all = true
 
 readme = {
-	-- 'topics/expect.md',
+	'topics/expect.md',
 	-- 'topics/delayed.md',
 	-- 'topics/databases.md',
 	-- 'topics/hello-world.md',
