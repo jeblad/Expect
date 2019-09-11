@@ -1,8 +1,55 @@
 # Expect
 
-This extension for Mediawiki adds extended expectations to Lua modules. An integral part is to report failures clearly and visible to facilitate interactive and collaborative fault fixing.
+This [extension for Mediawiki](https://www.mediawiki.org/wiki/Extension:Expect) adds extended expectations (a kind of assertions) to Lua modules. An integral part is to report failures clearly and visible to facilitate interactive and collaborative fault fixing.
 
-## See also
+Extensive help is available at [Expect: Assertion framework for Lua embedded within Mediawiki](https://jeblad.github.io/Expect/mw.expect.html), with a programmers guide, a reference, and examples.
 
-- [Expect: Assertion framework for Lua embedded within Mediawiki](https://jeblad.github.io/Expect/mw.expect.html)
-- [Mediawiki: Extension:Expect](https://www.mediawiki.org/wiki/Extension:Expect)
+## Usage
+
+Expect depends on modules from the Scribunto extension.
+
+1. Download from [Github](https://github.com/jeblad/Expect) [zip](https://github.com/jeblad/Expect/archive/master.zip) and place the file(s) in a directory called Expect in your extensions/ folder.
+2. Add the following code at the bottom of your LocalSettings.php:
+
+	```lua
+	wfLoadExtension( 'Expect' );
+	```
+
+3. Done – Navigate to Special:Version on your wiki to verify that the extension is successfully installed.
+
+## Development
+
+Expect uses [Mediawiki-Vagrant](https://www.mediawiki.org/wiki/MediaWiki-Vagrant), and a complete setup can be made quite readilly.
+
+1. Make sure you have Vagrant, etc, prepare a development directory, and move to that directory.
+2. Clone Mediawiki
+
+	```bash
+	git clone --recursive https://gerrit.wikimedia.org/r/mediawiki/vagrant .
+	```
+
+3. Add role unless it has been merged. (You need [git-review](https://www.mediawiki.org/wiki/Gerrit/git-review) to do this.)
+
+	```bash
+	git review -d 535661
+	```
+
+4. Run setup.
+
+	```bash
+	./setup.sh
+	```
+
+5. Enable role for Expect. This pulls inn role for Scribunto, which pulls in additional roles.
+
+	```bash
+	vagrant roles enable expect
+	```
+
+6. Start the instance.
+
+	```bash
+	vagrant up
+	```
+
+7. Done
