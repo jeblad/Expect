@@ -28,7 +28,7 @@ Expect uses [Mediawiki-Vagrant](https://www.mediawiki.org/wiki/MediaWiki-Vagrant
 	git clone --recursive https://gerrit.wikimedia.org/r/mediawiki/vagrant .
 	```
 
-3. Add role unless it has been merged. (You need [git-review](https://www.mediawiki.org/wiki/Gerrit/git-review) to do this.)
+3. Add role unless [#535661](https://gerrit.wikimedia.org/r/#/c/mediawiki/vagrant/+/535661/) has been merged. (You need [git-review](https://www.mediawiki.org/wiki/Gerrit/git-review) to do this.)
 
 	```bash
 	git review -d 535661
