@@ -72,45 +72,35 @@
 
 
 <pre>
-`<code>&lt;span class=&quot;backtick&quot;&gt;&lt;code&gt;bash
-git clone --recursive https://gerrit.wikimedia.org/r/mediawiki/vagrant .
-&lt;/code&gt;&lt;/span&gt;</code>`
+git clone <span class="comment">--recursive https://gerrit.wikimedia.org/r/mediawiki/vagrant .</span>
 </pre>
 
 <p>3. Add role unless <a href="https://gerrit.wikimedia.org/r/#/c/mediawiki/vagrant/+/535661/">#535661</a> has been merged. (You need <a href="https://www.mediawiki.org/wiki/Gerrit/git-review">git-review</a> to do this.)</p>
 
 
 <pre>
-`<code>&lt;span class=&quot;backtick&quot;&gt;&lt;code&gt;bash
-git review -d 535661
-&lt;/code&gt;&lt;/span&gt;</code>`
+git review -d <span class="number">535661</span>
 </pre>
 
 <p>4. Run setup.</p>
 
 
 <pre>
-`<code>&lt;span class=&quot;backtick&quot;&gt;&lt;code&gt;bash
 ./setup.sh
-&lt;/code&gt;&lt;/span&gt;</code>`
 </pre>
 
 <p>5. Enable role for Expect. This pulls inn role for Scribunto, which pulls in additional roles.</p>
 
 
 <pre>
-`<code>&lt;span class=&quot;backtick&quot;&gt;&lt;code&gt;bash
 vagrant roles enable expect
-&lt;/code&gt;&lt;/span&gt;</code>`
 </pre>
 
 <p>6. Start the instance.</p>
 
 
 <pre>
-`<code>&lt;span class=&quot;backtick&quot;&gt;&lt;code&gt;bash
 vagrant up
-&lt;/code&gt;&lt;/span&gt;</code>`
 </pre>
 
 <p>7. Done.</p>
@@ -130,18 +120,14 @@ vagrant up
 
 
 <pre>
-`<code>&lt;span class=&quot;backtick&quot;&gt;&lt;code&gt;bash
 sudo apt install luarocks
-&lt;/code&gt;&lt;/span&gt;</code>`
 </pre>
 
 <p>2. Install ldoc. This will pull in several additional packages, like penlight, markdown, and luafilesystem.</p>
 
 
 <pre>
-`<code>&lt;span class=&quot;backtick&quot;&gt;&lt;code&gt;bash
 sudo luarocks install ldoc
-&lt;/code&gt;&lt;/span&gt;</code>`
 </pre>
 
 <p>3. Done.</p>
