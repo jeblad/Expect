@@ -53,4 +53,3 @@ Expect uses [Mediawiki-Vagrant](https://www.mediawiki.org/wiki/MediaWiki-Vagrant
 	```
 
 7. Done.
-.
