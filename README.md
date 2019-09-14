@@ -1,5 +1,7 @@
 # Expect
 
+[![stability-unstable](https://img.shields.io/badge/stability-unstable-yellow.svg)](https://github.com/jeblad/expect)
+
 This [extension for Mediawiki](https://www.mediawiki.org/wiki/Extension:Expect) adds extended expectations (a kind of assertions) to Lua modules. An integral part is to report failures clearly and visible to facilitate interactive and collaborative fault fixing.
 
 Extensive help is available at [Expect: Assertion framework for Lua embedded within Mediawiki](https://jeblad.github.io/Expect/index.html), with a programmers guide, a reference, and examples.
