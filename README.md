@@ -1,7 +1,7 @@
 # Expect
 
 ![stability-unstable](https://img.shields.io/badge/stability-unstable-yellow.svg?style=for-the-badge)
-![GitHub issues](https://img.shields.io/github/issues-raw/jeblad/Pickle?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues-raw/jeblad/Expect?style=for-the-badge)
 
 
 This [extension for Mediawiki](https://www.mediawiki.org/wiki/Extension:Expect) adds extended expectations (a kind of assertions) to Lua modules. An integral part is to report failures clearly and visible to facilitate interactive and collaborative fault fixing.
