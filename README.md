@@ -11,7 +11,7 @@ Extensive help is available at [Expect: Assertion framework for Lua embedded wit
 
 Expect depends on modules from the Scribunto extension.
 
-1. Download from [Github](https://github.com/jeblad/Expect) [zip](https://github.com/jeblad/Expect/archive/master.zip) and place the file(s) in a directory called Expect in your extensions/ folder.
+1. Download from [Github](https://github.com/jeblad/Expect) ([zip](https://github.com/jeblad/Expect/archive/master.zip)) and place the file(s) in a directory called Expect in your extensions/ folder.
 2. Add the following code at the bottom of your LocalSettings.php:
 
 	```lua
@@ -31,7 +31,7 @@ Expect uses [Mediawiki-Vagrant](https://www.mediawiki.org/wiki/MediaWiki-Vagrant
 	git clone --recursive https://gerrit.wikimedia.org/r/mediawiki/vagrant .
 	```
 
-3. Add role unless [#535661](https://gerrit.wikimedia.org/r/#/c/mediawiki/vagrant/+/535661/) has been merged. (You need [git-review](https://www.mediawiki.org/wiki/Gerrit/git-review) to do this.)
+3. Add the role unless [#535661](https://gerrit.wikimedia.org/r/#/c/mediawiki/vagrant/+/535661/) has been merged. (You need [git-review](https://www.mediawiki.org/wiki/Gerrit/git-review) to do this.)
 
 	```bash
 	git review -d 535661
@@ -43,7 +43,7 @@ Expect uses [Mediawiki-Vagrant](https://www.mediawiki.org/wiki/MediaWiki-Vagrant
 	./setup.sh
 	```
 
-5. Enable role for Expect. This pulls inn role for Scribunto, which pulls in additional roles.
+5. Enable role for Expect. This pulls in the role for Scribunto, which then pulls in additional roles.
 
 	```bash
 	vagrant roles enable expect
