@@ -31,17 +31,17 @@
 <ul>
 <li><a href="#Minimal_setup">Minimal setup </a></li>
 <li><a href="#Extended_setup">Extended setup </a></li>
+<li><a href="#Import_of_pages">Import of pages </a></li>
 <li><a href="#Manual_verification">Manual verification </a></li>
 </ul>
 
 
 <h2>Topics</h2>
 <ul class="">
-  <li><a href="../topics/expect-assertions.md.html">Expect assertions</a></li>
+  <li><a href="../topics/expect.md.html">Expect assertions</a></li>
   <li><strong>Expect Vagrant</strong></li>
   <li><a href="../topics/database-usage.md.html">Database usage</a></li>
-  <li><a href="../topics/vscode-extensions.md.html">VScode extension</a></li>
-  <li><a href="../topics/vscode-snippets.md.html">VScode snippets</a></li>
+  <li><a href="../topics/vscode.md.html">VScode extension</a></li>
 </ul>
 <h2>Classes</h2>
 <ul class="nowrap">
@@ -63,7 +63,7 @@
 <p><a name="Minimal_setup"></a></p>
 <h2>Minimal setup</h2>
 
-<p>Expect uses <a href="https://www.mediawiki.org/wiki/MediaWiki-Vagrant">Mediawiki-Vagrant</a>, and a complete setup can be made quite easily.</p>
+<p>This extension uses <a href="https://www.mediawiki.org/wiki/MediaWiki-Vagrant">Mediawiki-Vagrant</a>, and a complete setup can be made quite easily.</p>
 
 <ol>
     <li>Make sure you have Vagrant, etc, prepare a development directory, and move to that directory.</li>
@@ -89,7 +89,7 @@ git review -d <span class="number">535661</span>
 ./setup.sh
 </pre>
 
-<p>5. Enable role for Expect. This pulls inn role for Scribunto, which pulls in additional roles.</p>
+<p>5. Enable the role for Expect. This pulls inn the role for Scribunto, which pulls in additional roles.</p>
 
 
 <pre>
@@ -105,7 +105,18 @@ vagrant up
 
 <p>7. Done.</p>
 
-<p>This should create a working environment with <code>phpmd</code>, <code>phpcs</code>, and <code>phpunit</code>. See <code>scripts</code> in <a href="https://github.com/jeblad/Expect/blob/master/composer.json">composer.json</a> for actual calls.</p>
+<p>This should create a working environment with <code>phpmd</code>, <code>phpcs</code>, and <code>phpunit</code>. An actual call would be <code>composer unit</code>. See <code>scripts</code> in <a href="https://github.com/jeblad/Expect/blob/master/composer.json">composer.json</a> for all calls.</p>
+
+<h3>Problems</h3>
+
+<p>At [6.] there might be a problem during <code>git clone</code>. This can be usually be solved by a <code>vagrant reload</code>, and then a <code>git submodule update</code>, like so</p>
+
+
+<pre>
+vagrant reload <span class="comment">--provision
+</span>git submodule update <span class="comment">--init --recursive</span>
+</pre>
+
 
 <p><a name="Extended_setup"></a></p>
 <h2>Extended setup</h2>
@@ -132,6 +143,41 @@ sudo luarocks install ldoc
 
 <p>3. Done.</p>
 
+<p>This should make a working <code>ldoc</code>. An actual call would be <code>composer ldoc</code>.</p>
+
+<p><a name="Import_of_pages"></a></p>
+<h2>Import of pages</h2>
+
+<p>A few pages for testing can be imported in the new instance.</p>
+
+<ol>
+    <li>Open a terminal at the new Vagrant instance</li>
+</ol>
+
+
+<pre>
+vagrant ssh
+</pre>
+
+<p>2. Go to the Expect folder and import the pages.</p>
+
+
+<pre>
+cd /vagrant/mediawiki/extensions/Expect
+composer import
+</pre>
+
+<p>3. Go to the mediawiki root, rebuild recent changes, and rebuild site stats.</p>
+
+
+<pre>
+cd /vagrant/mediawiki
+php maintenance/rebuildrecentchanges.php
+php maintenance/initSiteStats.php <span class="comment">--update</span>
+</pre>
+
+<p>4. Done</p>
+
 <p><a name="Manual_verification"></a></p>
 <h2>Manual verification</h2>
 
@@ -139,20 +185,20 @@ sudo luarocks install ldoc
 
 <p>Run <code>composer import</code> to load the examples.</p>
 
-<p>Open the page “Module:Export-expect”, and go to the console. Posting the example code you should get the result described in the comment.</p>
+<p>Open the page “Module:Export-expect” for editing, and scroll down to the console. Typing the example code you should get the result described in the comment.</p>
 
 
 <pre>
-= <span class="global">type</span>( p )           <span class="comment">-- 'table'
-</span>= mw.dumpObject( p )  <span class="comment">-- this is the actual table</span>
+= <span class="global">type</span>( p )            <span class="comment">-- 'table'
+</span>= mw.dumpObject( p )   <span class="comment">-- this is the actual table</span>
 </pre>
 
 
-<p>Open the page “Module:Hello-world”, and go to the console. Posting the example code you should get the result described in the comment.</p>
+<p>Open the page “Module:Hello-world” for editing, and scroll down to the console. Typing the example code you should get the result described in the comment.</p>
 
 
 <pre>
-= p._hello(<span class="string">'Foo'</span>) <span class="comment">-- 'Hi there Foo!'
+= p._hello(<span class="string">'Foo'</span>)      <span class="comment">-- 'Hi there Foo!'
 </span>= p._hello(<span class="string">'User:Foo'</span>) <span class="comment">-- throws an error</span>
 </pre>
 
