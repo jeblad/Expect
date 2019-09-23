@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Expect documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Expect</h1>
+
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Minimal_setup">Minimal setup </a></li>
+<li><a href="#Extended_setup">Extended setup </a></li>
+<li><a href="#Import_of_pages">Import of pages </a></li>
+<li><a href="#Manual_verification">Manual verification </a></li>
+</ul>
+
+
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/expect.md.html">Expect assertions</a></li>
+  <li><strong>Vagrant</strong></li>
+  <li><a href="../topics/databases.md.html">Databases</a></li>
+  <li><a href="../topics/vscode.md.html">VScode extension</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../index.html">Expect</a></li>
+</ul>
+<h2>Examples</h2>
+<ul class="nowrap">
+  <li><a href="../examples/export-expect.lua.html">export-expect.lua</a></li>
+  <li><a href="../examples/hello-world.lua.html">hello-world.lua</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+<h1>Vagrant</h1>
+
+<p><a name="Minimal_setup"></a></p>
+<h2>Minimal setup</h2>
+
+<p>This extension uses <a href="https://www.mediawiki.org/wiki/MediaWiki-Vagrant">Mediawiki-Vagrant</a>, and a complete setup can be made quite easily.</p>
+
+<ol>
+    <li>Make sure you have Vagrant, etc, prepare a development directory, and move to that directory.</li>
+    <li>Clone Mediawiki</li>
+</ol>
+
+
+<pre>
+git clone <span class="comment">--recursive https://gerrit.wikimedia.org/r/mediawiki/vagrant .</span>
+</pre>
+
+<p>3. Add role unless <a href="https://gerrit.wikimedia.org/r/#/c/mediawiki/vagrant/+/535661/">#535661</a> has been merged. (You need <a href="https://www.mediawiki.org/wiki/Gerrit/git-review">git-review</a> to do this.)</p>
+
+
+<pre>
+git review -d <span class="number">535661</span>
+</pre>
+
+<p>4. Run setup.</p>
+
+
+<pre>
+./setup.sh
+</pre>
+
+<p>5. Enable the role for Expect. This pulls inn the role for Scribunto, which pulls in additional roles.</p>
+
+
+<pre>
+vagrant roles enable expect
+</pre>
+
+<p>6. Start the instance.</p>
+
+
+<pre>
+vagrant up
+</pre>
+
+<p>7. Done.</p>
+
+<p>This should create a working environment with <code>phpmd</code>, <code>phpcs</code>, and <code>phpunit</code>. An actual call would be <code>composer unit</code>. See <code>scripts</code> in <a href="https://github.com/jeblad/Expect/blob/master/composer.json">composer.json</a> for all calls.</p>
+
+<h3>Problems</h3>
+
+<p>At [6.] there might be a problem during <code>git clone</code>. This can be usually be solved by a <code>vagrant reload</code>, and then a <code>git submodule update</code>, like so</p>
+
+
+<pre>
+vagrant reload <span class="comment">--provision
+</span>git submodule update <span class="comment">--init --recursive</span>
+</pre>
+
+
+<p><a name="Extended_setup"></a></p>
+<h2>Extended setup</h2>
+
+<h3>Luarocks and ldoc</h3>
+
+<p>It is necessary to install <code>luarocks</code> and a few libs to recreate the generated docs.</p>
+
+<ol>
+    <li>Install luarocks. This will pull in several additional packages, the most important is lua5.1.</li>
+</ol>
+
+
+<pre>
+sudo apt install luarocks
+</pre>
+
+<p>2. Install ldoc. This will pull in several additional packages, like penlight, markdown, and luafilesystem.</p>
+
+
+<pre>
+sudo luarocks install ldoc
+</pre>
+
+<p>3. Done.</p>
+
+<p>This should make a working <code>ldoc</code>. An actual call would be <code>composer ldoc</code>.</p>
+
+<p><a name="Import_of_pages"></a></p>
+<h2>Import of pages</h2>
+
+<p>A few pages for testing can be imported in the new instance.</p>
+
+<ol>
+    <li>Open a terminal at the new Vagrant instance</li>
+</ol>
+
+
+<pre>
+vagrant ssh
+</pre>
+
+<p>2. Go to the Expect folder and import the pages.</p>
+
+
+<pre>
+cd /vagrant/mediawiki/extensions/Expect
+composer import
+</pre>
+
+<p>3. Go to the mediawiki root, rebuild recent changes, and rebuild site stats.</p>
+
+
+<pre>
+cd /vagrant/mediawiki
+php maintenance/rebuildrecentchanges.php
+php maintenance/initSiteStats.php <span class="comment">--update</span>
+</pre>
+
+<p>4. Done</p>
+
+<p><a name="Manual_verification"></a></p>
+<h2>Manual verification</h2>
+
+<p>A few manual checks to verify proper operation.</p>
+
+<p>Run <code>composer import</code> to load the examples.</p>
+
+<p>Open the page “Module:Export-expect” for editing, and scroll down to the console. Typing the example code you should get the result described in the comment.</p>
+
+
+<pre>
+= <span class="global">type</span>( p )            <span class="comment">-- 'table'
+</span>= mw.dumpObject( p )   <span class="comment">-- this is the actual table</span>
+</pre>
+
+
+<p>Open the page “Module:Hello-world” for editing, and scroll down to the console. Typing the example code you should get the result described in the comment.</p>
+
+
+<pre>
+= p._hello(<span class="string">'Foo'</span>)      <span class="comment">-- 'Hi there Foo!'
+</span>= p._hello(<span class="string">'User:Foo'</span>) <span class="comment">-- throws an error</span>
+</pre>
+
+
+<p>An alternative is to inspect the page “hello-world”, given that the test pages are imported.</p>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc TESTING</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
+
