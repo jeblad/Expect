@@ -21,7 +21,7 @@ dir = 'docs'
 readme = {
 	'topics/expect.md',
 	'topics/expect-vagrant.md',
-	'topics/database-usage.md',
+	'topics/databases.md',
 	-- 'topics/delayed.md',
 	-- 'topics/hello-world.md',
 	-- 'topics/translatewiki.md',
