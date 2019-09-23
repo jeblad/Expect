@@ -19,14 +19,13 @@ dir = 'docs'
 -- all = true
 
 readme = {
-	'topics/expect-assertions.md',
+	'topics/expect.md',
 	'topics/expect-vagrant.md',
 	'topics/database-usage.md',
 	-- 'topics/delayed.md',
 	-- 'topics/hello-world.md',
 	-- 'topics/translatewiki.md',
-	'topics/vscode-extensions.md',
-	'topics/vscode-snippets.md'
+	'topics/vscode.md',
 }
 
 examples = {
@@ -36,10 +35,10 @@ examples = {
 -- new_type( 'macro', 'Macros' )
 custom_tags = {
 	{ 'nick', title='Nicknames', hidden = false, format=nil },
-	{ 'delayed', title='Process', hidden = false, format=function() return '<a href="topics/expect-assertions.md.html#delayed">delayed</a>' end },
-	{ 'pick', title='Process', hidden = false, format=function() return '<a href="topics/expect-assertions.md.html#pick">pick</a>' end },
-	{ 'transform', title='Process', hidden = false, format=function() return '<a href="topics/expect-assertions.md.html#transform">transform</a>' end },
-	{ 'condition', title='Process', hidden = false, format=function() return '<a href="topics/expect-assertions.md.html#condition">condition</a>' end }
+	{ 'delayed', title='Process', hidden = false, format=function() return '<a href="topics/expect.md.html#delayed">delayed</a>' end },
+	{ 'pick', title='Process', hidden = false, format=function() return '<a href="topics/expect.md.html#pick">pick</a>' end },
+	{ 'transform', title='Process', hidden = false, format=function() return '<a href="topics/expect.md.html#transform">transform</a>' end },
+	{ 'condition', title='Process', hidden = false, format=function() return '<a href="topics/expect.md.html#condition">condition</a>' end }
 }
 
 custom_display_name_handler = function(item, default_handler)
