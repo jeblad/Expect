@@ -4,5 +4,5 @@
 			"Jeblad"
 		]
 	},
-	"expect-desc": "{{expect-gloss}} {{desc|name=Expect|url=https://www.mediawiki.org/wiki/Extension:Expect }}"
+	"expect-desc": "{{expect-gloss}} {{desc|name=Expect|url=https://www.mediawiki.org/wiki/Extension:Expect }}\n\nThe term “assertions” should probably not be translated, unless to a localized spelling of the same term. Several languages use the English word for this. Note the sitelinks at [[d:Q741248]]."
 }

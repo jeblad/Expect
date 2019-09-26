@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"expect-desc": "為 Lua 模組提供進階斷言"
+}

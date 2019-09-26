@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"expect-desc": "Fournit des déclarations avancées aux modules Lua"
+}
