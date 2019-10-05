@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo Addad de Oliveira"
+		]
+	},
+	"expect-desc": "Fornece asserções avançadas para módulos Lua"
+}
