@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu"
+		]
+	},
+	"expect-desc": "Fornece asserções avançadas a módulos Lua"
+}
