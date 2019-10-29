@@ -26,6 +26,10 @@ readme = {
 	-- 'topics/hello-world.md',
 	-- 'topics/translatewiki.md',
 	'topics/vscode.md',
+	'CONTRIBUTING.md',
+	'CODE_OF_CONDUCT.md',
+	'SECURITY.md',
+	'TRANSLATING.md'
 }
 
 examples = {

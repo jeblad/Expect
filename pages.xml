@@ -29,30 +29,6 @@
     </namespaces>
   </siteinfo>
   <page>
-    <title>VagrantRole/expect</title>
-    <ns>0</ns>
-    <id>6</id>
-    <revision>
-      <id>8</id>
-      <parentid>7</parentid>
-      <timestamp>2019-10-05T15:59:03Z</timestamp>
-      <contributor>
-        <ip>10.0.2.2</ip>
-      </contributor>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
-      <text xml:space="preserve" bytes="589">'''VagrantRole/expect''' enables the [[mw:Manual:Extensions|Mediawiki extension]] [[mw:Extension:Expect|Expect]]. This extension provides extended expectations (a kind of assertions) for Lua modules. An integral part is to report failures clearly and visible to facilitate interactive and collaborative fault fixing.
-
-For a full Vagrant setup, see [https://jeblad.github.io/Expect/topics/vagrant.md.html the documentation].
-
-== See also ==
-
-* [https://github.com/jeblad/Expect Github: jeblad/Expect] (Code repository)
-* [https://jeblad.github.io/Expect/ Jeblad: Expect] (Lua documentation)</text>
-      <sha1>fzruxwa9560d5zh41h6tt39v5k5mt73</sha1>
-    </revision>
-  </page>
-  <page>
     <title>Module:Export-expect</title>
     <ns>828</ns>
     <id>3</id>
