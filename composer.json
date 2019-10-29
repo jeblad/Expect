@@ -48,7 +48,7 @@
 			"minus-x fix ."
 		],
 		"ldoc": [
-			"ldoc includes/LuaLibrary/lua/pure/expect.lua --testing --unqualified --template ./ --config ./config.ld"
+			"ldoc includes/LuaLibrary/lua/pure/expect.lua -s !fixed --testing --unqualified --template ./ --config ./config.ld"
 		],
 		"minify": [
 			"find modules/images -type d -path minified -prune -o -type d -execdir svgo --pretty --indent=2 -i . -o ./minified \\;"
