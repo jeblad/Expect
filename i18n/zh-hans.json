@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hzy980512"
+		]
+	},
+	"expect-desc": "为 Lua 模块提供高级断言"
+}
