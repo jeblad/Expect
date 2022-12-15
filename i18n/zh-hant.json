@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kly"
+			"Kly",
+			"捍粵者"
 		]
 	},
-	"expect-desc": "為 Lua 模組提供進階斷言"
+	"expect-desc": "為Lua模組提供進階斷言"
 }
