@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Justman10000"
+		]
+	},
+	"expect-desc": "Bietet erweiterte Assertions für Lua-Module"
+}
